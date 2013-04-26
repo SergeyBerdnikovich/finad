@@ -1,0 +1,6 @@
+Enter your Zip Code!<br />
+<%= form_for User.new, :url => new_user_path, :method => :get do |f| %>
+  <%= f.text_field :zip %>
+
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,24 @@
+
+.login {
+    color: #FFFFFF;
+    font-weight: bold;
+    padding-bottom: 5px;
+    padding-right: 5px;
+}
+.login a {
+    color: #FFFFFF;
+}
+#right_colom a {
+    color: #057BAD;
+}
+.search_innerbox2 {
+    float: left;
+    font-size: 13px;
+    line-height: 19px;
+    padding: 4px 0 0;
+    width: 700px;
+}
+.border {
+    border: 1px solid #EEEEEE;
+    padding: 5px 2px 5px 5px;
+}

@@ -3,6 +3,8 @@ class UsersController < InheritedResources::Base
   end
 
   def show
+      @user = User.find(params[:id])
+      @advisers = Adviser.where('city = ?', @user.city.strip)
   end
 
   def new

@@ -136,11 +136,11 @@ function openWindowConduct(url, name)
   <div class="nav_rt_curve">
     <ul>
       <li><a href="/">Home</a></li>
-      <li><a href="/v4/buyerportfolio/index.jsp?&bd=20024016&src=11&ss=y">Active Requests</a></li>
-      <li><a href="/v4/buyerportfolio/index.jsp?expired=true&bd=20024016&src=11&ss=y">Expired Requests</a></li>
+      <li><%= link_to "Search Advisors", user_path(@user[:id]) %></li>
+      <li><a href="/">About us</a></li>
 
 
-      <li style="border:none;"><a href="/v4/buyerportfolio/preferences.jsp?&bd=20024016&src=11&ss=y">Preferences</a></li>
+      <li style="border:none;"><%= link_to "Preferences", edit_user_path(@user[:id]) %></li>
 
     </ul>
   </div>
@@ -156,11 +156,10 @@ function openWindowConduct(url, name)
   <ul class="side_nav">
 
 
-    <li><a href="/v4/buyerportfolio/index.jsp?&bd=20024016&src=11&ss=y">Active Requests</a></li>
-    <li><a href="/v4/buyerportfolio/index.jsp?expired=true&bd=20024016&src=11&ss=y">Expired Requests</a></li>
+    <li><%= link_to "Search Advisors", user_path(@user[:id]) %></li>
+  
 
-
-    <li><a href="/v4/buyerportfolio/preferences.jsp?&bd=20024016&src=11&ss=y">Preferences</a></li>
+    <li><%= link_to "Preferences", edit_user_path(@user[:id]) %></li>
 
   </ul>
 </div>

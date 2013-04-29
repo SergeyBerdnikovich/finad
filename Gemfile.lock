@@ -162,6 +162,7 @@ DEPENDENCIES
   activeadmin
   coffee-rails (~> 3.2.1)
   jquery-rails
+  kaminari
   meta_search (>= 1.1.0.pre)
   mysql2
   rails (= 3.2.13)

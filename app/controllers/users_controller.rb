@@ -3,8 +3,8 @@ class UsersController < InheritedResources::Base
   end
 
   def show
-      @user = User.find(params[:id])
-      @advisers = Adviser.where('city = ?', @user.city.strip)
+    @user = User.find(params[:id])
+    @advisers = Adviser.where('city = ?', @user.city.strip).page(params[:page])
   end
 
   def new
@@ -36,7 +36,7 @@ class UsersController < InheritedResources::Base
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to edit_user_path(@user), notice: 'User was successfully created.' }
+        format.html { redirect_to edit_user_path(@user), notice: 'User was successfully updated.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }

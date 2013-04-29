@@ -252,7 +252,7 @@ h1.page_heading2 {
 }
 #browse_cat {
     float: left;
-    padding: 14px 0 0 26px;
+    padding: 14px 0 0 4px;
     width: 960px;
 }
 #browse_cat .service_boxes {
@@ -280,7 +280,7 @@ h1.page_heading2 {
 }
 #right_colom {
     float: left;
-    padding: 14px 0 0 26px;
+    padding: 14px 0 0 4px;
     width: 715px;
 }
 #right_colom .service_boxes {
@@ -436,7 +436,7 @@ h1.page_heading2 {
 }
 #middle_colom {
     float: left;
-    padding: 14px 0 0 26px;
+    padding: 14px 0 0 4px;
     width: 440px;
 }
 #middle_colom .service_boxes {
@@ -641,7 +641,7 @@ h1.page_heading2 {
 }
 #container {
     float: left;
-    padding: 14px 0 0 26px;
+    padding: 14px 0 0 4px;
     width: 940px;
 }
 .loginlink {

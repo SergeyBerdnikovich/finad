@@ -228,6 +228,10 @@ div.itemHeader h2.itemTitle, div.catItemHeader h3.catItemTitle, h3.userItemTitle
   margin-left: 50px;
   float: left;
 }
+.sort {
+  float: left;
+  margin-top: -350px;
+}
 #s5_columns_wrap_inner {
     width: 100%;
 }
@@ -279,6 +283,7 @@ a#confirm:hover {
 }
 .advisers_table table {
   max-width: 900px;
+  min-width: 700px;
 }
 .advisers_table img {
   width: 13px;
@@ -340,6 +345,8 @@ a#confirm:hover {
     </div>
     <div class="clear"><img src="/assets/maket/blank.gif" width="1" height="10" border="0" /></div>
   </div>
+<!--   <div style="clear:both;"></div> -->
+
   <div class="advisers_table">
     <table width="100%" cellpadding="0" cellspacing="1" border="0">
       <tr bgcolor="#F5F5DC">
@@ -364,6 +371,17 @@ a#confirm:hover {
       <% end %>
     </table>
     <%= paginate @advisers %>
+  </div>
+    <div id="left_colom" class='sort'>
+    <h2>Sort</h2>
+    <div class="side_nav_box">
+      <%= form_tag user_path(@user), :method => :get do %>
+        <strong style='margin-left:15px;'>Sort by:</strong>
+        <%= select_tag "sort", options_for_select(['Name', 'Address', 'Stars']) %>
+        <%= submit_tag 'Go' %>
+      <% end %>
+    </div>
+
   </div>
 </div>
 

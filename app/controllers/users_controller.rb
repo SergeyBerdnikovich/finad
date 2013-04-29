@@ -4,7 +4,7 @@ class UsersController < InheritedResources::Base
 
   def show
     @user = User.find(params[:id])
-    @advisers = Adviser.where('city = ?', @user.city.strip).page(params[:page])
+    @advisers = Adviser.where('city = ?', @user.city.strip).sort_by(params[:sort]).page(params[:page])
   end
 
   def new
@@ -15,7 +15,7 @@ class UsersController < InheritedResources::Base
     @user = User.new(params[:user])
     @user.phone = "(#{params[:user][:phone1]})#{params[:user][:phone2]}-#{params[:user][:phone3]}"
     @user.hashstr = (0...50).map{ ('a'..'z').to_a[rand(26)] }.join
-    
+
     respond_to do |format|
       if @user.save
         UserMailer.deliver_registration_confirmation(@user).deliver

@@ -19,7 +19,7 @@ class UsersController < InheritedResources::Base
     respond_to do |format|
       if @user.save
         UserMailer.deliver_registration_confirmation(@user).deliver
-        format.html { redirect_to edit_user_path(@user), notice: 'User was successfully created.' }
+        format.html { redirect_to users_email_link_path, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
@@ -45,5 +45,9 @@ class UsersController < InheritedResources::Base
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def email_link
+
   end
 end

@@ -1,7 +1,7 @@
 Finad::Application.routes.draw do
 
+  get 'users/email_link'
   resources :users
-
 
   root :to => 'users#index'
   devise_for :admin_users, ActiveAdmin::Devise.config

@@ -8,6 +8,7 @@ class UsersController < InheritedResources::Base
   end
 
   def new
+    @adviser = Adviser.find_by_zip(params[:user][:zip])
     @user = User.new(:zip => params[:user][:zip])
   end
 

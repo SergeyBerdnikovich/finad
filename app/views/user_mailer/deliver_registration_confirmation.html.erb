@@ -2,78 +2,53 @@
 <head>
 <title>Pending Request Follow Up</title>
 </head>
-<link rel=3D"stylesheet" href=3D"http://www.respond.com/common/content/busi=
-ness_shell/vertical_default.css" type=3D"text/css">
-<body bgcolor=3D"#eeeeee">
-<table width=3D"645" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" b=
-order=3D"0">
+<body bgcolor="#eeeeee">
+<table width="645" align="center" cellpadding="0" cellspacing="0" b=
+order="0">
 <tr>
-<td colspan=3D"3" bgcolor=3D"#666666"><img src=3D"http://www.respond.=
-com/images/spacer.gif" width=3D"1" height=3D"1" alt=3D"" border=3D"0"></td>
+<td colspan="3" bgcolor="#666666"><img src="http://www.respond.=
+com/images/spacer.gif" width="1" height="1" alt="" border="0"></td>
 </tr>
-<tr valign=3D"top">
-<td width=3D"1" bgcolor=3D"#666666"><img src=3D"http://www.respond.co=
-m/images/spacer.gif" width=3D"1" height=3D"1" alt=3D"" border=3D"0"></td>
-<td bgcolor=3D"#ffffff">
-<table width=3D"643" cellpadding=3D"0" cellspacing=3D"0" border=3D=
+<tr valign="top">
+<td width="1" bgcolor="#666666"><img src="http://www.respond.co=
+m/images/spacer.gif" width="1" height="1" alt="" border="0"></td>
+<td bgcolor="#ffffff">
+<table width="643" cellpadding="0" cellspacing="0" border==
 "0">
-<tr valign=3D"top">
-<td bgcolor=3D"#ffffff" align=3D"right"><img src=3D"http://n=
-ew.wiseradvisor.com/images/cobrand/wiseradvisor/logohomepagehor.gif" alt=3D=
-"" border=3D"0"><img src=3D"http://www.respond.com/images/spacer.gif" width=
-=3D"4" height=3D"1" alt=3D"" border=3D"0">
-</td>
-</tr>
+
 <tr>
 <td>
-<table width=3D"100%" border=3D"0" bgcolor=3D"#336699" ce=
-llpadding=3D"0" cellspacing=3D"0">
+<table width="100%" border="0" bgcolor="#336699" ce=
+llpadding="0" cellspacing="0">
 <tr>
-<td width=3D"100%">
-<p style=3D"margin-left: 5px; margin-right: 5px;=
-"><strong><span style=3D"font-family: Verdana;"><font size=3D"5" color=3D"#=
-ffffff"><font size=3D"4" face=3D"Verdana">Request Verification Required...<=
-/font><br />
+<td width="100%">
+<p style="margin-left: 5px; margin-right: 5px;=
+"><strong><span style="font-family: Verdana;"><font size="5" color="#=
+ffffff"><font size="4" face="Verdana">Request Verification Required...</font><br />
 </font></span></strong></p>
 </td>
 </tr>
 </table>
 </td>
 </tr>
-<tr valign=3D"top">
+<tr valign="top">
 <td>
-<table width=3D"100%" cellpadding=3D"4" cellspacing=3D"0"=
- border=3D"0">
+<table width="100%" cellpadding="4" cellspacing="0"=
+ border="0">
 <tr>
-<td><p><font face=3D"arial,helvetica,sans-serif" si=
-ze=3D"2" color=3D"#000000">Dear <%= @user.first_name %>: </font></p>
-  <p><font face=3D"arial,helvetica,sans-serif" size=
-=3D"2" color=3D"#000000">We  have received your request for  <b>Financial A=
-dvisors</b> (Lead Request: <b>#<%= @user.id %></b>). We have been able to match you=
-r request to businesses that would be interested in providing you a quote f=
-or this project; however, we have been unable to contact you to verify your=
- contact information and interest in pursuing the Financial Advisors servic=
-es. </font></p>
-  <p><font face=3D"arial,helvetica,sans-serif" size=
-=3D"2" color=3D"#000000"> Please either call us at 888-762-7630; or <%= link_to "click h=
-ere to either confirm or update your contact information.", edit_user_path(@user.id, :hash => @user.hashstr,:only_path => false,:host => "finad.dvporg.com")  %><br>
-  <p><font face=3D"arial,helvetica,sans-serif" size=
-=3D"2" color=3D"#000000">
-                                                                  Please re=
-fer to Request #6058732 when calling.
-   <br/><br/>After your contact information has bee=
-n verified you will be matched to quality local businesses.</font></p>
-<p><font face=3D'arial,helvetica,sans-serif' siz=
-e=3D'2' color=3D'#000000'>Sincerely,=20
-                </font><br><font face=3D'arial,helveti=
-ca,sans-serif' size=3D'2' color=3D'#000000'>
-                Buyer Verification Team</font><br><fon=
-t face=3D'arial,helvetica,sans-serif' size=3D'2'=20
-                color=3D'#000000'>888-762-7630</font>
+<td><p><font face="arial,helvetica,sans-serif" size="2" color="#000000">Dear <%= @user.first_name %>: </font></p>
+  <p><font face="arial,helvetica,sans-serif" size="2" color="#000000">We  have received your request for  <b>Financial Advisors</b> (Lead Request: <b>#<%= @user.id %></b>). We have been able to match your request to businesses that would be interested in providing you a quote for this project; however, we have been unable to contact you to verify your contact information and interest in pursuing the Financial Advisors services. </font></p>
+  <p><font face="arial,helvetica,sans-serif" size="2" color="#000000"> Please either call us at 888-762-7630; or <%= link_to "click h=
+ere to either confirm or update your contact information.", edit_user_path(@user.id, :hash => @user.hashstr,:only_path => false,:host => "search.investmentprotectionbureau.com")  %><br>
+  <p><font face="arial,helvetica,sans-serif" size="2" color="#000000">
+                                                                  Please refer to Request #6058732 when calling.
+   <br/><br/>After your contact information has been verified you will be matched to quality local businesses.</font></p>
+<p><font face='arial,helvetica,sans-serif' size='2' color='#000000'>Sincerely,=20
+                </font><br><font face='arial,helvetica,sans-serif' size='2' color='#000000'>
+                Buyer Verification Team</font><br><font face='arial,helvetica,sans-serif' size='2'=20
+                color='#000000'>888-762-7630</font>
 <br>
-<font face=3D"arial,helvetica,sans-serif" size=
-=3D"2" color=3D"#000000">Hours of Operation: M-F 8:30 to 9:30PM & Sa-Su 10:=
-00 - 7:00PM</font>
+<font face="arial,helvetica,sans-serif" size="2" color="#000000">Hours of Operation: M-F 8:30 to 9:30PM & Sa-Su 10:00 - 7:00PM</font>
 </td>
 </tr>
 </table>
@@ -81,41 +56,31 @@ t face=3D'arial,helvetica,sans-serif' size=3D'2'=20
 </tr>
 <tr>
 <td>
-                <hr color=3D"#E6E6E6" width=3D"90%">
-<center><font face=3D"arial,helvetica,sans-serif" color=
-=3D"#000000" size=3D"2">Wiseradvisor is provided by Respond.com - All Right=
-s Reserved.<br>Respond.com Mailing Address:  12150 Monument Drive, Suite 40=
-0 Fairfax, Virginia 22033<br>Questions?  You can reach Respond.com at 1-866=
--638-5323 Monday &#45; Friday 8AM to 6PM (EST)<br>Copyright =A9 1999 - 2013=
-, Respond.com<br></font></center>
+                <hr color="#E6E6E6" width="90%">
+<center><font face="arial,helvetica,sans-serif" color=
+="#000000" size="2">Investment Protection Bureau - All Rights Reserved.<br>Investmentprotectionbureau.com Mailing Address:  12150 Monument Drive, Suite 400 Fairfax, Virginia 22033<br>Questions?  You can reach Investmentprotectionbureau.com at 1-866-638-5323 Monday &#45; Friday 8AM to 6PM (EST)<br>Copyright =A9 1999 - 2013, Investmentprotectionbureau.com<br></font></center>
 </td>
 </tr>
-<td width=3D"5"><img src=3D"http://www.respond.com/images/sp=
-acer.gif" width=3D"5" height=3D"1" alt=3D"" border=3D"0"></td>
+<td width="5"><img src="http://www.respond.com/images/spacer.gif" width="5" height="1" alt="" border="0"></td>
 </tr>
-<tr valign=3D"top">
-<td><img src=3D"http://www.respond.com/images/spacer.gif" wi=
-dth=3D"1" height=3D"8" alt=3D"" border=3D"0"></td>
+<tr valign="top">
+<td><img src="http://www.respond.com/images/spacer.gif" width="1" height="8" alt="" border="0"></td>
 </tr>
 </table>
 </td>
-<td width=3D"1" bgcolor=3D"#666666"><img src=3D"http://www.respond.co=
-m/images/spacer.gif" width=3D"1" height=3D"1" alt=3D"" border=3D"0"></td>
+<td width="1" bgcolor="#666666"><img src="http://www.respond.com/images/spacer.gif" width="1" height="1" alt="" border="0"></td>
 </tr>
 <tr>
-<td colspan=3D"3" bgcolor=3D"#666666"><img src=3D"http://www.respond.=
-com/images/spacer.gif" width=3D"1" height=3D"1" alt=3D"" border=3D"0"></td>
+<td colspan="3" bgcolor="#666666"><img src="http://www.respond.com/images/spacer.gif" width="1" height="1" alt="" border="0"></td>
 </tr>
 <tr>
-<td colspan=3D"3"><img src=3D"http://www.respond.com/images/spacer.gi=
-f" width=3D"1" height=3D"10" alt=3D"" border=3D"0"></td>
+<td colspan="3"><img src="http://www.respond.com/images/spacer.gif" width="1" height="10" alt="" border="0"></td>
 </tr>
 
 <tr>
-<td colspan=3D"3" align=3D"right"></td>
+<td colspan="3" align="right"></td>
 </tr>
 </table>
-<img border=3D"0" height=3D"1" width=3D"1" src=3D"http://new.wiseradvisor.c=
-om/portfolio/image.jsp?action=3Dmci&src=3D200240000&uid=3D7747839&m=3D12298=
-5971&vc=3D7508"></body>
+<img border="0" height="1" width="1" src="http://new.wiseradvisor.com/portfolio/image.jsp?action=mci&src=200240000&uid=7747839&m=12298=
+5971&vc=7508"></body>
 </html>

@@ -59,7 +59,7 @@ class UsersController < InheritedResources::Base
       user = User.find_by_id_and_hashstr(params[:id], params[:hash])
       user ? (session[:user_id] = user.id) : (redirect_to root_path)
     else
-      user_hashstr = User.find(session[:user_id]).hashstr
+      user_hashstr = User.find(session[:user_id]).try(:hashstr) if session[:user_id]
       user = User.find_by_id_and_hashstr(params[:id], user_hashstr) if user_hashstr
 
       redirect_to root_path unless user

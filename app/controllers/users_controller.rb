@@ -1,4 +1,6 @@
 class UsersController < InheritedResources::Base
+  before_filter :ckeck_hash, :only => [:show, :edit]
+
   def index
   end
 
@@ -50,5 +52,17 @@ class UsersController < InheritedResources::Base
 
   def email_link
 
+  end
+
+  def ckeck_hash
+    if params[:id] && params[:hash]
+      user = User.find_by_id_and_hashstr(params[:id], params[:hash])
+      user ? (session[:user_id] = user.id) : (redirect_to root_path)
+    else
+      user_hashstr = User.find(session[:user_id]).hashstr
+      user = User.find_by_id_and_hashstr(params[:id], user_hashstr) if user_hashstr
+
+      redirect_to root_path unless user
+    end
   end
 end

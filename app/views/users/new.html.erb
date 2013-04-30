@@ -228,15 +228,16 @@ div.itemHeader h2.itemTitle, div.catItemHeader h3.catItemTitle, h3.userItemTitle
   width: 1200px;
 }
 .tab.fl {
-  margin-left: 100px;
+  margin-left: 22px;
   float: left;
 }
 .form {
-  margin-left: 50px;
+  margin-left: 190px;
   float: left;
 }
 .next-step {
-  margin-left: 670px;
+  margin-left: 730px;
+  width: 28%;
 }
 #s5_columns_wrap_inner {
     width: 100%;
@@ -255,6 +256,12 @@ div.itemHeader h2.itemTitle, div.catItemHeader h3.catItemTitle, h3.userItemTitle
     height: 50px;
     width: 120px;
     box-shadow: none;
+}
+.content {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  width: 98%;
+  margin: 0 auto 10px auto;
 }
 input#user_city {
   margin-right: 5px;
@@ -307,7 +314,7 @@ input#user_city {
   </div>
 
   <h1 id='zipcode'>Financial Advisors in or around  Zip Code <%= params[:user][:zip] %></h1>
-
+<div class='content'>
   <div class="tab fl" style="line-height:20px; color:#333333; ">
     <div class="search-result" style="display:block; text-align:justify; line-height:18px;">
       <div style="margin-left:-12px; margin-right:-12px; padding:0px;">
@@ -535,6 +542,7 @@ input#user_city {
   <% end %>
   <!-- </form> -->
   </div>
+</div>
   </div>
 
 </div>

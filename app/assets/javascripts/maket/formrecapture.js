@@ -12,7 +12,7 @@
 <body>
 
 	<div id="main_container">
-    	
+
 
 
 
@@ -76,7 +76,7 @@ function openWindowConduct(url, name)
 	    <input type="image" src="/v4/images/search_btn.gif" class="search_btn" />
 		<div class="fr"><img src="/v4/images/header_wt_box_right.gif" /></div>
       	<div class="clear"></div>
-		</form>		
+		</form>
     </div>
 	<div class="fr"><img src="/v4/images/top_bar_right.gif" /></div>
 </div>
@@ -86,7 +86,7 @@ function openWindowConduct(url, name)
 			<li><a href="http://www.respond.com/browse-yellowpages.html">Find Local Businesses</a></li>
 			<li><a href="http://www.respond.com/articles.html">Articles &amp; Tips</a></li>
 			<li><a href="http://www.respond.com/yellowpages/marketing-leads.html?">Advertise With Us</a></li>
-			<li style="border:none;"><a href="https://new.wiseradvisor.com/portfolio/index.jsp?&bd=20024016&src=20024016&ss=y">Login</a></li>
+			<li style="border:none;"><a href="#">Login</a></li>
 		</ul>
 	</div>
 </div>
@@ -95,10 +95,10 @@ function openWindowConduct(url, name)
 
 	    <div id="main_body">
 			<div class="clear"><img src="/v4/images/blank.gif" width="1" height="1" border="0" /></div>
-			
+
 			<div>
 				<br/><br/>
-				<table style="border:1px solid #CCCCCC;" align="center" width="60%"> 
+				<table style="border:1px solid #CCCCCC;" align="center" width="60%">
 					<tr>
 						<td width="100%">
 							<table width="90%" align="center">
@@ -112,13 +112,13 @@ function openWindowConduct(url, name)
 									</td>
 								</tr>
 								<tr>
-									<td colspan="2">										
-										<hr size="1" color="#CCCCCC">									
+									<td colspan="2">
+										<hr size="1" color="#CCCCCC">
 									</td>
 								</tr>
 								<tr>
 									<td style="padding-left:10px; line-height:150%;" colspan="2">
-										You may have clicked an expired link or mistyped the address. 
+										You may have clicked an expired link or mistyped the address.
 										<ul style="padding-left:30px;">
 											<li><a href="http://www.respond.com/">Return to homepage</a></li>
 											<li><a href="javascript:history.back();">Go back</a> to the previous page</li>
@@ -129,11 +129,11 @@ function openWindowConduct(url, name)
 								<tr>
 									<td colspan="2" width="90%">
 										<table width="100%" align="center" style="border:1px solid #CCCCCC;">
-											<tr><td></td></tr>																				
+											<tr><td></td></tr>
 											<tr>
 												<td colspan="2" align="center"><strong>Get Matched to Local Professionals</strong></td>
-											</tr>	
-											<tr><td></td></tr>																				
+											</tr>
+											<tr><td></td></tr>
 											<tr bgcolor="#EEEEEE">
 												<td width="50%" style="padding-left:50px;"><a href="http://www.respond.com/forms/forms24/?cat=1800000640">Bathroom Remodeling</a></td>
 												<td width="50%" style="padding-left:50px;"><a href="http://www.respond.com/forms/forms24/?cat=1800000483">Charter Buses</a></td>
@@ -154,11 +154,11 @@ function openWindowConduct(url, name)
 												<td width="50%" style="padding-left:50px;"><a href="http://www.respond.com/forms/forms24/?cat=1800000760">Wedding Photographers</a></td>
 												<td width="50%" style="padding-left:50px;"><a href="http://www.respond.com/forms/forms24/?cat=1720000142">Window Replacement</a></td>
 											</tr>
-											<tr><td>&nbsp;</td></tr>								
+											<tr><td>&nbsp;</td></tr>
 										</table>
 									</td>
 								</tr>
-								<tr><td>&nbsp;</td></tr>																
+								<tr><td>&nbsp;</td></tr>
 							</table>
 						</td>
 					</tr>
@@ -166,49 +166,49 @@ function openWindowConduct(url, name)
 				<br/><br/>
 			</div>
 		    <div class="clear"><img src="/v4/images/blank.gif" width="1" height="1" border="0" /></div>
-			
+
 
 <div id="footer">
   <div align="center">
     <a target="_blank" href="http://www.linkedin.com/companies/285395/Respond?trk=pp_icon"><img border="0" src="/v4/images/linkedin.jpg" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<a target="_blank" href="http://www.facebook.com/Respondcom"><img border="0" src="/v4/images/facebook.jpg" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<a target="_blank" href="http://www.twitter.com/Respondcom"><img border="0" src="/v4/images/twitter.jpg" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a target="_blank" href="http://blog.respond.com/"><img border="0" src="/v4/images/respondblog.jpg" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;					
+	<a target="_blank" href="http://blog.respond.com/"><img border="0" src="/v4/images/respondblog.jpg" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<a href="javascript:openWindowRspdXlarge('/general/privacy.jsp?')"><img border="0" src="/v4/images/truste.jpg" /></a>
-	
+
 	<script type="text/javascript" src="https://seal.verisign.com/getseal?host_name=www.respond.com&amp;size=S&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=en">
 	</script>
   </div>
-  
+
   <div class="clear"><img src="/v4/images/blank.gif" width="1" height="10" border="0" /></div>
-  
+
   <div align="center">
-    <strong>Company Information:</strong> 
-	<a href="http://www.respond.com/about-us.html">About Us</a> | 
-	<a href="http://www.respond.com/yellowpages/marketing-leads.html?">Advertise</a> | 
-	<a href="http://www.respond.com/v4/affiliate/index.jsp?">Affiliate Program</a> | 
-	<a href="http://referrals.respond.com">Referrals</a> | 
-	<a href="http://www.respond.com/common/content/contact/?nd=n">Contact Us</a> | 
+    <strong>Company Information:</strong>
+	<a href="http://www.respond.com/about-us.html">About Us</a> |
+	<a href="http://www.respond.com/yellowpages/marketing-leads.html?">Advertise</a> |
+	<a href="http://www.respond.com/v4/affiliate/index.jsp?">Affiliate Program</a> |
+	<a href="http://referrals.respond.com">Referrals</a> |
+	<a href="http://www.respond.com/common/content/contact/?nd=n">Contact Us</a> |
 	<a href="http://www.respond.com/sitemap.html">Site Map</a>
 	<br />
-	
-	<strong>Additional Services:</strong> 
-	<a href="http://finance.respond.com">Finance</a> | 
-	<a href="http://homeservices.respond.com">Home Services</a> | 
-	<a href="http://homeimprovement.respond.com">Home Improvement</a> | 
-	<a href="http://insurance.respond.com">Insurance</a> | 
+
+	<strong>Additional Services:</strong>
+	<a href="http://finance.respond.com">Finance</a> |
+	<a href="http://homeservices.respond.com">Home Services</a> |
+	<a href="http://homeimprovement.respond.com">Home Improvement</a> |
+	<a href="http://insurance.respond.com">Insurance</a> |
 	<a href="http://weddings.respond.com">Weddings</a> |
-	<a href="http://lasik-services.com">Lasik Eye Surgery</a> 	
+	<a href="http://lasik-services.com">Lasik Eye Surgery</a>
 	<br/>
-	
-	<strong>Network of Sites:</strong> 
-	<a target="_blank" href="http://www.bridesandgrooms.com">Brides and Grooms</a> | 
-	<a target="_blank" href="http://www.leadingcontractors.com">Leading Contractors</a> 
+
+	<strong>Network of Sites:</strong>
+	<a target="_blank" href="http://www.bridesandgrooms.com">Brides and Grooms</a> |
+	<a target="_blank" href="http://www.leadingcontractors.com">Leading Contractors</a>
 	<br />
-	
-	<strong>Legal Notices:</strong> 
-	<a href="javascript:openWindowRspdXlarge('/general/help/index.jsp?help=business_agreement&&bd=20024016&src=20024016&ss=y')">Business Agreement</a> | 
-	<a href="javascript:openWindowRspdXlarge('/general/privacy.jsp?&bd=20024016&src=20024016&ss=y')">Privacy Policy</a> | 
+
+	<strong>Legal Notices:</strong>
+	<a href="javascript:openWindowRspdXlarge('/general/help/index.jsp?help=business_agreement&&bd=20024016&src=20024016&ss=y')">Business Agreement</a> |
+	<a href="javascript:openWindowRspdXlarge('/general/privacy.jsp?&bd=20024016&src=20024016&ss=y')">Privacy Policy</a> |
 	<a href="javascript:openWindowRspdXlarge('/general/termsofservice.jsp?&bd=20024016&src=20024016&ss=y')">Terms of Use</a>
 	<br />
   </div>

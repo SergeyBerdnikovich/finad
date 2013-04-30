@@ -319,7 +319,7 @@ input#user_city {
     <div class="search-result" style="display:block; text-align:justify; line-height:18px;">
       <div style="margin-left:-12px; margin-right:-12px; padding:0px;">
         <p><b style="color:red; font-size:16px;">Congratulations!</b></p>
-        <p style="margin-top:5px;">WiserAdvisor has qualified financial advisors serving <%= @adviser ? "the #{@adviser.city}, #{User::STATE[@adviser.state]} area." : "in your area." %></p><br/>
+        <p style="margin-top:5px;">WiserAdvisor has qualified financial advisors serving <%= @adviser || @city ? "the #{@city}, #{User::STATE[@state]} area." : "in your area." %></p><br/>
         <p style="font-size:14px; font-weight:700;">Our Recommendations: </p>
         <ul>
           <li style="margin-left:15px; margin-top:5px;"><u>Talk to at least 2 to 3 financial advisors</u>.</li>
@@ -385,6 +385,12 @@ input#user_city {
                                 ['Prefer to Disclose Directly to Advisor', 77004]] %>
                 <%= f.select(:portfolio, options_for_select(portfolio)) %>
               </td>
+            </tr>
+            <tr>
+              <td><b>Zip Code:</b></td>
+            </tr>
+            <tr>
+              <td><%= f.text_field :zip %></td>
             </tr>
             <tr>
               <td height="22px" valign="bottom" width="50">
@@ -471,7 +477,7 @@ input#user_city {
                               ['Wisconsin', 'WI'],
                               ['Wyoming', 'WY'],
                               ['Yukon Territory', 'YT']] %>
-                  <%= f.select(:state, options_for_select(state)) %>
+                  <%= f.select(:state, options_for_select(state, f.object.state)) %>
                 </b>
               </td>
             </tr>

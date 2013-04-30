@@ -10,8 +10,10 @@ class UsersController < InheritedResources::Base
   end
 
   def new
-    @adviser = Adviser.find_by_zip(params[:user][:zip])
-    @user = User.new(:zip => params[:user][:zip])
+    @adviser = Adviser.find_by_zip(params[:user][:zip]) if params[:user][:zip]
+    @user = User.new(params[:user])
+    @adviser ? @city = @adviser.city : @city = @user.city
+    @adviser ? @state = @adviser.state : @state = @user.state
   end
 
   def create

@@ -51,13 +51,18 @@ ActiveRecord::Schema.define(:version => 20130429131950) do
     t.string   "address"
     t.string   "city"
     t.string   "state"
-    t.string   "zip"
+    t.integer  "zip"
     t.string   "phone"
     t.string   "url"
     t.integer  "stars"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "advisers", ["address"], :name => "index_advisers_on_address"
+  add_index "advisers", ["name"], :name => "index_advisers_on_name"
+  add_index "advisers", ["stars"], :name => "index_advisers_on_stars"
+  add_index "advisers", ["zip"], :name => "index_advisers_on_zip"
 
   create_table "users", :force => true do |t|
     t.string   "city"

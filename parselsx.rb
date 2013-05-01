@@ -34,7 +34,7 @@ xls.each{|ar|
 		state = $sql.escape(ar[4]) if ar[4] != nil
 		zip = $sql.escape(ar[5]) if ar[5] != nil
 		zip.gsub!(/[^0-9]/,"")
-		zip = 0 if zip.blank?
+		zip = 0 if zip == ""
 		phone = $sql.escape(ar[6]) if ar[6] != nil
 		if ar[7] != nil
 			url = $sql.escape(ar[7])
@@ -64,7 +64,7 @@ xls.each{|ar|
 		state = $sql.escape(ar[3]) if ar[3] != nil
 		zip = $sql.escape(ar[4]) if ar[4] != nil
 		zip.gsub!(/[^0-9]/,"")
-		zip = 0 if zip.blank?
+		zip = 0 if zip == ""
 		phone = $sql.escape(ar[5]) if ar[5] != nil
 		url = ""
 		req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,stars) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',2)"
@@ -90,7 +90,7 @@ xls.each{|ar|
 		state = $sql.escape(ar[3]) if ar[3] != nil
 		zip = $sql.escape(ar[4]) if ar[4] != nil
 		zip.gsub!(/[^0-9]/,"")
-		zip = 0 if zip.blank?
+		zip = 0 if zip == ""
 		phone = $sql.escape(ar[5]) if ar[5] != nil
 		url = ""
 		req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,stars) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',2)"

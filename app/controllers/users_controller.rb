@@ -18,14 +18,14 @@ class UsersController < InheritedResources::Base
   end
 
   def create
+    params[:user][:zip].gsub!(/[^0-9]/,"")
     @user = User.new(params[:user])
     @user.phone = "(#{params[:user][:phone1]})#{params[:user][:phone2]}-#{params[:user][:phone3]}"
     @user.hashstr = (0...50).map{ ('a'..'z').to_a[rand(26)] }.join
-    @user.zip.gsub!(/[^0-9]/,"")
 
     respond_to do |format|
       if @user.save
-        UserMailer.deliver_registration_confirmation(@user).deliver
+        #UserMailer.deliver_registration_confirmation(@user).deliver
         format.html { redirect_to users_email_link_path, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else

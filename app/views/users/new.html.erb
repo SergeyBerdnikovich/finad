@@ -228,16 +228,16 @@ div.itemHeader h2.itemTitle, div.catItemHeader h3.catItemTitle, h3.userItemTitle
   width: 1200px;
 }
 .tab.fl {
-  margin-left: 22px;
+  margin-left: 32px;
   float: left;
+  width: 40%;
 }
 .form {
-  margin-left: 180px;
+  margin-left: 210px;
   float: left;
 }
 .next-step {
-  margin-left: 730px;
-  width: 28%;
+
 }
 #s5_columns_wrap_inner {
     width: 100%;
@@ -339,8 +339,9 @@ input#user_city {
       </div>
     </div>
   </div>
-  <div class="next-step"> Please provide the information we need to match you with <strong>pre-screened </strong> Financial Advisors.</div>
+
   <div class="form">
+    <div class="next-step"> Please provide the information we need to match you with <strong>pre-screened </strong> Financial Advisors.</div>
   <%= form_for @user do |f| %>
     <%= f.hidden_field :zip %>
 

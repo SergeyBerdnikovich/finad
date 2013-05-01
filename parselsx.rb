@@ -40,7 +40,7 @@ xls.each{|ar|
 		else
 			url = ""
 		end
-		req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,stars) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',2)"
+		req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,stars) VALUES ('#{name}','#{address}','#{city}','#{state}',#{zip},'#{phone}','#{url}',2)"
 		$sql.query(req)	
 	else
 		firsline = false

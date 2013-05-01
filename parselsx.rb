@@ -63,6 +63,8 @@ xls.each{|ar|
 		city = $sql.escape(ar[2]) if ar[2] != nil
 		state = $sql.escape(ar[3]) if ar[3] != nil
 		zip = $sql.escape(ar[4]) if ar[4] != nil
+		zip.gsub!(/[^0-9]/,"")
+		zip = 0 if zip.blank?
 		phone = $sql.escape(ar[5]) if ar[5] != nil
 		url = ""
 		req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,stars) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',2)"
@@ -87,6 +89,8 @@ xls.each{|ar|
 		city = $sql.escape(ar[2]) if ar[2] != nil
 		state = $sql.escape(ar[3]) if ar[3] != nil
 		zip = $sql.escape(ar[4]) if ar[4] != nil
+		zip.gsub!(/[^0-9]/,"")
+		zip = 0 if zip.blank?
 		phone = $sql.escape(ar[5]) if ar[5] != nil
 		url = ""
 		req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,stars) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',2)"

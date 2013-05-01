@@ -21,6 +21,7 @@ class UsersController < InheritedResources::Base
     @user = User.new(params[:user])
     @user.phone = "(#{params[:user][:phone1]})#{params[:user][:phone2]}-#{params[:user][:phone3]}"
     @user.hashstr = (0...50).map{ ('a'..'z').to_a[rand(26)] }.join
+    @user.zip.gsub!(/[^0-9]/,"")
 
     respond_to do |format|
       if @user.save
@@ -41,6 +42,7 @@ class UsersController < InheritedResources::Base
   def update
     @user = User.find(params[:id])
     params[:user][:phone] = "(#{params[:user][:phone1]})#{params[:user][:phone2]}-#{params[:user][:phone3]}"
+    params[:user][:zip].gsub!(/[^0-9]/,"")
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

@@ -664,7 +664,8 @@ table.cart-summary tr th {
 	border-radius: 3px;
 	-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1) ;
 	-moz-box-shadow:0 1px 1px 0 rgba(0, 0, 0, 0.1);
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);}
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
 
 	form#checkoutForm {
 		padding:0px;
@@ -1017,7 +1018,8 @@ display:block;}
     padding:33px;
 	-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1) ;
 	-moz-box-shadow:0 1px 1px 0 rgba(0, 0, 0, 0.1);
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);}}
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
 
 .product_price, .produkt_kasse_hoejre_pris  {
     font-size: 21px;
@@ -1066,7 +1068,7 @@ display:block;}
 	border-radius: 3px;
 	-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1) ;
 	-moz-box-shadow:0 1px 1px 0 rgba(0, 0, 0, 0.1);
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);}
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 
 .category_product_image, .kategori_produkt_billede {

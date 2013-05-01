@@ -344,47 +344,68 @@ a#confirm:hover {
       </ul>
     </div>
     <div class="clear"><img src="/assets/maket/blank.gif" width="1" height="10" border="0" /></div>
-    
+
   </div>
 <!--   <div style="clear:both;"></div> -->
 
   <div class="advisers_table">
     <table width="100%" cellpadding="0" cellspacing="1" border="0">
       <tr bgcolor="#F5F5DC">
-
-        <td style="padding:5px 5px 5px 5px;"><strong><%= link_to "Name", user_path(@user.id, :sort => 'Name') %></strong><% if params[:sort] == 'Name' %>▼<% end %></td>
-        <td style="padding:5px 5px 5px 5px;"><strong><%= link_to "Address", user_path(@user.id, :sort => 'Address') %></strong><% if params[:sort] == 'Address' %>▼<% end %></td>
-        <td align="center" style="padding:5px 5px 5px 5px;"><strong>City</strong></td>
-        <td align="center" style="padding:5px 5px 5px 5px;"><strong>State</strong></td>
-        <td align="center" style="padding:5px 5px 5px 5px;"><strong><%= link_to "Stars", user_path(@user.id, :sort => 'Stars') %></strong><% if params[:sort] == 'Stars' or params[:sort] == nil %>▼<% end %></td>
+        <td style="padding:5px 5px 5px 5px;">
+          <b><%= link_to "Name", user_path(@user.id, :sort => 'Name', :sortable => ( params[:sort] == 'Name' && params[:sortable] == 'ASC' ? 'DESC' : 'ASC' )) %></b>
+          <% if params[:sort] == 'Name' && params[:sortable] == 'DESC' %>
+            ▼
+          <% elsif params[:sort] == 'Name' %>
+            ▲
+          <% end %>
+        </td>
+        <td style="padding:5px 5px 5px 5px;">
+          <b><%= link_to "Address", user_path(@user.id, :sort => 'Address', :sortable => ( params[:sort] == 'Address' && params[:sortable] == 'ASC' ? 'DESC' : 'ASC' )) %></b>
+          <% if params[:sort] == 'Address' && params[:sortable] == 'DESC' %>
+            ▼
+          <% elsif params[:sort] == 'Address' %>
+            ▲
+          <% end %>
+        </td>
+        <td align="center" style="padding:5px 5px 5px 5px;"><b>City</b></td>
+        <td align="center" style="padding:5px 5px 5px 5px;"><b>State</b></td>
+        <td align="center" style="padding:5px 5px 5px 5px;">
+          <b><%= link_to "Stars", user_path(@user.id, :sort => 'Stars', :sortable => ( params[:sort] == 'Stars' && params[:sortable] == 'ASC' ? 'DESC' : 'ASC' )) %></b>
+          <% if params[:sort] == 'Stars' && params[:sortable] == 'DESC' %>
+            ▼
+          <% elsif params[:sort] == 'Stars' %>
+            ▲
+          <% elsif params[:sort].blank? %>
+            ▼
+          <% end %>
+        </td>
       </tr>
-      <% if @advisers.size != 0 %>
-      <% @advisers.each do |adv| %>
+      <% if @advisers.blank? %>
         <tr bgcolor="#FFFFFF" valign="top">
-          <td style="padding:5px 5px 5px 5px;"><%= adv.name.split(' ').map(&:capitalize).join(' ') %></td>
-          <td style="padding:5px 5px 5px 5px;"><%= adv.address%></td>
-          <td align="center" style="padding:5px 5px 5px 5px;"><%= adv.city.split(' ').map(&:capitalize).join(' ') %></td>
-          <td align="center" style="padding:5px 5px 5px 5px;"><%= adv.state%></td>
-          <td align="center" style="padding:5px 5px 5px 5px;">
-            <% adv.stars.times do %>
-              <img with=12px height=12px src='/img/star.gif'/>
-            <% end %>
+          <td colspan = 5>
+            Sorry, no advisers had been found for your zip code - <%= @user.zip %>
           </td>
         </tr>
-      <% end %>
-     
       <% else %>
-     <tr bgcolor="#FFFFFF" valign="top">
-      <td colspan = 5>
-      Sorry, no advisers had been found for your zip code - <%= @user.zip %>
-      </td>
-     </tr>
+        <% @advisers.each do |adv| %>
+          <tr bgcolor="#FFFFFF" valign="top">
+            <td style="padding:5px 5px 5px 5px;"><%= adv.name.split(' ').map(&:capitalize).join(' ') %></td>
+            <td style="padding:5px 5px 5px 5px;"><%= adv.address%></td>
+            <td align="center" style="padding:5px 5px 5px 5px;"><%= adv.city.split(' ').map(&:capitalize).join(' ') %></td>
+            <td align="center" style="padding:5px 5px 5px 5px;"><%= adv.state%></td>
+            <td align="center" style="padding:5px 5px 5px 5px;">
+              <% adv.stars.times do %>
+                <img with=12px height=12px src='/img/star.gif'/>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
       <% end %>
-     </table>
+    </table>
     <%= paginate @advisers %>
   </div>
     <div id="left_colom" class='sort'>
-   
+
 
   </div>
 </div>

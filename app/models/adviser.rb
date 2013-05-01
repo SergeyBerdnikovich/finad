@@ -11,7 +11,7 @@ class Adviser < ActiveRecord::Base
     elsif sort_type_params == 'Stars'
       sort_type = 'stars'
     else
-      sort_type = 'name'
+      sort_type = 'stars'
     end
 
     order("advisers.#{sort_type} ASC")

@@ -6,7 +6,8 @@ class UsersController < InheritedResources::Base
 
   def show
     @user = User.find(params[:id])
-    @advisers = Adviser.where('city = ?', @user.city.strip).sort_by(params[:sort]).page(params[:page])
+#    @advisers = Adviser.where('city = ?', @user.city.strip).sort_by(params[:sort]).page(params[:page])  
+    @advisers = Adviser.where('zip = ?', @user.zip).sort_by(params[:sort]).page(params[:page])
   end
 
   def new

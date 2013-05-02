@@ -82,7 +82,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "964460b50b525cc71072186210f71f70db2ad88b7382f77e60318f480a8aefa8e8dc43703765b94cc379c45f0dde39f7599dc68a78e83df63634f25095fcbaf4"
+  # config.pepper = "5a9db95b9e9fa027c556531cbb968bdf5dc40c52979180f26c0842ea1d386620df6e59de62ed9a135324f174723b60180a40bfb649ce7616935748487d03453f"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -122,7 +122,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length. Default is 8..128.
-  config.password_length = 8..128
+  config.password_length = 6..128
 
   # Email regex used to validate email formats. It simply asserts that
   # an one (and only one) @ exists in the given string. This is mainly

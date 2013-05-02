@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130429131950) do
+ActiveRecord::Schema.define(:version => 20130502101554) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -46,6 +46,24 @@ ActiveRecord::Schema.define(:version => 20130429131950) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+  create_table "adviser_users", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "adviser_users", ["email"], :name => "index_adviser_users_on_email", :unique => true
+  add_index "adviser_users", ["reset_password_token"], :name => "index_adviser_users_on_reset_password_token", :unique => true
+
   create_table "advisers", :force => true do |t|
     t.string   "name"
     t.string   "address"
@@ -55,14 +73,28 @@ ActiveRecord::Schema.define(:version => 20130429131950) do
     t.string   "phone"
     t.string   "url"
     t.integer  "stars"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "adviser_user_id"
   end
 
   add_index "advisers", ["address"], :name => "index_advisers_on_address"
+  add_index "advisers", ["adviser_user_id"], :name => "index_advisers_on_adviser_user_id"
   add_index "advisers", ["name"], :name => "index_advisers_on_name"
   add_index "advisers", ["stars"], :name => "index_advisers_on_stars"
   add_index "advisers", ["zip"], :name => "index_advisers_on_zip"
+
+  create_table "galleries", :force => true do |t|
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "adviser_id"
+  end
+
+  add_index "galleries", ["adviser_id"], :name => "index_galleries_on_adviser_id"
 
   create_table "users", :force => true do |t|
     t.string   "city"

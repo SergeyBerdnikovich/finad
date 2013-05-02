@@ -52,3 +52,10 @@ Enter your Zip Code!<br />
 </td>
 </tr>
 </table>
+<% if current_adviser_user %>
+  <%= link_to 'logout', destroy_adviser_user_session_path, :method => :delete %>
+  <%= link_to 'profile', adviser_path(Adviser.find_by_adviser_user_id(current_adviser_user)) %>
+<% else %>
+  <%= link_to 'login', new_adviser_user_session_path %>
+  <%= link_to 'registration', new_adviser_user_registration_path %>
+<% end %>

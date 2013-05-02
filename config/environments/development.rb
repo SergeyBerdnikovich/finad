@@ -34,20 +34,21 @@ Finad::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-  
+
   config.action_mailer.raise_delivery_errors = true
 
 # set delivery method to :smtp, :sendmail or :test
 config.action_mailer.delivery_method = :sendmail
 
+config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
 # these options are only needed if you choose smtp delivery
 config.action_mailer.smtp_settings = {
-  :address        => 'smtp.example.com',
-  :port           => 25,
-  :domain         => 'www.example.com',
-  :authentication => :login,
-  :user_name      => 'www',
-  :password       => 'secret'
+  :address        => 'smtp.gmail.com',
+  :port           => '587',
+  :authentication => :plain,
+  :user_name      => 'at0m4eg@gmail.com',
+  :password       => '*****'
 }
 
 end

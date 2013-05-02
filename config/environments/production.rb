@@ -5,7 +5,7 @@ Finad::Application.configure do
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = false 
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
@@ -70,15 +70,13 @@ config.action_mailer.raise_delivery_errors = true
 # set delivery method to :smtp, :sendmail or :test
 config.action_mailer.delivery_method = :sendmail
 
-# these options are only needed if you choose smtp delivery
-config.action_mailer.smtp_settings = {
-  :address        => 'smtp.example.com',
-  :port           => 25,
-  :domain         => 'www.example.com',
-  :authentication => :login,
-  :user_name      => 'www',
-  :password       => 'secret'
-}
+config.action_mailer.default_url_options = { :host => 'http://finad.dvporg.com' }
 
+# these options are only needed if you choose smtp delivery
+config.action_mailer.sendmail_settings = {
+:location => '/usr/sbin/sendmail',
+:arguments => '-i -t'
+}
+config.action_mailer.perform_deliveries = true
 
 end

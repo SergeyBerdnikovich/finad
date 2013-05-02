@@ -9,6 +9,7 @@ class AdvisersController < ApplicationController
   end
 
   def update
+    params[:adviser][:zip].gsub!(/[^0-9]/,"")
     @adviser = Adviser.find(params[:id])
 
     respond_to do |format|

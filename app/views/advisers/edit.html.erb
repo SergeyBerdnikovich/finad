@@ -451,10 +451,6 @@ a#confirm:hover {
             <td><%= f.text_field :url %></td>
           </tr>
           <tr>
-            <td><%= f.label :stars %></td>
-            <td><%= f.text_field :stars %></td>
-          </tr>
-          <tr>
             <%= f.fields_for :gallery do |ff| %>
               <div>
                 <td><%= ff.label :photo %></td>

@@ -1,5 +1,5 @@
 class Adviser < ActiveRecord::Base
-  attr_accessible :address, :city, :name, :phone, :stars, :state, :url, :zip, :adviser_user_id, :gallery_attributes
+  attr_accessible :address, :city, :name, :phone, :stars, :state, :url, :zip, :adviser_user_id, :gallery_attributes, :plan
 
   paginates_per 15
 

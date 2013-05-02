@@ -451,6 +451,15 @@ a#confirm:hover {
             <td><%= f.text_field :url %></td>
           </tr>
           <tr>
+            <td>
+              <%= f.label :plan %>
+            </td>
+            <td>
+              <%= f.radio_button :plan, 'FREE', :checked => true %> FREE
+              <%= f.radio_button :plan, '2 backlink spots' %> 2 backlink spots
+            </td>
+          </tr>
+          <tr>
             <%= f.fields_for :gallery do |ff| %>
               <div>
                 <td><%= ff.label :photo %></td>

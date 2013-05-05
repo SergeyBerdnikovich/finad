@@ -1,6 +1,9 @@
 Finad::Application.routes.draw do
 
-  devise_for :adviser_users
+  get "pages/confirm_email"
+
+  # devise_for :adviser_users
+  devise_for :adviser_users, :controllers => { :registrations => "registrations", confirmations: 'confirmations' }
 
   get 'users/email_link'
   resources :users

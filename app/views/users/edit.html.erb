@@ -317,7 +317,11 @@ a#confirm:hover {
             <div id="s5_login" class="s5box_login">
               <ul class="s5boxmenu">
                 <li>
-                  Logout
+                  <% if current_adviser_user %>
+                    <%= link_to 'logout', destroy_adviser_user_session_path, :method => :delete %>
+                  <% else %>
+                    <%= link_to 'login', new_adviser_user_session_path %>
+                  <% end %>
                 </li>
               </ul>
             </div>

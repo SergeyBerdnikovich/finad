@@ -305,7 +305,7 @@ a#confirm:hover {
         <div id="s5_header_wrap">
           <div id="s5_header_wrap_inner">
             <div id="s5_logo_wrap">
-              <img alt="logo" src="/assets/maket/s5_logo.png" id="s5_logo" onclick="window.document.location.href='http://investmentprotectionbureau.com/'" />
+              <img alt="logo" src="/assets/maket/s5_logo.png" id="s5_logo" onclick="window.document.location.href='http://investmentprotectionbureau.org/'" />
             </div>
             <div style="clear:both; height:0px"></div>
           </div>
@@ -451,31 +451,32 @@ a#confirm:hover {
             <td><%= f.text_field :url %></td>
           </tr>
           <tr>
+            <%= f.fields_for :gallery do |ff| %>
+              <div>
+                <td> <br><%= ff.label :photo %></td>
+                <td> <br><%= ff.file_field :photo %></td>
+              </div>
+            <% end %>
+          </tr>
+          <tr>
             <td>
               <%= f.label :plan %>
             </td>
             <td>
+              <br>
               <%= f.radio_button :plan, 'FREE', :checked => true %> FREE
-              <%= f.radio_button :plan, '2 backlink spots' %> 2 backlink spots
+              <%= f.radio_button :plan, '2 Backlink Spots' %> 2 Backlink spots
+              <br>
             </td>
           </tr>
-          <tr>
-            <%= f.fields_for :gallery do |ff| %>
-              <div>
-                <td><%= ff.label :photo %></td>
-                <td><%= ff.file_field :photo %></td>
-              </div>
-            <% end %>
-          </tr>
         </table>
-
-        <%= f.submit %>
+        <br>
+        <%= f.submit "Save profile"%>
       <% end %>
     </div>
   </div>
   <div class='buttons'>
-    <%= link_to 'Edit', edit_adviser_path(@adviser) %>
-  </div>
+    </div>
 </div>
 
 <!-- Center area -->

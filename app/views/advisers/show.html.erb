@@ -307,7 +307,7 @@ a#confirm:hover {
         <div id="s5_header_wrap">
           <div id="s5_header_wrap_inner">
             <div id="s5_logo_wrap">
-              <img alt="logo" src="/assets/maket/s5_logo.png" id="s5_logo" onclick="window.document.location.href='http://investmentprotectionbureau.com/'" />
+              <img alt="logo" src="/assets/maket/s5_logo.png" id="s5_logo" onclick="window.document.location.href='http://investmentprotectionbureau.org/'" />
             </div>
             <div style="clear:both; height:0px"></div>
           </div>
@@ -358,11 +358,16 @@ a#confirm:hover {
       <p><b>Url: </b><%= @adviser.url %></p>
       <p><b>Stars: </b><%= @adviser.stars %></p>
       <p><b>Email: </b><%= @adviser.adviser_user.email %></p>
-      <p><b>Plan: </b><%= @adviser.plan %></p>
+      <p><b>Plan: </b><%= @adviser.plan %></p><br><p>
+      <% if current_user %>
+      <input type=button value="Edit profile" onclick='document.location="<%= edit_adviser_path(@adviser) %>"'>
+      <% end %>
     </div>
+
   </div>
   <div class='buttons'>
-    <%= link_to 'Edit', edit_adviser_path(@adviser) %>
+    
+  
   </div>
 </div>
 

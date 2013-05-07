@@ -38,7 +38,7 @@ ffffff"><font size="4" face="Verdana">Request Verification Required...</font><br
 <tr>
 <td><p><font face="arial,helvetica,sans-serif" size="2" color="#000000">Dear <%= @user.first_name %>: </font></p>
   <p><font face="arial,helvetica,sans-serif" size="2" color="#000000">We  have received your request for  <b>Financial Advisors</b> (Lead Request: <b>#<%= @user.id %></b>). We have been able to match your request to businesses that would be interested in providing you a quote for this project; however, we have been unable to contact you to verify your contact information and interest in pursuing the Financial Advisors services. </font></p>
-  <p><font face="arial,helvetica,sans-serif" size="2" color="#000000"> Please either call us at 888-735-9553; or <%= link_to "click here to either confirm or update your contact information.", edit_user_path(@user.id, :hash => @user.hashstr,:only_path => false,:host => "search.investmentprotectionbureau.com")  %><br>
+  <p><font face="arial,helvetica,sans-serif" size="2" color="#000000"> Please either call us at 888-735-9553; or <%= link_to "click here to either confirm or update your contact information.", edit_user_path(@user.id, :hash => @user.hashstr,:only_path => false,:host => "search.investmentprotectionbureau.org")  %><br>
   <p><font face="arial,helvetica,sans-serif" size="2" color="#000000">
                                                                   Please refer to Request #<%= @user.id %> when calling.
    <br/><br/>After your contact information has been verified you will be matched to quality local businesses.</font></p>
@@ -57,7 +57,7 @@ ffffff"><font size="4" face="Verdana">Request Verification Required...</font><br
 <td>
                 <hr color="#E6E6E6" width="90%">
 <center><font face="arial,helvetica,sans-serif" color=
-="#000000" size="2">Investment Protection Bureau - All Rights Reserved.<br>Investmentprotectionbureau.com Mailing Address: Pinellas Park, FL 33781, 6251 Park Blvd, Ste 7<br>Questions?  You can reach Investmentprotectionbureau.com at 888-735-9553 Monday &#45; Friday 8AM to 6PM (EST)<br>Copyright 1999 - 2013, Investmentprotectionbureau.com<br></font></center>
+="#000000" size="2">Investment Protection Bureau - All Rights Reserved.<br>Investmentprotectionbureau.org Mailing Address: Pinellas Park, FL 33781, 6251 Park Blvd, Ste 7<br>Questions?  You can reach Investmentprotectionbureau.org at 888-735-9553 Monday &#45; Friday 8AM to 6PM (EST)<br>Copyright 1999 - 2013, Investmentprotectionbureau.org<br></font></center>
 </td>
 </tr>
 <td width="5"><img src="http://www.respond.com/images/spacer.gif" width="5" height="1" alt="" border="0"></td>

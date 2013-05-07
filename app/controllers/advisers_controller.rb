@@ -1,4 +1,5 @@
 class AdvisersController < ApplicationController
+  
   def show
     @adviser = Adviser.find(params[:id])
   end

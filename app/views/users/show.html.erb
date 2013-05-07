@@ -301,7 +301,7 @@ a#confirm:hover {
         <div id="s5_header_wrap">
           <div id="s5_header_wrap_inner">
             <div id="s5_logo_wrap">
-              <img alt="logo" src="/assets/maket/s5_logo.png" id="s5_logo" onclick="window.document.location.href='http://investmentprotectionbureau.com/'" />
+              <img alt="logo" src="/assets/maket/s5_logo.png" id="s5_logo" onclick="window.document.location.href='http://investmentprotectionbureau.org/'" />
             </div>
             <div style="clear:both; height:0px"></div>
           </div>
@@ -373,6 +373,7 @@ a#confirm:hover {
         </td>
         <td align="center" style="padding:5px 5px 5px 5px;"><b>City</b></td>
         <td align="center" style="padding:5px 5px 5px 5px;"><b>State</b></td>
+        <td align="center" style="padding:5px 5px 5px 5px;"><b>ZIP</b></td>
         <td align="center" style="padding:5px 5px 5px 5px;">
           <b><%= link_to "Stars", user_path(@user.id, :sort => 'Stars', :sortable => ( params[:sort] == 'Stars' && params[:sortable] == 'ASC' ? 'DESC' : 'ASC' )) %></b>
           <% if params[:sort] == 'Stars' && params[:sortable] == 'DESC' %>
@@ -382,6 +383,8 @@ a#confirm:hover {
           <% elsif params[:sort].blank? %>
             ▼
           <% end %>
+        </td>
+        <td align="center" style="padding:5px 5px 5px 5px;">
         </td>
       </tr>
       <% if @advisers.blank? %>
@@ -397,10 +400,14 @@ a#confirm:hover {
             <td style="padding:5px 5px 5px 5px;"><%= adv.address%></td>
             <td align="center" style="padding:5px 5px 5px 5px;"><%= adv.city.split(' ').map(&:capitalize).join(' ') %></td>
             <td align="center" style="padding:5px 5px 5px 5px;"><%= adv.state%></td>
+            <td align="center" style="padding:5px 5px 5px 5px;"><%= adv.zip%></td>
             <td align="center" style="padding:5px 5px 5px 5px;">
               <% adv.stars.times do %>
                 <img with=12px height=12px src='/img/star.gif'/>
               <% end %>
+            </td>
+            <td align="center" style="padding:5px 5px 5px 5px;">
+              <%= link_to "Show profile", adviser_path(adv) %>
             </td>
           </tr>
         <% end %>

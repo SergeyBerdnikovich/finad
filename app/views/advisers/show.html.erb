@@ -357,9 +357,11 @@ a#confirm:hover {
       <p><b>Phone: </b><%= @adviser.phone %></p>
       <p><b>Url: </b><%= @adviser.url %></p>
       <p><b>Stars: </b><%= @adviser.stars %></p>
+      <% if @adviser.adviser_user %>
       <p><b>Email: </b><%= @adviser.adviser_user.email %></p>
+      <% end %>
+      <% if @owner %>
       <p><b>Plan: </b><%= @adviser.plan %></p><br><p>
-      <% if current_user %>
       <input type=button value="Edit profile" onclick='document.location="<%= edit_adviser_path(@adviser) %>"'>
       <% end %>
     </div>

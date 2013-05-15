@@ -1,5 +1,5 @@
 class AdvisersController < ApplicationController
-
+ 
   def index
     if request.referer.blank? == false
       if request.referer.index("investmentprotectionbureau.org") != nil
@@ -41,12 +41,13 @@ def featured
   @advisers = Adviser.where('featured = 1').sort_by(params[:sort], params[:sortable]).page(params[:page])
 end
 
+
 def featured2
   @advisers = Adviser.where('featured = 1').sort_by(params[:sort], params[:sortable]).limit(8)
   render :layout => false
 end
 
-def show
+  def show
     @adviser = Adviser.find(params[:id])
   
   if @adviser.adviser_user

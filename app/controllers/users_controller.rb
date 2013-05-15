@@ -8,10 +8,14 @@ class UsersController < InheritedResources::Base
     @user = User.find(params[:id])
 #    @advisers = Adviser.where('city = ?', @user.city.strip).sort_by(params[:sort]).page(params[:page])
 
-    minzip = @user.zip - 50
-    maxzip = @user.zip + 50
+    minzip = @user.zip - 500
+    maxzip = @user.zip + 500
 
     @advisers = Adviser.where('zip >= ? AND zip <= ?', minzip, maxzip).sort_by(params[:sort], params[:sortable]).page(params[:page])
+
+    if @advisers.length == 0
+      @advisers = Adviser.where('state = ?',  @user.state).sort_by(params[:sort], params[:sortable]).page(params[:page])
+    end
   end
 
   def new

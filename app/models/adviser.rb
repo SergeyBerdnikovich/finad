@@ -4,12 +4,13 @@ class Adviser < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
 
-  attr_accessible :featured, :address, :city, :name, :phone, :rating, :state, :url, :zip, :adviser_user_id, :gallery_attributes, :plan
+  attr_accessible :featured, :address, :city, :name, :phone, :rating_id, :state, :url, :zip, :adviser_user_id, :gallery_attributes, :plan
 
   paginates_per 15
 
   has_one :gallery, :dependent => :destroy
   belongs_to :adviser_user
+  belongs_to :rating
 
   accepts_nested_attributes_for :gallery,
                                 :allow_destroy => :true,
@@ -21,9 +22,9 @@ class Adviser < ActiveRecord::Base
     elsif sort_type_params == 'Address'
       sort_type = 'address'
     elsif sort_type_params == 'Rating'
-      sort_type = 'rating'
+      sort_type = 'rating_id'
     else
-      sort_type = 'rating'
+      sort_type = 'rating_id'
     end
 
     if sortable_params == 'ASC'

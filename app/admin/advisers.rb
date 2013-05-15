@@ -51,4 +51,22 @@ ActiveAdmin.register Adviser do
     end
     active_admin_comments
   end
+
+  index do
+    column :id
+    column :adviser_user
+    column :name
+    column :featured
+    column :address
+    column :city
+    column :state
+    column :zip
+    column :phone
+    column :url
+    column :rating
+    column :created_at
+    column :updated_at
+
+    default_actions
+  end
 end

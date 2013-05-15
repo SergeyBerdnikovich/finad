@@ -1,5 +1,6 @@
 class AdvisersController < ApplicationController
-  
+  before_filter :check_adviser_user, :only => [:update]
+
   def show
     @adviser = Adviser.find(params[:id])
   end
@@ -22,5 +23,11 @@ class AdvisersController < ApplicationController
         format.json { render json: @adviser.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  private
+
+  def check_adviser_user
+    redirect_to root_path unless current_adviser_user.id == Adviser.find(params[:id]).adviser_user.id
   end
 end

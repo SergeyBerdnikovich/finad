@@ -16,6 +16,8 @@ class Adviser < ActiveRecord::Base
                                 :allow_destroy => :true,
                                 :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
 
+  before_create :set_rating
+
   def self.sort_by(sort_type_params, sortable_params)
     if sort_type_params == 'Name'
       sort_type = 'name'
@@ -38,5 +40,9 @@ class Adviser < ActiveRecord::Base
 
   def avator
     self.gallery ? self.gallery.photo.url(:for_gallery) : "/assets/no_avatar.jpg"
+  end
+
+  def set_rating
+    self.rating = Rating.find_or_create_by_name('C')
   end
 end

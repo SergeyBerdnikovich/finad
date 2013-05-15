@@ -1,6 +1,16 @@
 /* CSS Document */
 *{margin:0px; padding:0px;}
-body{background:url(/assets/maket/body_rpt.gif) 0 0 repeat-x #e9e9e9; font:normal 100%/normal Arial, Helvetica, sans-serif;}
+
+
+body
+{ 
+background-image:url('images/IPB-watermark-large.png');
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-position:center; 
+}
+
+
 .float_r{float:right;}
 #wrapper{width:1000px; margin:0 auto; font-size:0.8em;}
 .clear { clear: both;}
@@ -645,11 +655,7 @@ background:url(/assets/maket/arrow01.png) no-repeat 0px 7px;}
     font-weight: bold;
     margin: 0;
 }
-.fb_dialog_content .dialog_title > span {
-    background: url("http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif") no-repeat scroll 5px 50% transparent;
-    float: left;
-    padding: 5px 0 7px 26px;
-}
+
 body.fb_hidden {
     height: 100%;
     left: -10000px;
@@ -659,15 +665,7 @@ body.fb_hidden {
     top: -10000px;
     width: 100%;
 }
-.fb_dialog.fb_dialog_mobile.loading {
-    background: url("http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif") no-repeat scroll 50% 50% white;
-    min-height: 100%;
-    min-width: 100%;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    z-index: 10001;
-}
+
 .fb_dialog.fb_dialog_mobile.loading.centered {
     max-height: 590px;
     max-width: 500px;

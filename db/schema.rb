@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130502154446) do
+ActiveRecord::Schema.define(:version => 20130510173530) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -77,18 +77,38 @@ ActiveRecord::Schema.define(:version => 20130502154446) do
     t.integer  "zip"
     t.string   "phone"
     t.string   "url"
-    t.integer  "stars"
+    t.integer  "rating"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "adviser_user_id"
     t.string   "plan"
+    t.text     "bio"
+    t.string   "url1"
+    t.string   "email"
+    t.string   "slug"
+    t.boolean  "featured"
   end
 
   add_index "advisers", ["address"], :name => "index_advisers_on_address"
   add_index "advisers", ["adviser_user_id"], :name => "index_advisers_on_adviser_user_id"
+  add_index "advisers", ["featured"], :name => "index_advisers_on_featured"
   add_index "advisers", ["name"], :name => "index_advisers_on_name"
-  add_index "advisers", ["stars"], :name => "index_advisers_on_stars"
+  add_index "advisers", ["rating"], :name => "index_advisers_on_stars"
+  add_index "advisers", ["slug"], :name => "index_advisers_on_slug", :unique => true
   add_index "advisers", ["zip"], :name => "index_advisers_on_zip"
+
+  create_table "complaints", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "contact_time"
+    t.string   "adviser_name"
+    t.string   "adviser_phone"
+    t.text     "complain"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "adviser_id"
+  end
 
   create_table "galleries", :force => true do |t|
     t.datetime "created_at",         :null => false

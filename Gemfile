@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'mysql2'
 gem 'activeadmin'
 gem 'meta_search',    '>= 1.1.0.pre'
+gem "friendly_id", "~> 4.0.9" # Note: You MUST use 4.0.9 or greater for Rails 3.2.10+
 gem 'roo'
 gem 'kaminari'
 gem 'devise'

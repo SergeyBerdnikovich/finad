@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-    default :from => "ipbureauusa@gmail.com"
+    default :from => "register@investmentprotectionbureau.org"
 
 	def deliver_registration_confirmation(user)
 	  @user = user
@@ -7,4 +7,23 @@ class UserMailer < ActionMailer::Base
 	  mail(:to => user.email, :subject => "Thank you for Request")
 	end
 
+	def contact(adviser, user, email, comment)
+		@adviser = adviser
+		@user = user
+	 	@email = email
+	 	@comment = comment
+	    mail(:to => "ipbureauusa@gmail.com", :subject => "Request from #{email} regarding #{adviser.name}, #{adviser.city}, #{adviser.state}, ZIP: #{adviser.zip}")
+	end
+
+	def complaint(complaint)
+		@complaint = complaint
+	    mail(:to => "ipbureauusa@gmail.com", :subject => "You have receive a complain regarding #{@complaint.adviser_name} from #{@complaint.name} ")
+	end
+
+	def user_complaint(complaint)
+		@complaint = complaint
+	    mail(:to => @complaint.email, :subject => "Your case is registered ##{@complaint.id}")
+	end
+
 end
+

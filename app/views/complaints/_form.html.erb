@@ -1,0 +1,90 @@
+<%= form_for(@complaint) do |f| %>
+  <% if @complaint.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@complaint.errors.count, "error") %> prohibited this complaint from being saved:</h2>
+
+      <ul>
+      <% @complaint.errors.full_messages.each do |msg| %>
+        <li style='color:red'><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if params[:adviser_name] %>
+        <table>
+          <tr>
+            <td><%= f.label :name, "Your name" %></td>
+            <td><%= f.text_field :name , :value => params[:name] %></td>
+          </tr>
+           <tr>
+            <td><%= f.label :email %></td>
+            <td><%= f.text_field :email, :value => params[:email] %></td>
+          </tr>
+           <tr>
+            <td><%= f.label :phone, "Your phone" %></td>
+            <td><%= f.text_field :phone, :value => params[:phone] %></td>
+          </tr>
+           <tr>
+            <td><%= f.label :contact_time, "Best time to contact you " %></td>
+            <td> <%= f.text_field :contact_time, :value => params[:contact_time] %></td>
+          </tr>
+           <tr>
+            <td><%= f.label :adviser_name %></td>
+            <td><%= f.text_field :adviser_name, :value => params[:adviser_name] %></td>
+          </tr>
+           <tr>
+            <td><%= f.label :adviser_phone %></td>
+            <td><%= f.text_field :adviser_phone, :value => params[:adviser_phone] %></td>
+          </tr>
+           <tr>
+            <td><%= f.label :complain %></td>
+            <td rowspan=2><%= f.text_area(:complain, :size => '70x15')  %></td>
+          </tr>          
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>          
+        </table>
+        <%= f.hidden_field  :adviser_id, :value => params[:adviser_id] %>
+        <% else %>
+<table>
+          <tr>
+            <td><%= f.label :name, "Your name" %></td>
+            <td><%= f.text_field :name  %></td>
+          </tr>
+           <tr>
+            <td><%= f.label :email %></td>
+            <td><%= f.text_field :email %></td>
+          </tr>
+           <tr>
+            <td><%= f.label :phone, "Your phone" %></td>
+            <td><%= f.text_field :phone %></td>
+          </tr>
+           <tr>
+            <td><%= f.label :contact_time, "Best time to contact you " %></td>
+            <td> <%= f.text_field :contact_time %></td>
+          </tr>
+           <tr>
+            <td><%= f.label :adviser_name %></td>
+            <td><%= f.text_field :adviser_name %></td>
+          </tr>
+           <tr>
+            <td><%= f.label :adviser_phone %></td>
+            <td><%= f.text_field :adviser_phone %></td>
+          </tr>
+           <tr>
+            <td><%= f.label :complain %></td>
+            <td rowspan=2><%= f.text_area(:complain, :size => '70x15')  %></td>
+          </tr>          
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>          
+        </table>
+        <%= f.hidden_field  :adviser_id %>
+        <% end %>
+        
+  <div style='padding-left:560px' class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

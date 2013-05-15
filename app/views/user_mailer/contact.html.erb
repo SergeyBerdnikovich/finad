@@ -1,0 +1,30 @@
+<h3>Request notification:<br></h3
+
+You have got a request from  <b><%= @email %></b> regarding <b><%= @adviser.name %></b>, <%= @adviser.city %>, <%= @adviser.state %> , ZIP: <%= @adviser.zip %>
+<p>
+<h3>User information:<br></h3>
+<% if @user %>
+
+
+<%= (@user.inspect).to_s.gsub(/,/,"<br>").html_safe %>
+
+<% else %>
+
+User wasn't registered or authorized. Email <%= @email %> is the only thing that we know about him.
+
+<% end %>
+<p>
+<% if @comment  %>
+<h3>User's comment to the request:<br></h3>
+<%= @comment.gsub(/\n/,"<br>").html_safe %>
+<% else %>
+<h4> User doesn't provide a comment to his requst. </h4>
+<% end %>
+
+
+<p>
+<h3>Requested adviser's data ( <%= link_to "open in new window", "http://search.investmentprotectionbureau.org/" + adviser_path(@adviser) , :target => "_blank" %> ):<br></h3>
+
+<%= (@adviser.inspect).to_s.gsub(/,/,"<br>").html_safe %>
+<p>
+

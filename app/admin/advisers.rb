@@ -5,13 +5,15 @@ ActiveAdmin.register Adviser do
     end
     f.inputs "Adviser" do
       f.input :name
+      f.input :featured
       f.input :address
+
       f.input :city
       f.input :state
       f.input :zip
       f.input :phone
       f.input :url
-      f.input :stars
+      f.input :rating
     end
     f.inputs "Photo",
       :for => [:gallery,
@@ -31,17 +33,20 @@ ActiveAdmin.register Adviser do
       row :id
       row :adviser_user
       row :name
+      row :featured
       row :address
       row :city
       row :state
       row :zip
       row :phone
       row :url
-      row :stars
+      row :rating
       row :created_at
       row :updated_at
       row :photo do |adviser|
+        if adviser.gallery
         image_tag adviser.gallery.photo.url(:normal)
+        end
       end
     end
     active_admin_comments

@@ -47,11 +47,12 @@ config.action_mailer.default_url_options = { :host => "search.investmentprotecti
 
 
 ActionMailer::Base.smtp_settings = {
-                    :address        => "smtp.gmail.com",
-                    :port           => 587,
+                    :address        => "estate.websitewelcome.com",
+                    :port           => 465,
                     :authentication => :plain,
-                    :user_name      => "dvporg@gmail.com",
-                    :password       => "ibbqnmftqtspunyc"
+                    :user_name      => "register@investmentprotectionbureau.org",
+                    :password       => "ipbureau",
+                    :openssl_verify_mode => 'none'
 }
 
 

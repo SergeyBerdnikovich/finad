@@ -1,5 +1,10 @@
 class Adviser < ActiveRecord::Base
-  attr_accessible :address, :city, :name, :phone, :stars, :state, :url, :zip, :adviser_user_id, :gallery_attributes, :plan
+
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
+
+  attr_accessible :featured, :address, :city, :name, :phone, :rating, :state, :url, :zip, :adviser_user_id, :gallery_attributes, :plan
 
   paginates_per 15
 
@@ -15,10 +20,10 @@ class Adviser < ActiveRecord::Base
       sort_type = 'name'
     elsif sort_type_params == 'Address'
       sort_type = 'address'
-    elsif sort_type_params == 'Stars'
-      sort_type = 'stars'
+    elsif sort_type_params == 'Rating'
+      sort_type = 'rating'
     else
-      sort_type = 'stars'
+      sort_type = 'rating'
     end
 
     if sortable_params == 'ASC'

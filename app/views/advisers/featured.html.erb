@@ -1,0 +1,70 @@
+<h3> Featured advisors </h3>
+  <div class="advisers_table" >
+    <table width="100%" cellpadding="0" cellspacing="1" border="0">
+      <tr bgcolor="#F5F5DC">
+        <td style="padding:5px 5px 5px 5px;">
+          <b><%= link_to "Name", advisers_featured_path( :sort => 'Name', :sortable => ( params[:sort] == 'Name' && params[:sortable] == 'ASC' ? 'DESC' : 'ASC' )) %></b>
+          <% if params[:sort] == 'Name' && params[:sortable] == 'DESC' %>
+            ▼
+          <% elsif params[:sort] == 'Name' %>
+            ▲
+          <% end %>
+        </td>
+        <td style="padding:5px 5px 5px 5px;">
+          <b><%= link_to "Address", advisers_featured_path( :sort => 'Address', :sortable => ( params[:sort] == 'Address' && params[:sortable] == 'ASC' ? 'DESC' : 'ASC' )) %></b>
+          <% if params[:sort] == 'Address' && params[:sortable] == 'DESC' %>
+            ▼
+          <% elsif params[:sort] == 'Address' %>
+            ▲
+          <% end %>
+        </td>
+        <td align="center" style="padding:5px 5px 5px 5px;"><b>City</b></td>
+        <td align="center" style="padding:5px 5px 5px 5px;"><b>State</b></td>
+        <td align="center" style="padding:5px 5px 5px 5px;"><b>ZIP</b></td>
+        <td align="center" style="padding:5px 5px 5px 5px;">
+          <b><%= link_to "Rating", advisers_featured_path( :sort => 'Rating', :sortable => ( params[:sort] == 'Rating' && params[:sortable] == 'ASC' ? 'DESC' : 'ASC' )) %></b>
+          <% if params[:sort] == 'Rating' && params[:sortable] == 'DESC' %>
+            ▼
+          <% elsif params[:sort] == 'Rating' %>
+            ▲
+          <% elsif params[:sort].blank? %>
+            ▼
+          <% end %>
+        </td>
+        <td align="center" style="padding:5px 5px 5px 5px;">
+        </td>
+      </tr>
+      <% if @advisers.blank? %>
+        <tr bgcolor="#FFFFFF" valign="top">
+          <td colspan = 5>
+            Sorry, there is no featured advisers yet. Please try again a little later
+          </td>
+        </tr>
+      <% else %>
+        <% @advisers.each do |adv| %>
+          <tr bgcolor="#FFFFFF" valign="top">
+            <td style="padding:5px 5px 5px 5px;"><%= adv.name.split(' ').map(&:capitalize).join(' ') %></td>
+            <td style="padding:5px 5px 5px 5px;"><%= adv.address%></td>
+            <td align="center" style="padding:5px 5px 5px 5px;"><%= adv.city.split(' ').map(&:capitalize).join(' ') %></td>
+            <td align="center" style="padding:5px 5px 5px 5px;"><%= adv.state%></td>
+            <td align="center" style="padding:5px 5px 5px 5px;"><%= adv.zip%></td>
+            <td align="center" style="padding:5px 5px 5px 5px;">
+              <%= to_rating( adv.rating )%>
+              
+              
+            </td>
+            <td align="center" style="padding:5px 5px 5px 5px;">
+              <%= link_to "Show profile", adviser_path(adv) %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+    <%= paginate @advisers %>
+  </div>
+    <div id="left_colom" class='sort'>
+
+
+  </div>
+</div>
+

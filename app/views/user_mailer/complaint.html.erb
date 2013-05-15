@@ -1,0 +1,15 @@
+<h3>Complaint notification:<br></h3
+
+You have got a request from  <b><%= @complaint.email %></b> regarding <b><%= @complaint.adviser_name %></b>, phone number <%= @complaint.adviser_phone %><br>
+<p>
+<h3>User information:<br></h3>
+
+<b>User name: </b><%= @complaint.name %><br>
+<b>User email: </b><%= @complaint.email %><br>
+<b>User phone: </b><%= @complaint.phone %><br>
+<b>Contact time:</b> <%= @complaint.contact_time %><br>
+<p>
+<h3>Complaint:</h3>
+<%= @complaint.complain %>
+<p>
+<%= link_to "Open in new window", "http://search.investmentprotectionbureau.org/" + admin_complaint_path(@complaint), :target => "_blank" %>

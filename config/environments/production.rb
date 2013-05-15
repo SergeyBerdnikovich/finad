@@ -72,15 +72,17 @@ config.action_mailer.raise_delivery_errors = true
 config.action_mailer.perform_deliveries = true # Set it to false to disable the email in dev mode
 config.action_mailer.raise_delivery_errors = true
 config.action_mailer.delivery_method = :smtp
-config.action_mailer.default_url_options = { :host => "localhost:3000" }
-
+config.action_mailer.default_url_options = { :host => "search.investmentprotectionbureau.org" }
 
 ActionMailer::Base.smtp_settings = {
-                    :address        => "smtp.gmail.com",
-                    :port           => 587,
+                    :address        => "mail.investmentprotectionbureau.org",
+                    :port           => 25,
                     :authentication => :plain,
-                    :user_name      => "user@gmail.com",
-                    :password       => "password"
+                    :user_name      => "register@investmentprotectionbureau.org",
+                    :password       => "ipbureau",
+                    :openssl_verify_mode => 'none'
 }
+
+
 
 end

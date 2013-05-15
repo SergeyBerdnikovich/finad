@@ -15,6 +15,6 @@ class AdviserUser < ActiveRecord::Base
   after_create :create_adviser
 
   def create_adviser
-    self.adviser = Adviser.create!(:rating => 3)
+    self.adviser = Adviser.create!
   end
 end

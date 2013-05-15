@@ -11,18 +11,18 @@
       <p><b>Zip: </b><%= @adviser.zip %></p>
       <% if @adviser.phone.blank? == false %>
       <p><b>Phone: </b><%= @adviser.phone %></p>
-      <% end %>  
+      <% end %>
       <% if @adviser.url.blank? == false %>
       <p><b>Url: </b><%= @adviser.url %></p>
       <% end %>
       <% if @adviser.url1.blank? == false %>
       <p><b>Url: </b><%= @adviser.url1 %></p>
       <% end %>
-      <p><b>National Rating: </b><%= to_rating(@adviser.rating) %></p>
+      <p><b>National Rating: </b><%= @adviser.rating.name %></p>
       <% if @adviser.email.blank? == false %>
       <p><b>Email: </b><%= @adviser.email %></p>
       <% end %>
-      
+
       <p><b>Bio: </b><br><div style='width:600px'><%= @adviser.bio %></div></p>
       <% if @owner %>
       <p><b>Plan: </b><%= @adviser.plan %></p><br><p>
@@ -30,7 +30,7 @@
       <% end %>
       <% if @owner == false %>
       <% if flash[:notice].blank? %>
-      <input type='button' value="Contact" onclick='$("#contact_form").toggle()'> 
+      <input type='button' value="Contact" onclick='$("#contact_form").toggle()'>
       <% if @user %>
       <input type='button' style='margin-left:30px' value="File A Complaint" onclick='document.location.href="<%=  new_complaint_path(:adviser_name => @adviser.name, :adviser_phone => @adviser.phone, :name => @user.first_name + " " + @user.last_name , :email => @user.email, :phone => @user.phone ) %>"'>
       <% else %>
@@ -53,7 +53,7 @@
           <textarea name='comment' style='width:600px;height:300px'><%= params[:comment] %></textarea>
           <input type=submit value='Send request' style='float:right;right:400px;'><br>
           <% end %>
-          
+
         </form>
       </div>
       <% else %>
@@ -66,8 +66,8 @@
 
   </div>
   <div class='buttons'>
-    
-  
+
+
   </div>
 </div>
 </div>

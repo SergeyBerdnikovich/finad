@@ -1,7 +1,21 @@
+<style>
+.advisers_table {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+#left_colom {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  padding: 0;
+}
+.side_nav_box {
+  margin-left: 30px;
+}
+</style>
   <div style='float:left;width:30%'>
   <div id="left_colom">
     <h2>Menu</h2>
-    <div class="side_nav_box">
+    <div class="side_nav_box" style='border:none;'>
       <ul class="side_nav">
         <li><%= link_to "Search Advisors", user_path(@user) %></li>
         <li><%= link_to "Preferences", edit_user_path(@user) %></li>

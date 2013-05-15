@@ -18,7 +18,7 @@
       <% if @adviser.url1.blank? == false %>
       <p><b>Url: </b><%= @adviser.url1 %></p>
       <% end %>
-      <p><b>National Rating: </b><%= @adviser.rating.name %></p>
+      <p><b>National Rating: </b><%= @adviser.rating.name if @adviser.rating %></p>
       <% if @adviser.email.blank? == false %>
       <p><b>Email: </b><%= @adviser.email %></p>
       <% end %>

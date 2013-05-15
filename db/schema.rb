@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130510173530) do
+ActiveRecord::Schema.define(:version => 20130515173709) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -77,9 +77,8 @@ ActiveRecord::Schema.define(:version => 20130510173530) do
     t.integer  "zip"
     t.string   "phone"
     t.string   "url"
-    t.integer  "rating"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "adviser_user_id"
     t.string   "plan"
     t.text     "bio"
@@ -87,13 +86,15 @@ ActiveRecord::Schema.define(:version => 20130510173530) do
     t.string   "email"
     t.string   "slug"
     t.boolean  "featured"
+    t.string   "adviserscol",     :limit => 45
+    t.integer  "rating_id"
   end
 
   add_index "advisers", ["address"], :name => "index_advisers_on_address"
   add_index "advisers", ["adviser_user_id"], :name => "index_advisers_on_adviser_user_id"
   add_index "advisers", ["featured"], :name => "index_advisers_on_featured"
   add_index "advisers", ["name"], :name => "index_advisers_on_name"
-  add_index "advisers", ["rating"], :name => "index_advisers_on_stars"
+  add_index "advisers", ["rating_id"], :name => "index_advisers_on_rating_id"
   add_index "advisers", ["slug"], :name => "index_advisers_on_slug", :unique => true
   add_index "advisers", ["zip"], :name => "index_advisers_on_zip"
 
@@ -121,6 +122,12 @@ ActiveRecord::Schema.define(:version => 20130510173530) do
   end
 
   add_index "galleries", ["adviser_id"], :name => "index_galleries_on_adviser_id"
+
+  create_table "ratings", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "city"

@@ -1,3 +1,25 @@
+<style>
+ .content {
+  /*background-color: white;*/
+  /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);*/
+  width: 98%;
+  margin: 0 auto 10px auto;
+}
+#left_tab {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  padding: 10px 30px;
+  width: 500px;
+}
+#right_tab {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  margin-left: 70px;
+  padding: 10px 20px;
+  width: 450px;
+}
+</style>
+
 <div class="module_round_box_outer">
   <% if  params[:user][:zip].blank? %>
   <h1 id='zipcode'>Financial Advisors in <%= params[:user][:city] %>, <%= params[:user][:state] %> </h1>
@@ -6,7 +28,7 @@
   <% end %>
 <div > 
 
-  <div  style="line-height:20px; color:#333333;float:left;background-color:white;height:400px;width:150px'">
+  <div id='left_tab' style="line-height:20px; color:#333333;float:left;background-color:white;">
     <div  style="display:block; text-align:justify; line-height:18px;">
       <div style="margin-left:-12px; margin-right:-12px; padding:15px 15px 15px 15px;">
         <p><b style="color:red; font-size:16px;">Congratulations!</b></p>
@@ -31,7 +53,7 @@
     </div>
   </div>
 
-  <div  style='float:right;background-color:white;height:400px;width:500px'>
+  <div id='right_tab' style='float:right;background-color:white;'>
     <div > Please provide the information we need to match you with <strong>pre-screened </strong> Financial Advisors.</div>
   <%= form_for @user do |f| %>
     <%= f.hidden_field :zip %>

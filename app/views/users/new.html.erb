@@ -19,16 +19,13 @@
   padding: 10px 20px;
   width: 450px;
 }
-#s5_top_row2_area1 {
-  margin-top: 130px;
-}
 </style>
 
 <div class="module_round_box_outer">
   <% if  params[:user][:zip].blank? %>
-  <h1 id='zipcode'>Financial Advisors in <%= params[:user][:city] %>, <%= params[:user][:state] %> </h1>
+    <h1 id='zipcode'>Financial Advisors in <%= params[:user][:city] %>, <%= params[:user][:state] %> </h1>
   <% else %>
-  <h1 id='zipcode'>Financial Advisors in or around  Zip Code <%= params[:user][:zip] %></h1>
+    <h1 id='zipcode'>Financial Advisors in or around  Zip Code <%= params[:user][:zip] %></h1>
   <% end %>
 <div >
 
@@ -202,4 +199,4 @@
 </div>
 
 </div>
-<p><br><p>
+<div style='margin-bottom:30px; clear:both;'></div>

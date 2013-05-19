@@ -4,6 +4,7 @@
   /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);*/
   width: 98%;
   margin: 0 auto 10px auto;
+  height: 900px;
 }
 #left_tab {
   background-color: white;
@@ -18,6 +19,9 @@
   padding: 10px 20px;
   width: 450px;
 }
+#s5_top_row2_area1 {
+  margin-top: 130px;
+}
 </style>
 
 <div class="module_round_box_outer">
@@ -26,7 +30,7 @@
   <% else %>
   <h1 id='zipcode'>Financial Advisors in or around  Zip Code <%= params[:user][:zip] %></h1>
   <% end %>
-<div > 
+<div >
 
   <div id='left_tab' style="line-height:20px; color:#333333;float:left;background-color:white;">
     <div  style="display:block; text-align:justify; line-height:18px;">
@@ -175,7 +179,8 @@
                 <img alt="" src="/assets/maket/footer_nav.gif" height="25">
                 &nbsp;&nbsp;&nbsp;
                 <input type="hidden" name="x" value="1" />
-                <input type="submit" name="x" value="" id='form_submit' />
+                <p><%= f.submit %></p>
+                <!-- <input type="submit" name="x" value="" id='form_submit' /> -->
               </td>
             </tr>
             <tr>

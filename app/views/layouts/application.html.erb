@@ -2,11 +2,199 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB" lang="en-GB"
 >
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <title>Search</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%#= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <!-- <base href="http://investmentprotectionbureau.org/index.php/en/" /> -->
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="401k Financial Advisors, Financial Advisors, 401k" />
+  <meta name="description" content="At Investment Protection Bureau we protect you and the financial industry. " />
+  <meta name="generator" content="Joomla! - Open Source Content Management" />
+  <title>IPB - Investment Protection Bureau</title>
+  <!-- <link href="/index.php/en/?format=feed&amp;type=rss" rel="alternate" type="application/rss+xml" title="RSS 2.0" /> -->
+  <!-- <link href="/index.php/en/?format=feed&amp;type=atom" rel="alternate" type="application/atom+xml" title="Atom 1.0" /> -->
+  <link href="/public/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+  <!-- <link href="http://investmentprotectionbureau.org/index.php/en/component/search/?format=opensearch" rel="search" title="Search Investment Protection Bureau" type="application/opensearchdescription+xml" /> -->
+  <link rel="stylesheet" href="/assets/maket/finder.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket/sliderfilter.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket/s5_flex_menu.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket/system.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket/style.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket/style3.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket/general.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket/template_default.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket/template.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket/com_content.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket/editor.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket/thirdparty.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket/system2.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket/multibox.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket/ajax.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket/s5_responsive_bars.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket/s5_responsive_hide_classes.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket//s5_responsive.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket/custom.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/maket/s5_info_slide.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+
+    #page-peel-banner{
+      position:relative;
+      background:transparent!important;
+    }
+    #page-peel-banner img{
+      z-index:9999;
+      position:absolute;
+
+      right:0;
+
+    top:0;
+    width:80px;
+    height:83.2px;
+    -ms-interpolation-mode:bicubic;
+
+    }
+    #page-peel-banner .page-peel-banner-img{
+      z-index:8888;
+      position:absolute;
+
+      right:0;
+
+      top:0;
+      width:80px;
+      height:80px;
+      text-indent:-9999px;
+    }
+
+    .peeloverlay {
+      top: 0;
+      z-index: 999999;
+      display: block;
+      width:80px;
+      height:80px;
+      position: absolute;
+
+      background: url(/assets/maket/peeloverlay.png) no-repeat top right;
+      right: 0;
+
+      -moz-background-size: 80px 80px;
+      -o-background-size: 80px 80px;
+      -webkit-background-size: 80px 80px;
+      -khtml-background-size: 80px 80px;
+      background-size: 80px 80px !important;
+    }
+
+  </style>
+  <script src="/assets/maket/mootools-core.js" type="text/javascript"></script>
+  <script src="/assets/maket/core.js" type="text/javascript"></script>
+  <script src="/assets/maket/autocompleter.js" type="text/javascript"></script>
+  <script src="/assets/maket/mootools-more.js" type="text/javascript"></script>
+  <script src="/assets/maket/jquery.js" type="text/javascript"></script>
+  <script src="/assets/maket/cookie.js" type="text/javascript"></script>
+  <script src="/assets/maket/jd.gallery.js" type="text/javascript"></script>
+  <script src="/assets/maket/jd.gallery.transitions.js" type="text/javascript"></script>
+  <script src="/assets/maket/s5_flex_menu.js" type="text/javascript"></script>
+  <script src="/assets/maket/overlay.js" type="text/javascript"></script>
+  <script src="/assets/maket/multibox.js" type="text/javascript"></script>
+  <script src="/assets/maket/s5_info_slide.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+    jQuery.noConflict();
+    var blinking = null;
+    var bannerOpened = false;
+    var isIE = jQuery.browser.msie;
+    IEVersion = 9;
+    if(isIE){
+      var IEVersion = parseInt(jQuery.browser.version, 10);
+    }
+
+    if( isIE && IEVersion < 9 ){
+      jQuery(".peeloverlay").remove();
+    }else{
+      function doBlink(){
+        jQuery(".peeloverlay").animate({opacity:0.8}, 300).animate({opacity:0.4}, 300);
+        blinking = setTimeout("doBlink()", 600);
+      }
+    }
+
+    var openBanner = function(){
+      if( !isIE || IEVersion > 8 ){
+        jQuery(".peeloverlay").hide();
+      }
+  jQuery(".page-peel-banner-img").css('background-image', 'url(/assets/maket/big.jpg)');
+      jQuery("#page-peel-banner img").stop().animate({width: '500px', height: '520px'}, 800);
+      jQuery(".page-peel-banner-img").stop().animate({width: '500px', height: '500px'}, 800);
+    }
+
+    var closeBanner = function(){
+      jQuery("#page-peel-banner img").stop().animate({width: '80px', height: '83.2px'}, 800);
+  jQuery(".page-peel-banner-img").stop().animate({width: '80px', height: '80px'}, 800, function(){
+      jQuery(".page-peel-banner-img").css('background-image', 'url(/assets/maket/little.jpg)');
+      if( !isIE || IEVersion > 8 ){
+        jQuery(".peeloverlay").show();
+      }
+    });
+      bannerOpened = false;
+    }
+
+    jQuery(document).ready(function(){
+      if( isIE && IEVersion < 9 ){
+        jQuery(".peeloverlay").remove();
+      }
+      jQuery("#page-peel-banner").remove().prependTo('body');
+
+      if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i)) || (navigator.userAgent.toLowerCase().indexOf("android") > -1) ) {
+        var href = jQuery("#page-peel-banner a").attr("href");
+        jQuery("#page-peel-banner a").removeAttr("href").attr("rel", href);
+
+        jQuery("#page-peel-banner a").click(function(){
+          if(bannerOpened == false){
+            openBanner();
+            bannerOpened = true;
+            jQuery("#page-peel-banner a").removeAttr("rel").attr("href", href);
+            setTimeout("closeBanner()", 5000);
+            return false;
+          }else{
+            return true;
+          }
+        });
+      }else{
+        jQuery("#page-peel-banner").hover(function(){
+          openBanner();
+        }, function(){
+          closeBanner();
+        });
+      }
+
+      if( !isIE || IEVersion > 8 ){
+        doBlink();
+      }
+    });
+
+  </script>
+  <script language="javascript" type="text/javascript">var s5_hidecar = "true";</script>
+  <script language="javascript" type="text/javascript">var s5_hidebut = "true";</script>
+  <script language="javascript" type="text/javascript">var s5_hidetext = "true";</script>
+  <script type="text/javascript">var s5_slide_opacity=0.85</script>
+  <script language="javascript" type="text/javascript">var s5_dropdowntext = "Open Gallery";</script>
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+  <script type="text/javascript">
+  //<![CDATA[
+                window.addEvent('domready', function() {
+                var myMenu = new MenuMatic({
+        tabletWidth:1400,
+                effect:"slide & fade",
+                duration:1000,
+                physics: Fx.Transitions.Pow.easeOut,
+                hideDelay:500,
+                orientation:"horizontal",
+                tweakInitial:{x:0, y:0},
+                                                  direction:{    x: 'right',    y: 'down' },
+                        opacity:100            });
+        });
+      //]]>
+    </script>
+<!-- Css and js addons for vertex features -->
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald" />
 <style type="text/css">
 /* MAX IMAGE WIDTH */
 
@@ -24,7 +212,6 @@ width:100% !important;
 -moz-box-sizing: border-box !important;    /* Firefox, other Gecko */
 box-sizing: border-box !important;         /* Opera/IE 8+ */
 }
-
 .S5_submenu_itemTablet{
 background:none !important;
 }
@@ -33,14 +220,14 @@ background:none !important;
 width:100% !important;
 }
 #s5_right_column_wrap {
-width:12.5% !important;
-margin-left:-12.5% !important;
+width:0% !important;
+margin-left:-0% !important;
 }
 #s5_left_column_wrap {
 width:0% !important;
 }
 #s5_center_column_wrap_inner {
-margin-right:25% !important;
+margin-right:0% !important;
 margin-left:0% !important;
 }
 
@@ -50,7 +237,6 @@ width:96% !important;
 #s5_responsive_mobile_drop_down_search input {
 width:100% !important;
 }
-
 @media screen and (max-width: 750px){
   body {
   height:100% !important;
@@ -64,7 +250,6 @@ width:100% !important;
   width:85%;
   }
 }
-
   #s5_responsive_mobile_bottom_bar, #s5_responsive_mobile_top_bar {
   background:#0B0B0B;
   background: -moz-linear-gradient(top, #272727 0%, #0B0B0B 100%); /* FF3.6+ */
@@ -124,16 +309,11 @@ width:100% !important;
   #s5_responsive_mobile_drop_down_menu .s5_responsive_mobile_drop_down_inner, #s5_responsive_mobile_drop_down_register .s5_responsive_mobile_drop_down_inner, #s5_responsive_mobile_drop_down_login .s5_responsive_mobile_drop_down_inner, #s5_responsive_mobile_drop_down_search .s5_responsive_mobile_drop_down_inner {
   background:#272727;
   }
-
   .s5_wrap {
   max-width:1200px !important;
   }
-
     @media screen and (min-width:580px) and (max-width: 900px){
 
-            .s5_resize_top_row1 {
-      min-height: 0px !important;
-      }
 
       #s5_top_row1 #s5_pos_top_row1_1.s5_float_left {
       float:left !important;
@@ -146,12 +326,8 @@ width:100% !important;
       }
 
     }
-
     @media screen and (min-width:580px) and (max-width: 900px){
 
-            .s5_resize_bottom_row3 {
-      min-height: 0px !important;
-      }
 
       #s5_bottom_row3 .s5_float_left {
       float:left !important;
@@ -159,34 +335,20 @@ width:100% !important;
       }
 
     }
-
 </style>
-<link rel="stylesheet" href="/assets/maket/s5_flex_menu.css" type="text/css" />
-<link rel="stylesheet" href="/assets/maket/system.css" type="text/css" />
-<link rel="stylesheet" href="/assets/maket/general.css" type="text/css" />
-<link href="/assets/maket/template_default.css" rel="stylesheet" type="text/css" />
-<link href="/assets/maket/template.css" rel="stylesheet" type="text/css" />
-<link href="/assets/maket/com_content.css" rel="stylesheet" type="text/css" />
-<link href="/assets/maket/editor.css" rel="stylesheet" type="text/css" />
-<link href="/assets/maket/thirdparty.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">//<![CDATA[
+//]]></script>
+<link href="https://www.investmentprotectionbureau.org/templates/prestige_academy/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+
+<!-- Info Slide Script - Called in header so css validates -->
+<!-- File compression. Needs to be called last on this file -->
+<!-- The excluded files, listed below the compressed php files, are excluded because their calls vary per device or per browser. Included compression files are only ones that have no conditions and are included on all devices and browsers. Otherwise unwanted css will compile in the compressed files. -->
+
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald" />
 
 <style type="text/css">
-body {font-family: 'Tahoma',Helvetica,Arial,Sans-Serif ; margin: 0 auto; width: 100%;}
-body
-{ 
-background-image:url('/assets/maket/s5_bg.jpg');
-background-repeat:repeat;
-background-attachment:fixed;
-background-position:center; 
-}
-#bodydiv {
-min-height: 850px;
-background-image:url('/images/IPB-watermark-small.png');
-background-repeat:no-repeat;
-background-attachment:fixed;
-background-position:center; 	
-}
+body {font-family: 'Tahoma',Helvetica,Arial,Sans-Serif ;}
 
 #s5_bars_wrap, h1, h2, h3, h4, h5, input, #s5_nav li a, .S5_submenu_item a, .button, label, li.s5_am_inner_li span.s5_accordion_menu_left a.mainlevel, #s5_button_frame ul li a, .btn {
 font-family: Oswald;
@@ -228,453 +390,616 @@ border-bottom:solid 2px #CE351B !important;
 .btn-primary.dropdown-toggle, .btn-primary {
 background:#BD503E !important;
 }
+
+#s5_top_row2_area1 {
+background:url(https://www.investmentprotectionbureau.org/images/row2_bg.jpg) no-repeat bottom center;
+background-size: auto auto !important;
+}
 /* k2 stuff */
 div.itemHeader h2.itemTitle, div.catItemHeader h3.catItemTitle, h3.userItemTitle a, #comments-form p, #comments-report-form p, #comments-form span, #comments-form .counter, #comments .comment-author, #comments .author-homepage,
 #comments-form p, #comments-form #comments-form-buttons, #comments-form #comments-form-error, #comments-form #comments-form-captcha-holder {font-family: 'Tahoma',Helvetica,Arial,Sans-Serif ;}
 
 .s5_wrap{width:100%;}
 
-#center {
+#s5_top_row1_area1 {
+  width: 1150px;
   margin: 0 auto;
-  width: 1200px;
-  height: 80%;
-  min-height: 600px;
 }
-#left_colom {
-  margin-left: 50px;
-  float: left;
-}
-.sort {
-  float: left;
-  margin-top: -350px;
-}
-#s5_columns_wrap_inner {
-    width: 100%;
-}
-#s5_bars_wrap {
-    margin-bottom: 10px;
-}
-#zipcode {
-  margin-left: 90px;
-  margin-bottom: 40px;
-}
-#form_submit {
-    background: url("/assets/maket/find-advisor.png") no-repeat scroll 0 0 transparent;
-    border: 0 none;
-    cursor: pointer;
-    height: 50px;
-    width: 120px;
-    box-shadow: none;
-}
-input#user_city {
-  margin-right: 5px;
-}
-a#confirm {
-  background: none repeat scroll 0 0 #FFFFFF;
-  border: 1px solid #DFDFDF;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1) inset;
-  color: #424242 !important;
-  font-size: 0.9em;
-  padding: 6px 11px;
-  transition: all 400ms ease-out 0s;
-  font-family: Oswald;
-}
-a#confirm:hover {
-  background: none repeat scroll 0 0 #FFFFFF;
-  border: 1px solid #D2D1D1;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  transition: all 400ms ease-in 0s;
-  text-decoration: none;
-}
-#form_table {
-  margin-left: 20px;
-}
-#footer {
-  border-top: none;
-  margin-left: 70px;
-}
-.advisers_table {
-  float: left;
-  margin-left: 50px;
-}
-.advisers_table table {
-  max-width: 900px;
-  min-width: 700px;
-}
-.advisers_table img {
-  width: 13px;
-}
-.content {
-  width: 98%;
-  margin: 0 auto;
+.moduletable {
+  padding: 5px;
 }
 </style>
 </head>
 
 <body id="s5_body">
-<div id=""></div>
-<div id="bodydiv">
+  <div id='peelzipdiv' style='display:none;background:#000;position:fixed; top:0; left:0;  width:100%;  height:100%; z-index:10; '></div>
+  <div id='peelzipdiv1' style='z-index:9999999;display:none; position:absolute;top:50%;left:38%;height: 75px;width: 400px;background-color: white; padding:20px 20px 20px 30px'>
+    <img style='position: relative;float:right;top:-31px;right:-31px' src='/assets/maket/close.png' onclick='close_zip_popup()'>
+    <center>
+      <form action="http://search.investmentprotectionbureau.org/users/new?" method="get">
+        <h1>Please enter your zip code:</h1>
+          <input name="user[zip]" id="mod-search-searchword" maxlength="20"  class="inputbox" type="text" size="45" value="Enter Your Zipcode"  onblur="if (this.value=='') this.value='Enter Your Zipcode';" onfocus="if (this.value=='Enter Your Zipcode') this.value='';" />
+          <input type="submit" value="GO" class="button" onclick="this.form.searchword.focus();"/>
+          <input type="hidden" name="task" value="search" />
+          <input type="hidden" name="option" value="com_search" />
+          <input type="hidden" name="Itemid" value="306" />
+        </form>
+      </center>
+    </div>
+    <script>
+      function show_zip_popup() {
+       jQuery("#peelzipdiv").fadeTo("slow", .6);
+        jQuery("#peelzipdiv1").show()
+      }
+      function close_zip_popup() {
+       jQuery("#peelzipdiv").fadeTo("slow", .0);
+        jQuery("#peelzipdiv1").hide()
+      }
+    </script>
+    <div id="s5_scrolltotop"></div>
+    <!-- Top Vertex Calls -->
+    <!-- Call top bar for mobile devices if layout is responsive -->
 
-<!-- Top Vertex Calls -->
-<!-- Call top bar for mobile devices if layout is responsive -->	
-	
-<!-- s5_responsive_mobile_top_bar_spacer must be called to keep a space at the top of the page since s5_responsive_mobile_top_bar_wrap is position absolute. -->	
-<div id="s5_responsive_mobile_top_bar_spacer"></div>
+    <!-- s5_responsive_mobile_top_bar_spacer must be called to keep a space at the top of the page since s5_responsive_mobile_top_bar_wrap is position absolute. -->
+    <div id="s5_responsive_mobile_top_bar_spacer"></div>
+    <!-- s5_responsive_mobile_top_bar_wrap must be called off the page and not with display:none or it will cause issues with the togglers. -->
+    <div id="s5_responsive_mobile_top_bar_wrap" style="margin-top:-50000px;position:absolute;z-index:20;top:0px">
+    <div id="s5_responsive_mobile_top_bar" class="s5_responsive_mobile_bar_light">
+      <div id="s5_responsive_mobile_toggle_click_menu" style="display:block;float:left">
+        <span></span>
+      </div>
+      <div id="s5_responsive_mobile_bar_active">
+        <span>Pre-Screened Advisors</span>
+      </div>
+      <div id="s5_responsive_mobile_toggle_click_login" style="display:none;float:right">
+        <span></span>
+      </div>
+      <div id="s5_responsive_mobile_toggle_click_register" style="display:none;float:right">
+        <span></span>
+      </div>
+      <div id="s5_responsive_mobile_toggle_click_search" style="display:block;float:right">
+        <span></span>
+      </div>
+      <div style="clear:both;height:0px"></div>
+    </div>
+    <div id="s5_responsive_modile_drop_down_wrap" class="s5_responsive_modile_drop_down_wrap_loading">
+      <div id="s5_responsive_mobile_drop_down_menu">
+        <div class="s5_responsive_mobile_drop_down_inner" style="-webkit-box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);-moz-box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);">
+          <ul class="menu">
+            <li class="item-102 current active">
+              <a href="/index.php/en/" >Pre-Screened Advisors</a>
+            </li>
+            <li class="item-277">
+              <a href="http://search.investmentprotectionbureau.org/advisers/featured" >Featured Advisors</a>
+            </li>
+            <li class="item-223">
+              <a href="/index.php/en/2012-08-14-15-04-20" >About Us</a>
+            </li>
+            <li class="item-134 deeper parent">
+              <a href="/index.php/en/extensions" >Benefits &amp; Information</a>
+              <ul>
+                <li class="item-206">
+                  <a href="/index.php/en/extensions/helpful-links" >Helpful Links</a>
+                </li>
+              </ul>
+            </li>
+            <li class="item-120 deeper parent">
+              <a href="javascript:;" >Contact Us</a>
+              <ul>
+                <li class="item-122">
+                  <a href="/index.php/en/tutorials-mainmenu-48/contact-us" >Contact Us</a>
+                </li>
+                <li class="item-275"><a href="/" >Live Chat</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="s5_responsive_mobile_drop_down_search">
+        <div class="s5_responsive_mobile_drop_down_inner" style="-webkit-box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);-moz-box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);">
+          <form method="post" action="http://investmentprotectionbureau.org/">
+            <input type="text" onfocus="if (this.value=='Search...') this.value='';" onblur="if (this.value=='') this.value='Search...';" value="Search..." id="s5_responsive_mobile_search" name="searchword" />
+            <input type="hidden" value="search" name="task" />
+            <input type="hidden" value="com_search" name="option" />
+            <input type="hidden" value="1" name="Itemid" />
+          </form>
+        </div>
+      </div>
+      <div id="s5_responsive_mobile_drop_down_login">
+        <div class="s5_responsive_mobile_drop_down_inner" id="s5_responsive_mobile_drop_down_login_inner" style="-webkit-box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);-moz-box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);"></div>
+      </div>
+      <div id="s5_responsive_mobile_drop_down_register">
+        <div class="s5_responsive_mobile_drop_down_inner" id="s5_responsive_mobile_drop_down_register_inner" style="-webkit-box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);-moz-box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);"></div>
+      </div>
+    </div>
+  </div>
+  <script language="JavaScript" type="text/javascript">
+    var s5_responsive_login_url = "";
+    var s5_responsive_register_url = "";
+  </script>
+  <script type="text/javascript" language="javascript" src="/assets/maket/s5_responsive_mobile_bar.js"></script>
+  <!-- Fixed Tabs -->
+  <!-- Drop Down -->
+  <!-- Body Padding Div Used For Responsive Spacing -->
+  <div id="s5_body_padding">
+    <div id="s5_top_bar_bg"></div>
+    <!-- Header -->
+    <div id="s5_header_area1">
+      <div id="s5_header_area2">
+        <div id="s5_header_area_inner" class="s5_wrap">
+          <div id="s5_header_wrap">
+            <div id="s5_header_wrap_inner">
+              <div id="s5_logo_wrap">
+                <img alt="logo" src="/assets/maket/s5_logo.png" id="s5_logo" onclick="window.document.location.href='https://www.investmentprotectionbureau.org/'" />
+              </div>
+              <div id="s5_menu_banner_wrap">
+                <div id="s5_menu_wrap">
+                  <ul id='s5_nav' class='menu'>
+                    <li class='active'>
+                      <span class='s5_level1_span1'>
+                        <span class='s5_level1_span2'>
+                          <a href='http://investmentprotectionbureau.org/'>
+                            <span onclick='window.document.location.href="http://investmentprotectionbureau.org/"'>Pre-Screened Advisors</span>
+                          </a>
+                          <span class='S5_parent_subtext' onclick='window.document.location.href="http://investmentprotectionbureau.org/"'>Find a Advisor</span>
+                        </span>
+                      </span>
+                    </li>
+                    <li>
+                      <span class='s5_level1_span1'>
+                        <span class='s5_level1_span2'>
+                          <a href='http://search.investmentprotectionbureau.org/advisers/featured'>
+                            <span onclick='window.document.location.href="http://search.investmentprotectionbureau.org/advisers/featured"'>Featured Advisors</span>
+                          </a>
+                          <span class='S5_parent_subtext' onclick='window.document.location.href="http://search.investmentprotectionbureau.org/advisers/featured"'>The best of the best</span>
+                        </span>
+                      </span>
+                    </li>
+                    <li>
+                      <span class='s5_level1_span1'>
+                        <span class='s5_level1_span2'>
+                          <a href='/index.php/en/2012-08-14-15-04-20'>
+                            <span onclick='window.document.location.href="/index.php/en/2012-08-14-15-04-20"'>About Us</span>
+                          </a>
+                          <span class='S5_parent_subtext' onclick='window.document.location.href="/index.php/en/2012-08-14-15-04-20"'>Why we protect you</span>
+                        </span>
+                      </span>
+                    </li>
+                    <li >
+                      <span class='s5_level1_span1'>
+                        <span class='s5_level1_span2'>
+                          <a href='/index.php/en/extensions'>
+                            <span onclick='window.document.location.href="/index.php/en/extensions"'>Benefits &amp; Information</span>
+                          </a>
+                          <span class='S5_parent_subtext' onclick='window.document.location.href="/index.php/en/extensions"'>How the rating system works</span>
+                        </span>
+                      </span>
+                      <ul style='float:left;'>
+                        <li>
+                          <span class='S5_submenu_item'>
+                            <a href='/index.php/en/extensions/helpful-links'>
+                              <span class='s5_sub_a_span' onclick='window.document.location.href="/index.php/en/extensions/helpful-links"'>Helpful Links</span>
+                            </a>
+                            <span class='S5_subtext' onclick='window.document.location.href="/index.php/en/extensions/helpful-links"'>Government & Resource Links</span>
+                          </span>
+                        </li>
+                      </ul>
+                    </li>
+                    <li >
+                      <span class='s5_level1_span1'>
+                        <span class='s5_level1_span2'>
+                          <a href='javascript:;'>
+                            <span onclick='window.document.location.href="javascript:;"'>Contact Us</span>
+                          </a>
+                          <span class='S5_parent_subtext' onclick='window.document.location.href="javascript:;"'>Speak with our staff</span>
+                        </span>
+                      </span>
+                      <ul style='float:left;'>
+                        <li>
+                          <span class='S5_submenu_item'>
+                            <a href='/index.php/en/tutorials-mainmenu-48/contact-us'>
+                              <span class='s5_sub_a_span' onclick='window.document.location.href="/index.php/en/tutorials-mainmenu-48/contact-us"'>Contact Us</span>
+                            </a>
+                          </span>
+                        </li>
+                        <li>
+                          <span class='S5_submenu_item'>
+                            <a href=''>
+                              <span class='s5_sub_a_span' onclick='window.document.location.href="/"'>Live Chat</span>
+                            </a>
+                          </span>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div style="clear:both; height:0px"></div>
+                <div id="s5_pos_banner">
+                  <div class="moduletable">
+                    <div class="bannergroup">
+                      <div class="banneritem">
+                        <img src="/assets/maket/shop-ad.jpg" alt="Demo Banner"/>
+                        <div class="clr"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="clear:both; height:0px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- End Header -->
+    <div id="s5_bars_wrap">
+      <div id="s5_social_search_bar" class="s5_wrap">
+        <div id="s5_social_search_bar_inner">
+          <div id="s5_facebook" onclick="window.open('javascript:;')"></div>
+          <div id="s5_google" onclick="window.open('javascript:;')"></div>
+          <div id="s5_twitter" onclick="window.open('javascript:;')"></div>
+          <div id="s5_rss" onclick="window.open('javascript:;')"></div>
+          <div id="s5_search_wrap">
+            <div class="moduletable">
+              <% if current_adviser_user %>
+                <%= link_to 'Logout', destroy_adviser_user_session_path, :method => :delete %>
+              <% else %>
+                <%= link_to 'Login', new_adviser_user_session_path %>
+              <% end %>
+            </div>
+          </div>
+          <div style="clear:both; height:0px"></div>
+        </div>
+      </div>
+      <div style="clear:both; height:0px"></div>
+    </div>
 
-<!-- s5_responsive_mobile_top_bar_wrap must be called off the page and not with display:none or it will cause issues with the togglers. -->
-<div id="s5_responsive_mobile_top_bar_wrap" style="margin-top:-50000px;position:absolute;z-index:20;top:0px">
+    <!-- Top Row1 -->
+    <div id="s5_top_row1_area1">
+      <%= yield %>
+    </div>
+      <!-- End Top Row1 -->
 
-	<div id="s5_responsive_mobile_top_bar" class="s5_responsive_mobile_bar_light">
+    <!-- Top Row2 -->
+    <div id="s5_top_row2_area1">
+      <div id="s5_top_row2_area2">
+        <div id="s5_top_row2_area3">
+          <div id="s5_top_row2_area_inner" class="s5_wrap">
+            <div id="s5_top_row2_wrap">
+              <div id="s5_top_row2">
+                <div id="s5_top_row2_inner">
+                  <div id="s5_pos_top_row2_1" class="s5_float_left" style="width:100%">
+                    <div class="module_round_box_outer">
+                      <div class="module_round_box-row2_large">
+                        <div class="s5_module_box_1">
+                          <div class="s5_module_box_2">
+                            <div class="s5_mod_h3_outer">
+                              <h3 class="s5_mod_h3">
+                                <span class="s5_h3_first">Featured </span> Financial Advisors...
+                              </h3>
+                            </div>
+                            <div class="custom-row2_large"  >
+                              <center>
+                                <iframe width=1000px height=300px  src="http://search.investmentprotectionbureau.org/advisers/featured2"></iframe>
+                              </center>
+                            </div>
+                            <div style="clear:both; height:0px"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="clear:both; height:0px"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Top Row2 -->
+    <!-- Top Row3 -->
+    <!-- End Top Row3 -->
+    <!-- Center area -->
+    <div id="s5_center_area1">
+      <div id="s5_center_area2">
+        <div id="s5_center_area_inner" class="s5_wrap">
+          <!-- Above Columns Wrap -->
+          <!-- End Above Columns Wrap -->
+          <!-- Columns wrap, contains left, right and center columns -->
+          <div id="s5_columns_wrap">
+            <div id="s5_columns_wrap_inner">
+              <div id="s5_center_column_wrap">
+                <div id="s5_center_column_wrap_inner" style="margin-left:0px; margin-right:0px;">
+                  <div id="s5_component_wrap">
+                    <div id="s5_component_wrap_inner">
+                      <div id="s5_above_body_wrap">
+                        <div id="s5_above_body">
+                          <div id="s5_above_body_inner">
+                            <div id="s5_pos_above_body_1" class="s5_float_left" style="width:100%">
+                              <div class="s5_fourdivs_1">
+                                <div class="s5_fourdivs_2">
+                                  <div class="s5_fourdivs_3">
+                                    <div class="s5_fourdivs_4">
+                                      <div id="page-peel-banner">
+                                        <a onclick="show_zip_popup()" href="#">
+                                          <img src="/assets/maket/bg.png" alt="" />
+                                          <div class="peeloverlay"></div>
+                                          <span class="page-peel-banner-img" style="background:#FFFFFF url(/assets/maket/little.jpg) no-repeat right top;">Investment Protection Bureau</span>
+                                        </a>
+                                      </div>
+                                      <img src="/assets/maket/little.jpg" alt="" style="display:none" />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div style="clear:both; height:0px"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="system-message-container"></div>
+                      <div class="finder">
+                        <div id="search-form">
+                          <script type="text/javascript">
+                            window.addEvent('domready', function() {
+                              /*
+                               * This segment of code adds the slide effect to the advanced search box.
+                               */
+                              if (document.id('advanced-search') != null) {
+                                var searchSlider = new Fx.Slide('advanced-search');
 
-			<div id="s5_responsive_mobile_toggle_click_menu" style="display:block;float:left">
-				<span></span>
-			</div>
-			
-							<div id="s5_responsive_mobile_bar_active">
-					<span>
-											</span>
-				</div>
-						
-			<div id="s5_responsive_mobile_toggle_click_login" style="display:none;float:right">
-				<span></span>
-			</div>
-			
-			<div id="s5_responsive_mobile_toggle_click_register" style="display:none;float:right">
-				<span></span>
-			</div>
-			
-			<div id="s5_responsive_mobile_toggle_click_search" style="display:block;float:right">
-				<span></span>
-			</div>
+                                      searchSlider.hide();
 
-		<div style="clear:both;height:0px"></div>
-		
-	</div>
+                                document.id('advanced-search-toggle').addEvent('click', function(e) {
+                                  e = new Event(e);
+                                  e.stop();
+                                  searchSlider.toggle();
+                                });
+                              }
 
-	<div id="s5_responsive_modile_drop_down_wrap" class="s5_responsive_modile_drop_down_wrap_loading">
-		<div id="s5_responsive_mobile_drop_down_menu">
-			<div class="s5_responsive_mobile_drop_down_inner" style="-webkit-box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);-moz-box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);">
-									
-							</div>
-		</div>
-		
-		<div id="s5_responsive_mobile_drop_down_search">
-			<div class="s5_responsive_mobile_drop_down_inner" style="-webkit-box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);-moz-box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);">
-								  					<form method="post" action="http://investmentprotectionbureau.org/">
-						<input type="text" onfocus="if (this.value=='Search...') this.value='';" onblur="if (this.value=='') this.value='Search...';" value="Search..." id="s5_responsive_mobile_search" name="searchword" />
-						<input type="hidden" value="search" name="task" />
-						<input type="hidden" value="com_search" name="option" />
-						<input type="hidden" value="1" name="Itemid" />
-					</form>
-							</div>
-		</div>
-		
-		<div id="s5_responsive_mobile_drop_down_login">
-			<div class="s5_responsive_mobile_drop_down_inner" id="s5_responsive_mobile_drop_down_login_inner" style="-webkit-box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);-moz-box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);">
-			</div>
-		</div>
-		
-			
-		<div id="s5_responsive_mobile_drop_down_register">
-			<div class="s5_responsive_mobile_drop_down_inner" id="s5_responsive_mobile_drop_down_register_inner" style="-webkit-box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);-moz-box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);">
-			</div>
-		</div>
-		
-					
-	</div>
+                              /*
+                               * This segment of code disables select boxes that have no value when the
+                               * form is submitted so that the URL doesn't get blown up with null values.
+                               */
+                              if (document.id('finder-search') != null) {
+                                document.id('finder-search').addEvent('submit', function(e){
+                                  e = new Event(e);
+                                  e.stop();
 
-</div>
+                                  if (document.id('advanced-search') != null) {
+                                    // Disable select boxes with no value selected.
+                                    document.id('advanced-search').getElements('select').each(function(s){
+                                      if (!s.getProperty('value')) {
+                                        s.setProperty('disabled', 'disabled');
+                                      }
+                                    });
+                                  }
 
-<script language="JavaScript" type="text/javascript">
-	var s5_responsive_login_url = "";
-	var s5_responsive_register_url = "";
-</script>
-<script type="text/javascript" language="javascript" src="http://investmentprotectionbureau.org/templates/prestige_academy/js/s5_responsive_mobile_bar.js"></script>
+                                  document.id('finder-search').submit();
+                                });
+                              }
+                              /*
+                               * This segment of code sets up the autocompleter.
+                               */
+                              var url = '/index.php/en/component/finder/?task=suggestions.display&format=json&tmpl=component';
+                            var completer = new Autocompleter.Request.JSON(document.id('q'), url, {'postVar': 'q'});
+                            });
+                          </script>
+                          <form id="finder-search" action="/index.php/en/" method="get">
+                            <fieldset class="word">
+                              <label for="q">Search Terms:   </label>
+                              <input type="text" name="q" id="q" size="30" value="" class="inputbox" />
+                              <button name="Search" type="" class="button">Search</button>
+                            </fieldset>
+                            <a id="advanced-search-toggle">Advanced Search</a>
+                            <div id="advanced-search">
+                              <div class="advanced-search-tip">
+                                <p>Here are a few examples of how you can use the search feature:</p>
+                                <p>Entering <span class="term">this and that</span> into the search form will return results containing both "this" and "that".</p>
+                                <p>Entering <span class="term">this not that</span> into the search form will return results containing "this" and not "that".</p>
+                                <p>Entering <span class="term">this or that</span> into the search form will return results containing either "this" or "that".</p>
+                                <p>Entering <span class="term">"this and that"</span> (with quotes) into the search form will return results containing the exact phrase "this and that".</p><p>Search results can also be filtered using a variety of criteria. Select one or more filters below to get started.</p>
+                              </div>
+                              <div id="finder-filter-window">
+                                <ul id="finder-filter-select-list">
+                                  <li class="filter-branch">
+                                    <label for="tax-author">Search by Author</label>
+                                    <select id="tax-author" name="t[]" class="inputbox">
+                                      <option value="" selected="selected">Search All</option>
+                                      <option value="32">Fredrick Vanderhall</option>
+                                      <option value="29">Super User</option>
+                                    </select>
+                                  </li>
+                                  <li class="filter-branch">
+                                    <label for="tax-category">Search by Category</label>
+                                    <select id="tax-category" name="t[]" class="inputbox">
+                                      <option value="" selected="selected">Search All</option>
+                                      <option value="33">Frontpage</option>
+                                      <option value="30">Latest</option>
+                                      <option value="31">Newsflash</option>
+                                      <option value="34">Uncategorised</option>
+                                    </select>
+                                  </li>
+                                  <li class="filter-branch">
+                                    <label for="tax-country">Search by Country</label>
+                                    <select id="tax-country" name="t[]" class="inputbox">
+                                      <option value="" selected="selected">Search All</option>
+                                      <option value="37">Countries</option>
+                                    </select>
+                                  </li>
+                                  <li class="filter-branch">
+                                    <label for="tax-region">Search by Region</label>
+                                    <select id="tax-region" name="t[]" class="inputbox">
+                                      <option value="" selected="selected">Search All</option>
+                                      <option value="36">State</option>
+                                    </select>
+                                  </li>
+                                  <li class="filter-branch">
+                                    <label for="tax-type">Search by Type</label>
+                                    <select id="tax-type" name="t[]" class="inputbox">
+                                      <option value="" selected="selected">Search All</option>
+                                      <option value="28">Articles</option>
+                                      <option value="3">Categories</option>
+                                      <option value="35">Contacts</option>
+                                    </select>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                      <div style="clear:both;height:0px"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        <!-- Left column -->
+                <!-- End Left column -->
+        <!-- Right column -->
+                <!-- End Right column -->
+            </div>
+          </div>
+      <!-- End columns wrap -->
+    <!-- Below Columns Wrap -->
+          <!-- End Below Columns Wrap -->
+        </div>
+      </div>
+    </div>
+      <!-- End Center area -->
+  <!-- Bottom Row1 -->
+      <!-- End Bottom Row1 -->
+  <!-- Bottom Row2 -->
+      <!-- End Bottom Row2 -->
+  <!-- Bottom Row3 -->
+    <div id="s5_bottom_row3_area1">
+      <div id="s5_bottom_row3_area2">
+        <div id="s5_bottom_row3_area_inner" class="s5_wrap">
+          <div id="s5_bottom_row3_wrap">
+            <div id="s5_bottom_row3">
+              <div id="s5_bottom_row3_inner">
+                <div id="s5_pos_bottom_row3_4" class="s5_float_left" style="width:100%">
+                  <div class="module_round_box_outer">
+                    <div class="s5_mod_h3_outer">
+                      <h3 class="s5_mod_h3"><span class="s5_h3_first">Top </span> City Searches</h3>
+                    </div>
+                    <div class="module_round_box">
+                      <div class="s5_module_box_1">
+                        <div class="s5_module_box_2">
+                          <div class="custom"  >
+                            <p>
+                              <a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Atlanta&amp;user%5Bstate%5D=GA">Atlanta, GA</a>&nbsp;-&nbsp;<a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Albuquerque&amp;user%5Bstate%5D=NM">Albuquerque, NM</a>&nbsp;-&nbsp; <a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Boston&amp;user%5Bstate%5D=MA">Boston, MA</a>&nbsp;-&nbsp; <a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Chicago&amp;user%5Bstate%5D=IL">Chicago, IL</a>&nbsp;-&nbsp; <a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Columbus&amp;user%5Bstate%5D=OH">Columbus, OH</a>&nbsp;-&nbsp; <a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Denver&amp;user%5Bstate%5D=CO">Denver, CO</a>&nbsp;-&nbsp; <a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Detroit&amp;user%5Bstate%5D=MI">Detroit, MI</a>&nbsp;-&nbsp; <a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Fairfax&amp;user%5Bstate%5D=VA">Fairfax, VA</a>&nbsp;-&nbsp; <a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Houston&amp;user%5Bstate%5D=TX">Houston, TX</a>&nbsp;-&nbsp; <a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Kansas+City&amp;user%5Bstate%5D=MO">Kansas City, MO</a>&nbsp;-&nbsp; <a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Los+Angeles&amp;user%5Bstate%5D=CA">Los Angeles, CA</a>&nbsp;-&nbsp; <a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Madison&amp;user%5Bstate%5D=WI">Madison, WI</a>&nbsp;-&nbsp; <a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Marietta&amp;user%5Bstate%5D=GA">Marietta, GA</a>&nbsp;-&nbsp; <a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Memphis&amp;user%5Bstate%5D=TN">Memphis, TN</a>&nbsp;-&nbsp; <a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Naperville&amp;user%5Bstate%5D=IL">Naperville, IL</a>&nbsp;-&nbsp; <a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Omaha&amp;user%5Bstate%5D=NE">Omaha, NE</a>&nbsp;-&nbsp; <a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Orlando&amp;user%5Bstate%5D=FL">Orlando, FL</a>&nbsp;-&nbsp; <a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Philadelphia&amp;user%5Bstate%5D=PA">Philadelphia, PA</a>&nbsp;-&nbsp;<a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Phoenix&amp;user%5Bstate%5D=AZ">Phoenix, AZ</a>&nbsp;-&nbsp; <a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=San+Francisco&amp;user%5Bstate%5D=CA">San Francisco, CA</a>
+                            </p>
+                            <p><a href="http://search.investmentprotectionbureau.org/users/new?user%5Bcity%5D=Austin&amp;user%5Bstate%5D=TX">&nbsp;</a>
+                            </p>
+                          </div>
+                          <div style="clear:both; height:0px"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div style="clear:both; height:0px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- End Bottom Row3 -->
+    <!-- Footer Area -->
+    <div id="s5_footer_area1">
+      <div id="s5_footer_area2">
+        <div id="s5_footer_area_inner" class="s5_wrap">
+          <div id="s5_footer_area_inner2">
+            <div id="s5_footer">
+              <span class="footerc">
+                Copyright &copy  2005 - 2013.  Investment Protection Bureau.
+                Designed by Elite Web Consulting. <a href="http://www.elitewebconsulting.com/" title="VisitElitewebconsulting.com " target="blank" class="footerc">Website Design</a>
+              </span>
+            </div>
+            <div id="s5_bottom_menu_wrap">
+            </div>
+            <div style="clear:both; height:0px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- End Footer Area -->
+  </div>
+  <!-- End Body Padding -->
+  <!-- Bottom Vertex Calls -->
+  <!-- Page scroll, tooltips, multibox, and ie6 warning -->
+  <!-- Start compression if enabled -->
+  <div id="s5_scroll_wrap" class="s5_wrap">
+    <script type="text/javascript">
+      function s5_scrollit() { new SmoothScroll({ duration: 800 }); }
+      function s5_scrollitload() {s5_scrollit();}
+      window.setTimeout(s5_scrollitload,400);
+    </script>
+    <div id="s5_scrolltopvar">
+      <a href="#s5_scrolltotop" class="s5_scrolltotop"></a>
+    </div>
+  </div>
+  <script type="text/javascript">
+    window.addEvent('domready',function(){
+      $$('.s5mb').each(function(z,i){if(!$(z).getAttribute('rel'))$(z).setAttribute('rel','[me]');});
+      });
+    var s5mbox = {};
+    window.addEvent('domready', function() {
+    window.s5mbox = new multiBox({
+      mbClass: '.s5mb',//class you need to add links that you want to trigger multiBox with (remember and update CSS files)
+      container: $(document.body),//where to inject multiBox
+      path: 'https://www.investmentprotectionbureau.org/templates/prestige_academy/js/multibox/',//path to mp3player and flvplayer etc
+      useOverlay: true,//detect overlay setting
+      maxSize: {w:600, h:400},//max dimensions (width,height) - set to null to disable resizing
+      movieSize: {w:400, h:300},
+      addDownload: false,//do you want the files to be downloadable?
+      descClassName: 's5_multibox',//the class name of the description divs
+      pathToDownloadScript: 'https://www.investmentprotectionbureau.org/templates/prestige_academy/js/multibox/forceDownload.asp',//if above is true, specify path to download script (classicASP and ASP.NET versions included)
+      addRollover: true,//add rollover fade to each multibox link
+      addOverlayIcon: false,//adds overlay icons to images within multibox links
+      addChain: false,//cycle through all images fading them out then in
+      recalcTop: true,//subtract the height of controls panel from top position
+      addTips: true,//adds MooTools built in 'Tips' class to each element (see: http://mootools.net/docs/Plugins/Tips)
+      autoOpen: 0//to auto open a multiBox element on page load change to (1, 2, or 3 etc)
+    });
 
-<!-- Fixed Tabs -->	
-
-<!-- Drop Down -->	
-
-<!-- Body Padding Div Used For Responsive Spacing -->		
-<div id="s5_body_padding">
-
-<div id="s5_top_bar_bg"></div>
-
-	<!-- Header -->			
-		<div id="s5_header_area1">		
-		<div id="s5_header_area2">	
-		<div id="s5_header_area_inner" class="s5_wrap">					
-			<div id="s5_header_wrap">
-			<div id="s5_header_wrap_inner">
-			
-				<div id="s5_logo_wrap">
-											<img alt="logo" src="http://investmentprotectionbureau.org/templates/prestige_academy/images/s5_logo.png" id="s5_logo" onclick="window.document.location.href='http://investmentprotectionbureau.org/'" />
-									</div>
-				
-				<div id="s5_menu_banner_wrap">
-											
-						
-									</div>
-				
-				<div style="clear:both; height:0px"></div>	
-				
-			</div>
-			</div>
-		</div>
-		</div>
-		</div>
-	<!-- End Header -->	
-	
-		<div id="s5_bars_wrap">
-	
-				<div id="s5_social_search_bar" class="s5_wrap">
-		<div id="s5_social_search_bar_inner">
-							<div id="s5_facebook" onclick="window.open('javascript:;')"></div>
-				
-							<div id="s5_google" onclick="window.open('javascript:;')"></div>
-				
-							<div id="s5_twitter" onclick="window.open('javascript:;')"></div>
-										<div id="s5_rss" onclick="window.open('javascript:;')"></div>
-													
-				<div id="s5_loginreg">	
-						<div id="s5_logregtm">
-							
-								
-																		
-																
-															
-									<div id="s5_login" class="s5box_login">
-										<ul class="s5boxmenu">
-											<li>
-												  <% if current_adviser_user %>
-                    <%= link_to 'Logout', destroy_adviser_user_session_path, :method => :delete %>
-                  <% else %>
-                    <%= link_to 'Login', new_adviser_user_session_path %>
-                  <% end %>											</li>
-										</ul>
-									</div>
-								
-																
-						</div>
-				</div>
-					<div style="clear:both; height:0px"></div>	
-		</div>
-		</div>
-				
-			
-	<div style="clear:both; height:0px"></div>
-	</div>
-		
-	<!-- Top Row1 -->	
-					<div id="s5_top_row1_area1">
-			<div id="s5_top_row1_area2">
-			<div id="s5_top_row1_area_inner" class="s5_wrap">
-
-				<div id="s5_top_row1_wrap">
-					<div id="s5_top_row1">
-					<div id="s5_top_row1_inner">
-					
-													<div id="s5_pos_top_row1_1" class="s5_float_left" style="width:100%">
-									
-					
-						
-				
-				
-		<div class="module_round_box_outer">
-		
-				<%= yield %>
-		
-		</div>
-
-	
-							</div>
-												
-												
-												
-												
-												
-												
-						<div style="clear:both; height:0px"></div>
-
-					</div>
-					</div>
-				</div>
-
-		</div>
-		</div>
-		</div>
-			<!-- End Top Row1 -->	
-		
-		
-		
-	<!-- Top Row2 -->	
-			<!-- End Top Row2 -->
-	
-	
-	
-	<!-- Top Row3 -->	
-			<!-- End Top Row3 -->	
-		
-		
-		
-
-	
-	
-	
-	<!-- Footer Area -->
-		<div id="s5_footer_area1">
-		<div id="s5_footer_area2">
-		<div id="s5_footer_area_inner" class="s5_wrap">
-		<div id="s5_footer_area_inner2">
-		
-							<div id="s5_footer">
-					<span class="footerc">
-Copyright &copy  2005 - 2013.  Investment Protection Bureau.
-Designed by Elite Web Consulting. <a href="http://www.elitewebconsulting.com/" title="VisitElitewebconsulting.com " target="blank" class="footerc">Website Design</a>
-</span>
-				</div>
-						
-							<div id="s5_bottom_menu_wrap">
-							<div class="moduletable">
-			
-<ul class="menu">
-<li class="item-208"><a href="http://investmentprotectionbureau.org/index.php/en/" >Home</a></li><li class="item-209"><a href="http://investmentprotectionbureau.org/index.php/en/about" >About Us</a></li><li class="item-211"><a href="http://investmentprotectionbureau.org/index.php/en/new" >News</a></li><li class="item-212"><a href="http://investmentprotectionbureau.org/index.php/en/featured" >Featured</a></li></ul>
-		</div>
-			<div class="moduletable-s5_box">
-			
-<script type="text/javascript" src="http://investmentprotectionbureau.org/modules/mod_s5_box/js/s5_box_hide_div.js"></script>
-
-
-  
-<div class="s5boxhidden"><div id="s5box_register">
-	
-					
-						
-				
-				
-		<div class="module_round_box_outer">
-		
-				
-		<div class="module_round_box">
-
-				<div class="s5_module_box_1">
-
-				</div>
-
-			
-		</div>
-		
-		</div>
-
-	</div></div>
-	
-	
-		</div>
-	
-				</div>	
-						<div style="clear:both; height:0px"></div>
-			
-		</div>
-		</div>
-		</div>
-		</div>
-	<!-- End Footer Area -->
-	
-	
-	
-</div>
-<!-- End Body Padding -->
-
-<!-- Bottom Vertex Calls -->
-	<!-- Page scroll, tooltips, multibox, and ie6 warning -->	
-	<!-- Start compression if enabled -->	
-				<div id="s5_scroll_wrap" class="s5_wrap">
-			<script type="text/javascript">
-function s5_scrollit() { new SmoothScroll({ duration: 800 }); }
-function s5_scrollitload() {s5_scrollit();}
-window.setTimeout(s5_scrollitload,400);
-</script>
-<div id="s5_scrolltopvar">
-<a href="#s5_scrolltotop" class="s5_scrolltotop"></a>
-</div>		</div>
-		
-	<script type="text/javascript">
-		window.addEvent('domready',function(){
-			$$('.s5mb').each(function(z,i){if(!$(z).getAttribute('rel'))$(z).setAttribute('rel','[me]');});
-			});
-		var s5mbox = {};
-		
-				
-		        window.addEvent('domready', function() {
-				
-		
-		window.s5mbox = new multiBox({
-			mbClass: '.s5mb',//class you need to add links that you want to trigger multiBox with (remember and update CSS files)
-			container: $(document.body),//where to inject multiBox
-			path: 'http://investmentprotectionbureau.org/templates/prestige_academy/js/multibox/',//path to mp3player and flvplayer etc
-			useOverlay: true,//detect overlay setting
-			maxSize: {w:600, h:400},//max dimensions (width,height) - set to null to disable resizing
-			movieSize: {w:400, h:300},
-			addDownload: false,//do you want the files to be downloadable?
-			descClassName: 's5_multibox',//the class name of the description divs
-			pathToDownloadScript: 'http://investmentprotectionbureau.org/templates/prestige_academy/js/multibox/forceDownload.asp',//if above is true, specify path to download script (classicASP and ASP.NET versions included)
-			addRollover: true,//add rollover fade to each multibox link
-			addOverlayIcon: false,//adds overlay icons to images within multibox links
-			addChain: false,//cycle through all images fading them out then in
-			recalcTop: true,//subtract the height of controls panel from top position
-			addTips: true,//adds MooTools built in 'Tips' class to each element (see: http://mootools.net/docs/Plugins/Tips)
-			autoOpen: 0//to auto open a multiBox element on page load change to (1, 2, or 3 etc)
-		});
-
-		});
-						Eventx.onResizend(function(){		
-				s5mbox.resize(); 
-			});
-						
-	</script>
-
-
-			
-<script type="text/javascript">//<![CDATA[
-	var s5_resize_columns = "all";
-	var s5_resize_columns_delay = "400";
-	var s5_resize_columns_small_tablets = "default";
-//]]></script>
-<script type="text/javascript" language="javascript" src="http://investmentprotectionbureau.org/templates/prestige_academy/js/s5_columns_equalizer.js"></script>	
-<!-- Additional scripts to load just before closing body tag -->
-	
-<!-- Info Slide script - JS and CSS called in header -->
-		<script type='text/javascript'>
-	$$('.s5_is_slide').each(function(item,index){item.wrapInner(new Element('div',{'class':'s5_is_display'}));});  
-	var options = {wrapperId:"s5_body"};
-	new Slidex(options);
-	</script>
-		
-<!-- File compression. Needs to be called last on this file -->	
-		
-<!-- Responsive Bottom Mobile Bar -->
-	<!-- Call bottom bar for mobile devices if layout is responsive -->	
-	<div id="s5_responsive_mobile_bottom_bar_outer" style="display:none">
-	<div id="s5_responsive_mobile_bottom_bar" class="s5_responsive_mobile_bar_light">
-		<!-- Call mobile links if links are enabled and cookie is currently set to mobile -->	
-					<div id="s5_responsive_switch_mobile">
-				<a id="s5_responsive_switch" href="/?s5_responsive_switch_investmentprotectionbureauorg=0">Desktop Version</a>
-			</div>
-		
-					<div id="s5_responsive_mobile_scroll">
-				<a href="#s5_scrolltotop" class="s5_scrolltotop"></a>
-			</div>
-				<div style="clear:both;height:0px"></div>
-	</div>
-	</div>
-
-<!-- Call bottom bar for all devices if user has chosen to see desktop version -->	
-	
-<div id="s5_bottom_bar_bg"></div>
-
-
-
-<!-- HelpOnClick --><script type="text/javascript" src="//traffic4.helponclick.com/assist?lang=en&a=518acafff5184df6a2490a61a2d1033f&mode=widget&widget=r"></script><div style="display:none"><a href="http://www.helponclick.com">Live Chat</a></div><!-- /HelpOnClick -->
-</div>
+    });
+            Eventx.onResizend(function(){
+        s5mbox.resize();
+      });
+  </script>
+  <!-- Additional scripts to load just before closing body tag -->
+  <script type="text/javascript" src="/assets/maket/wthvideo.js"></script>
+  <!-- Info Slide script - JS and CSS called in header -->
+  <script type='text/javascript'>
+    $$('.s5_is_slide').each(function(item,index){item.wrapInner(new Element('div',{'class':'s5_is_display'}));});
+    var options = {wrapperId:"s5_body"};
+    new Slidex(options);
+  </script>
+  <!-- File compression. Needs to be called last on this file -->
+  <!-- Responsive Bottom Mobile Bar -->
+  <!-- Call bottom bar for mobile devices if layout is responsive -->
+  <div id="s5_responsive_mobile_bottom_bar_outer" style="display:none">
+    <div id="s5_responsive_mobile_bottom_bar" class="s5_responsive_mobile_bar_light">
+    <!-- Call mobile links if links are enabled and cookie is currently set to mobile -->
+      <div id="s5_responsive_switch_mobile">
+        <a id="s5_responsive_switch" href="/?s5_responsive_switch_swwwinvestmentprotectionbureauorg=0">Desktop Version</a>
+      </div>
+      <div id="s5_responsive_mobile_scroll">
+        <a href="#s5_scrolltotop" class="s5_scrolltotop"></a>
+      </div>
+      <div style="clear:both;height:0px"></div>
+    </div>
+  </div>
+  <!-- Call bottom bar for all devices if user has chosen to see desktop version -->
+  <div id="s5_bottom_bar_bg"></div>
+  <!-- HelpOnClick -->
+  <script type="text/javascript" src="//traffic4.helponclick.com/assist?lang=en&a=518acafff5184df6a2490a61a2d1033f&mode=widget&widget=r"></script>
+  <div style="display:none"><a href="http://www.helponclick.com">Live Chat</a></div>
+  <!-- /HelpOnClick -->
 </body>
 </html>

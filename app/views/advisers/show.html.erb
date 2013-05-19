@@ -2,7 +2,7 @@
   <div id='content'>
     <div class='avator' style="float:left;width:28%">
       <%= image_tag @adviser.avator, :style=> 'width:320px;height:auto;border:3px solid #e8c869;margin-right:10px' %>
-    </div> 
+    </div>
     <div class='info1' style="float:right;width:70%">
       <p><b>Name: </b><%= @adviser.name %></p>
       <p><b>Address: </b><%= @adviser.address %></p>
@@ -13,21 +13,26 @@
       <p><b>Phone: </b><%= @adviser.phone %></p>
       <% end %>
       <% if @adviser.url.blank? == false %>
-      <p><b>Url: </b><%= @adviser.url %></p>
+        <p><b>Url: </b><%= @adviser.url %></p>
       <% end %>
       <% if @adviser.url1.blank? == false %>
-      <p><b>Url: </b><%= @adviser.url1 %></p>
+        <p><b>Url: </b><%= @adviser.url1 %></p>
       <% end %>
-      <p><b>National Rating: </b><%= @adviser.rating.name if @adviser.rating %></p>
+        <p><b>National Rating: </b><%= @adviser.rating.name if @adviser.rating %></p>
       <% if @adviser.email.blank? == false %>
-      <p><b>Email: </b><%= @adviser.email %></p>
+        <p><b>Email: </b><%= @adviser.email %></p>
       <% end %>
-
       <p><b>Bio: </b><br><div style='width:600px'><%= @adviser.bio %></div></p>
       <% if @owner %>
-      <p><b>Plan: </b><%= @adviser.plan %></p><br><p>
-      <input type=button value="Edit profile" onclick='document.location="<%= edit_adviser_path(@adviser) %>"'>
+      <p><b>Plan: </b><%= @adviser.plan %></p><p>
+      <% if @adviser.blog_url.presence %>
+        <p><%= link_to 'Go to blog' , url_with_protocol(@adviser.blog_url), :target => '_blank' %></p>
       <% end %>
+      <p>
+        <input type=button value="Edit profile" onclick='document.location="<%= edit_adviser_path(@adviser) %>"'>
+      </p>
+      <% end %>
+
       <% if @owner == false %>
       <% if flash[:notice].blank? %>
       <input type='button' value="Contact" onclick='$("#contact_form").toggle()'>

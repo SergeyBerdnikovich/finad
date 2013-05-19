@@ -107,6 +107,10 @@
             <td><%= f.text_field :url %></td>
           </tr>
           <tr>
+            <td><%= f.label :blog_url %></td>
+            <td><%= f.text_field :blog_url %></td>
+          </tr>
+          <tr>
             <%= f.fields_for :gallery do |ff| %>
               <div>
                 <td> <br><%= ff.label :photo %></td>

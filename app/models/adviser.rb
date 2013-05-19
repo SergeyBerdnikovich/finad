@@ -4,7 +4,9 @@ class Adviser < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
 
-  attr_accessible :featured, :address, :city, :name, :phone, :rating_id, :state, :url, :zip, :adviser_user_id, :gallery_attributes, :plan
+  attr_accessible :featured, :address, :city, :name, :phone, :rating_id,
+                  :state, :url, :zip, :adviser_user_id, :gallery_attributes,
+                  :plan, :blog_url
 
   paginates_per 15
 

@@ -13,6 +13,20 @@
 .side_nav_box {
   margin-left: 30px;
 }
+.custom_button {
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 1px solid #DFDFDF;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1) inset;
+  color: #424242 !important;
+  font-size: 0.9em;
+  padding: 6px 11px;
+  transition: all 400ms ease-out 0s;
+}
+.custom_button:hover {
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  transition: all 400ms ease-in 0s;
+}
 </style>
   <div  style='float:left;width:30%'>
   <div id="left_colom">
@@ -70,6 +84,7 @@
       <p>
         <input type="hidden" name="id" value="6058732" />
         <%= f.submit %>
+        <%= link_to 'Confirm', users_path(@user), :class => 'custom_button' %>
         <a id='confirm' href='/users/<%= @user.id %>'>Confirm</a>
       </p>
     <% end %>
@@ -85,3 +100,4 @@
   </div>
 </div>
 </div>
+<div style='margin-bottom:30px; clear:both;'></div>

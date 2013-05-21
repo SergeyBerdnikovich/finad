@@ -1,5 +1,5 @@
 class AdvisersController < ApplicationController
- 
+
   def index
     if request.referer.blank? == false
       if request.referer.index("investmentprotectionbureau.org") != nil
@@ -49,13 +49,13 @@ end
 
   def show
     @adviser = Adviser.find(params[:id])
-  
+
   if @adviser.adviser_user
         @adviser.email = @adviser.adviser_user.email
       end
     @owner = check_adviser_user
     if @owner == false
-        @adviser.bio = "To request a backround check on this advisor please use the contact button below or for immediate assistance call 1-888-735-9553" if @adviser.bio == nil    
+        @adviser.bio = "To request a backround check on this advisor please use the contact button below or for immediate assistance call 1-888-735-9553" if @adviser.bio == nil
     end
     @user_hashstr = User.find(session[:user_id]).try(:hashstr) if session[:user_id]
     @user = User.find_by_id_and_hashstr(session[:user_id], @user_hashstr) if   @user_hashstr

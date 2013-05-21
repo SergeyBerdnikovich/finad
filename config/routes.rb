@@ -1,5 +1,8 @@
 Finad::Application.routes.draw do
 
+  resources :counters
+
+
   resources :complaints
 
   get "pages/confirm_email"

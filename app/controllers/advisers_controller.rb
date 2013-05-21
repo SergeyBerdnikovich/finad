@@ -67,15 +67,13 @@ end
 
 
 def edit
-  if @adviser
+  @adviser = Adviser.find(params[:id])
+
   if current_adviser_user && current_adviser_user.id == @adviser.adviser_user.id
     @adviser = Adviser.find(params[:id])
     @adviser.build_gallery unless @adviser.gallery
   else
     redirect_to  new_adviser_user_session_path, notice: 'Authorization failed.'
-  end
-  else
-      redirect_to  new_adviser_user_session_path, notice: 'Please log in.'
   end
 end
 

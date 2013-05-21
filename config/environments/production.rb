@@ -74,14 +74,17 @@ config.action_mailer.raise_delivery_errors = true
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.default_url_options = { :host => "search.investmentprotectionbureau.org" }
 
+
 ActionMailer::Base.smtp_settings = {
-                    :address        => "mail.investmentprotectionbureau.org",
-                    :port           => 25,
+                    :address        => "estate.websitewelcome.com",
+                    :port           => 465,
                     :authentication => :plain,
                     :user_name      => "register@investmentprotectionbureau.org",
                     :password       => "ipbureau",
                     :openssl_verify_mode => 'none'
 }
+
+
 
 
 

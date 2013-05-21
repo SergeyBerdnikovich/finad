@@ -25,5 +25,14 @@ class UserMailer < ActionMailer::Base
 	    mail(:to => @complaint.email, :subject => "Your case is registered ##{@complaint.id}")
 	end
 
+	def send_verification_confirm_to_user(verification)
+		@verification = verification
+		mail(:to => verification.email, :subject => "New verification №#{@verification.id} from ipbureauusa@gmail.com ")
+	end
+
+	def send_verification_confirm_to_admin(verification)
+		@verification = verification
+		mail(:to => "ipbureauusa@gmail.com", :subject => "New verification №#{@verification.id} from #{@verification.email} ")
+	end
 end
 

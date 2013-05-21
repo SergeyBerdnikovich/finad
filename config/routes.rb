@@ -1,5 +1,8 @@
 Finad::Application.routes.draw do
 
+  match "verifications/confirm" => "verifications#confirm"
+  resources :verifications, :only => [:new, :create]
+
   resources :counters
 
 

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @verification.name %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @verification.phone %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @verification.email %>
+</p>
+
+<p>
+  <b>Adviser:</b>
+  <%= @verification.adviser_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @verification.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_verification_path(@verification) %> |
+<%= link_to 'Back', verifications_path %>

@@ -1,4 +1,3 @@
-
   <div id='content'>
     <div class='avator' style="float:left;width:28%">
       <%= image_tag @adviser.avator, :style=> 'width:320px;height:auto;border:3px solid #e8c869;margin-right:10px' %>
@@ -41,6 +40,7 @@
       <% else %>
       <input type='button' style='margin-left:30px' value="File A Complaint" onclick='document.location.href="<%=  new_complaint_path(:adviser_name => @adviser.name, :adviser_phone => @adviser.phone ) %>"'>
       <% end %>
+      <%= link_to ' Verify Your IDentity', new_verification_path, :class => 'custom_button' %>
       <% if flash[:alert].blank? %>
       <div style='display:none; background-color:white;width:600px;height:300px; padding: 10px 10px 10px 10px; margin-bottom:30px' id=contact_form >
       <% else %>

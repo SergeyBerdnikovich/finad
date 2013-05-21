@@ -1,0 +1,28 @@
+<style>
+body
+{
+  width:150px;
+  height: 20px;
+  background-color: #343434;
+  margin: 0px 0px 0px 0px;
+}
+
+.digit
+{
+  font-size:20px;
+  background-image: url('/assets/counter.gif');
+  color: #cccccc;
+  font-weight:bold;
+  width: 40px;
+  height: 62px;
+  margin: 2px -5px 0px 0px;
+  padding: 6px 6px 6px 6px;
+}
+
+</style>
+<link href='http://fonts.googleapis.com/css?family=Gravitas+One' rel='stylesheet' type='text/css'>
+<body>
+<% @counter.count.to_s.split('').each do |char| %>
+<span class=digit><%= char %></span>
+<% end %>
+</body>

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+	
   protect_from_forgery
   
   # Override build_footer method in ActiveAdmin::Views::Pages

@@ -14,6 +14,7 @@ gem 'roo'
 gem 'kaminari'
 gem 'devise'
 gem 'paperclip'
+gem 'impressionist'
 
 # Gems used only for assets and not required
 # in production environments by default.

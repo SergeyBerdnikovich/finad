@@ -35,7 +35,7 @@
 
       <% if @owner == false %>
       <% if flash[:notice].blank? %>
-      <input type='button' value="Contact" onclick='$("#contact_form").toggle()'>
+      <input type='button' value="Contact" onclick='jQuery("#contact_form").toggle()'>
       <% if @user %>
       <input type='button' style='margin-left:30px' value="File A Complaint" onclick='document.location.href="<%=  new_complaint_path(:adviser_name => @adviser.name, :adviser_phone => @adviser.phone, :name => @user.first_name + " " + @user.last_name , :email => @user.email, :phone => @user.phone ) %>"'>
       <% else %>

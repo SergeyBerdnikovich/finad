@@ -34,16 +34,16 @@ end
   end
 
   def check_adviser
-    name, zip = params[:name], params[:zip]
-    adviser = Adviser.find_by_name_and_zip(name, zip)
-    if adviser && adviser.adviser_user_id.blank? && adviser.update_attribute(:adviser_user_id, current_adviser_user.id)
-      redirect_to adviser_path(adviser), :notice => 'We already have found your profile'
-    elsif adviser && adviser.adviser_user_id
-      redirect_to advisers_find_adviser_path, :notice => 'Advoser with the same name has been already registered. Please contact us to help solve you this situation.'
-    else
-      adviser = current_adviser_user.adviser.create!(:verified => true)
-      redirect_to edit_adviser_path(adviser), :notice => 'We could not find your profile and create a new'
-    end
+    firstname, lastname = params[:firstname], params[:lastname]
+    @advisers = Adviser.where("name RLIKE ?",'.*(#{firstname}|#{lastname}).*(#{lastnam}|#{firstname}).*') 
+   # if adviser && adviser.adviser_user_id.blank? && adviser.update_attribute(:adviser_user_id, current_adviser_user.id)
+   #   redirect_to adviser_path(adviser), :notice => 'We already have found your profile'
+   # elsif adviser && adviser.adviser_user_id
+   #   redirect_to advisers_find_adviser_path, :notice => 'Advoser with the same name has been already registered. Please contact us to help solve you this situation.'
+   # else
+   #   adviser = current_adviser_user.adviser.create!(:verified => true)
+   #   redirect_to edit_adviser_path(adviser), :notice => 'We could not find your profile and create a new'
+   # end
   end
 
 def check_adviser_user

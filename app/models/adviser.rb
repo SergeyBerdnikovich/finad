@@ -40,8 +40,14 @@ class Adviser < ActiveRecord::Base
     order("advisers.#{sort_type} #{sortable}")
   end
 
-  def avator
+
+
+  def avatar
     self.gallery ? self.gallery.photo.url(:for_gallery) : "/assets/no_avatar.jpg"
+  end
+
+  def avator
+    avatar()
   end
 
   def set_rating

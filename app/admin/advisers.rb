@@ -15,6 +15,7 @@ ActiveAdmin.register Adviser do
       f.input :url
       f.input :rating
       f.input :blog_url
+      f.input :verified
     end
     f.inputs "Photo",
       :for => [:gallery,
@@ -43,6 +44,7 @@ ActiveAdmin.register Adviser do
       row :url
       row :rating
       row :blog_url
+      row :verified
       row :created_at
       row :updated_at
       row :photo do |adviser|
@@ -67,6 +69,7 @@ ActiveAdmin.register Adviser do
     column :url
     column :rating
     column :blog_url
+    column :verified
     column :created_at
     column :updated_at
 

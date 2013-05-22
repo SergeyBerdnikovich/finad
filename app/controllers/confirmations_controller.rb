@@ -37,6 +37,7 @@ class ConfirmationsController < DeviseController
   # The path used after confirmation.
   def after_confirmation_path_for(resource_name, resource)
     # after_sign_in_path_for(resource)
-    edit_adviser_path(Adviser.find_by_adviser_user_id(current_adviser_user))
+    # edit_adviser_path(Adviser.find_by_adviser_user_id(current_adviser_user))
+    advisers_find_adviser_path
   end
 end

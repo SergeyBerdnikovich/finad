@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130521154853) do
+ActiveRecord::Schema.define(:version => 20130522135325) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(:version => 20130521154853) do
     t.integer  "zip"
     t.string   "phone"
     t.string   "url"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "adviser_user_id"
     t.string   "plan"
     t.text     "bio"
@@ -86,8 +86,10 @@ ActiveRecord::Schema.define(:version => 20130521154853) do
     t.string   "email"
     t.string   "slug"
     t.boolean  "featured"
+    t.string   "adviserscol",     :limit => 45
     t.integer  "rating_id"
     t.string   "blog_url"
+    t.boolean  "verified"
   end
 
   add_index "advisers", ["address"], :name => "index_advisers_on_address"
@@ -181,9 +183,9 @@ ActiveRecord::Schema.define(:version => 20130521154853) do
     t.string   "phone"
     t.string   "email"
     t.integer  "adviser_id"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "adviser_user_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end

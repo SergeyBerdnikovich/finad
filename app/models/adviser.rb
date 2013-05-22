@@ -6,7 +6,7 @@ class Adviser < ActiveRecord::Base
 
   attr_accessible :featured, :address, :city, :name, :phone, :rating_id,
                   :state, :url, :zip, :adviser_user_id, :gallery_attributes,
-                  :plan, :blog_url
+                  :plan, :blog_url, :verified
 
   paginates_per 15
 

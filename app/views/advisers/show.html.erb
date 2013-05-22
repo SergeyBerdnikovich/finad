@@ -24,6 +24,7 @@
       <p><b>Bio: </b><br><div style='width:600px'><%= @adviser.bio %></div></p>
       <% if @owner %>
       <p><b>Plan: </b><%= @adviser.plan %></p><p>
+      <%= link_to ' Verify Your IDentity', new_verification_path(:adviser_id => @adviser.id), :class => 'custom_button' %>
       <% if @adviser.blog_url.presence %>
         <p><%= link_to 'Go to blog' , url_with_protocol(@adviser.blog_url), :target => '_blank' %></p>
       <% end %>
@@ -40,7 +41,7 @@
       <% else %>
       <input type='button' style='margin-left:30px' value="File A Complaint" onclick='document.location.href="<%=  new_complaint_path(:adviser_name => @adviser.name, :adviser_phone => @adviser.phone ) %>"'>
       <% end %>
-      <%= link_to ' Verify Your IDentity', new_verification_path, :class => 'custom_button' %>
+      <%= link_to ' Verify Your IDentity', new_verification_path(:adviser_id => @adviser.id), :class => 'custom_button' %>
       <% if flash[:alert].blank? %>
       <div style='display:none; background-color:white;width:600px;height:300px; padding: 10px 10px 10px 10px; margin-bottom:30px' id=contact_form >
       <% else %>

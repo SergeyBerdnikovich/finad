@@ -9,12 +9,14 @@
           <% if i == 4 %>
           </tr><tr bgcolor="#FFFFFF" valign="top">
           <% end %>
-            <td style="padding:5px 5px 5px 5px;"><a target='_blank' href='<%= adviser_path(adv) %>'><table><tr><td>
-              <img style='max-width:135px; max-height:110px'src='<%= adv.avator %>'></a></td><td><%=truncate( adv.name.split(' ').map(&:capitalize).join(' ') , :length => 17) %><br>
+            <td style="padding:5px 5px 5px 5px;width:260px;height:80px"><a target='_blank' href='<%= adviser_path(adv) %>'><table><tr><td>
+              <img style='max-width:135px; max-height:110px'src='<%= adv.avator %>'></a></td><td><b style='font-size:95%'><%=truncate( adv.name.upcase  , :length => 30) %></b><br>
               City: <%= adv.city.split(' ').map(&:capitalize).join(' ') %>, <%= adv.state %><br>
               <% if adv.phone.blank? == false %>
-              T:<%= adv.phone %><br>
+              T: <%= adv.phone %><br>
               <% end %>
+   
+
             </td></tr></table>
             </td>
 

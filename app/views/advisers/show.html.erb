@@ -1,4 +1,4 @@
-  <div id='content'>
+  <div id='content' style='min-height:300px'>
     <div class='avator' style="float:left;width:28%">
       <%= image_tag @adviser.avator, :style=> 'width:320px;height:auto;border:3px solid #e8c869;margin-right:10px' %>
     </div>
@@ -12,10 +12,10 @@
       <p><b>Phone: </b><%= @adviser.phone %></p>
       <% end %>
       <% if @adviser.url.blank? == false %>
-        <p><b>Url: </b><%= @adviser.url %></p>
+        <p><b>Url: </b><%= link_to @adviser.url, url_with_protocol(@adviser.url) %></p>
       <% end %>
       <% if @adviser.url1.blank? == false %>
-        <p><b>Url: </b><%= @adviser.url1 %></p>
+        <p><b>Url: </b><%= link_to @adviser.url1, url_with_protocol(@adviser.url1) %></p>
       <% end %>
         <p><b>National Rating: </b><%= @adviser.rating.name if @adviser.rating %></p>
       <% if @adviser.email.blank? == false %>

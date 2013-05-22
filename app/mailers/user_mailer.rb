@@ -27,7 +27,7 @@ class UserMailer < ActionMailer::Base
 
 	def send_verification_confirm_to_user(verification)
 		@verification = verification
-		mail(:to => verification.email, :subject => "New verification №#{@verification.id} from ipbureauusa@gmail.com ")
+		mail(:to => verification.email, :subject => "New verification №#{@verification.id} from investmentprotectionbureau.org ")
 	end
 
 	def send_verification_confirm_to_admin(verification)

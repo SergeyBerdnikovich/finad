@@ -11,6 +11,9 @@ class CountersController < ApplicationController
     else
       @counter = @counter.first
       @counter.update_attribute("count", @counter.count + 1)
+      @count = @counter.count.to_s
+      @count = "0" + @count if @count.size < 7
+
     end
 
     respond_to do |format|

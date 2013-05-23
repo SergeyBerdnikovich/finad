@@ -1,5 +1,5 @@
 class Adviser < ActiveRecord::Base
-
+  paginate_alphabetically :by => :name
   extend FriendlyId
   friendly_id :name, use: :slugged
 
@@ -9,6 +9,7 @@ class Adviser < ActiveRecord::Base
                   :plan, :blog_url, :verified
 
   paginates_per 15
+
 
   has_one :gallery, :dependent => :destroy
   belongs_to :adviser_user

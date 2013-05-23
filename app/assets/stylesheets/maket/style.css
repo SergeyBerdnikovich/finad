@@ -3,11 +3,11 @@
 
 
 body
-{ 
+{
 background-image:url('images/IPB-watermark-large.png');
 background-repeat:no-repeat;
 background-attachment:fixed;
-background-position:center; 
+background-position:center;
 }
 
 
@@ -947,4 +947,14 @@ body.fb_hidden {
 }
 .gmnoscreen {
     display: none;
+}
+
+#find_aviser {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  background: none repeat scroll 0 0 #FFFFFF;
+  padding: 20px;
+  width: 40%;
+}
+#find_aviser input {
+  margin: 5px 10px;
 }

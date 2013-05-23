@@ -1,15 +1,20 @@
-<%= form_tag(advisers_check_adviser_path) do %>
- So your a Financial Advisor? First we need to search to see if you are already in our national database. Let's get started by putting your name in below:
- <p>
-  <table>
-    <tr>
-      <td><%= label_tag :firstname %> </td>
-      <td> <%= text_field_tag :firstname %></td>
-    </tr>
-    <tr>
-      <td><%= label_tag :lastname %> </td>
-      <td> <%= text_field_tag :lastname %></td>
-    </tr>
-  </table>
-  <p><%= submit_tag 'Check' %></p>
-<% end %>
+<div id='find_aviser'>
+  <%= form_tag(advisers_check_adviser_path) do %>
+    <p>So your a Financial Advisor? First we need to search<br />
+    to see if you are already in our national database.<br />
+    Let's get started by putting your name in below:</p>
+
+   <p>
+    <table>
+      <tr>
+        <td><%= label_tag :firstname %> </td>
+        <td> <%= text_field_tag :firstname %></td>
+      </tr>
+      <tr>
+        <td><%= label_tag :lastname %> </td>
+        <td> <%= text_field_tag :lastname %></td>
+      </tr>
+    </table>
+    <p><%= submit_tag 'Check' %></p>
+  <% end %>
+</div>

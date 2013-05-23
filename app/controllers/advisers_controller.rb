@@ -66,6 +66,12 @@ end
     end
   end
 
+  def alphabet_advisers
+    #params[:char] ||= 'A'
+    #@advisers = Adviser.where("advisers.name LIKE ?", "#{params[:char]}%")
+    @advisers = Adviser.alphabetical_group(params[:letter])
+  end
+
 def check_adviser_user
   if @adviser != nil
   if @adviser.adviser_user != nil

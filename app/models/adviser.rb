@@ -1,5 +1,5 @@
 class Adviser < ActiveRecord::Base
-  paginate_alphabetically :by => :name
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 

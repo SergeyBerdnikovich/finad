@@ -15,7 +15,6 @@ gem 'kaminari'
 gem 'devise'
 gem 'paperclip'
 gem 'impressionist'
-gem 'paginate_alphabetically', git: 'git://github.com/edendevelopment/paginate_alphabetically.git', branch: 'bundler'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

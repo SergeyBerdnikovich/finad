@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible :city, :email, :first_name, :info, :last_name, :phone, :portfolio, :service, :state, :zip, :phone1, :phone2, :phone3
-  paginate_alphabetically :by => :email
+
   def phone1
     @phone1
   end

@@ -22,7 +22,7 @@ Finad::Application.routes.draw do
   match "advisers/find_adviser" => "advisers#find_adviser"
   match "advisers/check_adviser" => "advisers#check_adviser"
   match "advisers/set_adviser/:id" => "advisers#set_adviser", :as => :set_adviser
-  match "advisers/alphabet_advisers" => "advisers#alphabet_advisers", :as => :alphabet_advisers
+  match "advisers/alphabet" => "advisers#alphabet", :as => :alphabet_advisers
 
   root :to => 'advisers#index'
   devise_for :admin_users, ActiveAdmin::Devise.config

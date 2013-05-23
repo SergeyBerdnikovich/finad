@@ -1,0 +1,14 @@
+<div>
+  <% ('A'..'Z').each do |char| %>
+     <% if char == params[:char] %>
+        <%= link_to char, :action => 'alphabet', :char => char, :class => 'selected_char' %>
+     <% else %>
+        <%= link_to char, :action => 'alphabet', :char => char %>
+     <% end %>
+  <% end %>
+</div>
+<div style='width:350px;height:400px;overflow-y:scroll;'>
+  <% @advisers.each do |adviser| %>
+    <p><%= adviser.name %></p>
+  <% end %>
+</div>

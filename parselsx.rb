@@ -49,7 +49,7 @@ xls.each{|ar|
 		req = "SELECT * FROM advisers WHERE name = '#{name}' AND zip = '#{zip}'"
 		check = $sql.query(req)	
 		if check.to_a.size == 0
-			req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,stars) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',2)"
+			req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,rating_id) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',3)"
 		else
 #		p check.to_a
 		end
@@ -59,7 +59,7 @@ xls.each{|ar|
 		firsline = false
 	end
 }
-rescue Exceprion => e
+rescue Exception => e
 	p e
 	p e.backtrace
 end
@@ -93,7 +93,7 @@ xls.each{|ar|
 		req = "SELECT * FROM advisers WHERE name = '#{name}' AND zip = '#{zip}'"
 		check = $sql.query(req)	
 		if check.to_a.size == 0
-			req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,stars) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',2)"
+			req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,rating_id) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',3)"
 		else
 #		p check.to_a
 		end
@@ -137,7 +137,7 @@ xls.each{|ar|
 		req = "SELECT * FROM advisers WHERE name = '#{name}' AND zip = '#{zip}'"
 		check = $sql.query(req)	
 		if check.to_a.size == 0
-			req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,stars) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',2)"
+			req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,rating_id) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',3)"
 		else
 #		p check.to_a
 		end
@@ -182,7 +182,7 @@ xls.each{|ar|
 		req = "SELECT * FROM advisers WHERE name = '#{name}' AND zip = '#{zip}'"
 		check = $sql.query(req)	
 		if check.to_a.size == 0
-			req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,stars) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',2)"
+			req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,rating_id) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',3)"
 		$sql.query(req)
 		else
 #		p check.to_a
@@ -227,7 +227,7 @@ xls.each{|ar|
 		req = "SELECT * FROM advisers WHERE name = '#{name}' AND zip = '#{zip}'"
 		check = $sql.query(req)	
 		if check.to_a.size == 0
-			req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,stars) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',2)"
+			req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,rating_id) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',3)"
 		else
 #		p check.to_a
 		end
@@ -272,7 +272,7 @@ xls.each{|ar|
 		req = "SELECT * FROM advisers WHERE name = '#{name}' AND zip = '#{zip}'"
 		check = $sql.query(req)	
 		if check.to_a.size == 0
-			req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,stars) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',2)"
+			req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,rating_id) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',3)"
 		else
 #		p check.to_a
 		end
@@ -320,7 +320,7 @@ xls.each{|ar|
 		req = "SELECT * FROM advisers WHERE name = '#{name}' AND zip = '#{zip}'"
 		check = $sql.query(req)	
 		if check.to_a.size == 0
-			req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,stars) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',2)"
+			req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,rating_id) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',3)"
 		$sql.query(req)
 		else
 #		p check.to_a
@@ -360,7 +360,7 @@ xls.each{|ar|
 		req = "SELECT * FROM advisers WHERE name = '#{name}' AND zip = '#{zip}'"
 		check = $sql.query(req)	
 		if check.to_a.size == 0
-			req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,stars) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',2)"
+			req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,rating_id) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',3)"
 		$sql.query(req)
 		else
 #		p check.to_a
@@ -400,7 +400,7 @@ xls.each{|ar|
 		req = "SELECT * FROM advisers WHERE name = '#{name}' AND zip = '#{zip}'"
 		check = $sql.query(req)	
 		if check.to_a.size == 0
-			req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,stars) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',2)"
+			req = "INSERT INTO advisers (name,address,city,state,zip,phone,url,rating_id) VALUES ('#{name}','#{address}','#{city}','#{state}','#{zip}','#{phone}','#{url}',3)"
 		$sql.query(req)
 		else
 #		p check.to_a

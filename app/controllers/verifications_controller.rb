@@ -1,7 +1,7 @@
 class VerificationsController < InheritedResources::Base
   def new
     adviser_id = params[:adviser_id]
-    @verification = Verification.new(:user_id => current_adviser_user.try(:id), :adviser_id => adviser_id)
+    @verification = Verification.new(:adviser_user_id => current_adviser_user.try(:id), :adviser_id => adviser_id)
   end
 
   def create
@@ -22,6 +22,6 @@ class VerificationsController < InheritedResources::Base
   end
 
   def confirm
-   # @verification = Verification.find(params[:verification_id])
+    @verification = Verification.find(params[:verification_id])
   end
 end

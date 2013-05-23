@@ -1,1 +1,42 @@
-<%= debug @advisers %>
+<% if @advisers.blank? %>
+  <h1>Search doesn't show ant results. Would you like to try another name or create a new account?</h1><br />
+  <div>
+    <%= link_to 'Create New Adviser', set_adviser_path(0, :adviser => 'new'), :class => 'button', :style => 'margin: 50px' %>
+    <%= link_to 'Back', advisers_find_adviser_path, :class => 'button' %>
+  </div>
+<% else %>
+  <% @advisers.each do |adviser| %>
+    <div style='float:left;width:230px'>
+      <%= image_tag adviser.avator, :style => 'width:220px;height:auto;border:3px solid #e8c869;margin-right:10px' %>
+      <table>
+        <tr>
+          <td>Name: </td>
+          <td><%= adviser.name %></td>
+        </tr>
+        <tr style='height:40px;'>
+          <td>Address: </td>
+          <td><%= adviser.address %></td>
+        </tr>
+        <tr>
+          <td>City: </td>
+          <td><%= adviser.city %></td>
+        </tr>
+        <tr>
+          <td>State: </td>
+          <td><%= adviser.state %></td>
+        </tr>
+        <tr>
+          <td>Zip: </td>
+          <td><%= adviser.zip %></td>
+        </tr>
+        <tr>
+          <td>Phone: </td>
+          <td><%= adviser.phone %></td>
+        </tr>
+      </table>
+      <br />
+      <p><%= link_to 'PICK', set_adviser_path(adviser.id), :class => 'button', :style => 'padding: 10px 30px;margin:10px 50px;' %></p>
+    </div>
+  <% end %>
+<% end %>
+<div class='clear'></div>

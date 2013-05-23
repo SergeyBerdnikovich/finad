@@ -5,7 +5,6 @@ Finad::Application.routes.draw do
 
   resources :counters
 
-
   resources :complaints
 
   get "pages/confirm_email"
@@ -22,6 +21,7 @@ Finad::Application.routes.draw do
   match "advisers/register" => "advisers#register"
   match "advisers/find_adviser" => "advisers#find_adviser"
   match "advisers/check_adviser" => "advisers#check_adviser"
+  match "advisers/set_adviser/:id" => "advisers#set_adviser", :as => :set_adviser
 
   root :to => 'advisers#index'
   devise_for :admin_users, ActiveAdmin::Devise.config

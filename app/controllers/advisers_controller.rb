@@ -1,5 +1,5 @@
 class AdvisersController < ApplicationController
-  before_filter :check_current_adviser_user, :only => [:find_adviser, :check_adviser]
+  before_filter :check_current_adviser_user, :only => [:find_adviser, :check_adviser, :set_adviser]
 
   def index
     if request.referer.blank? == false
@@ -34,8 +34,9 @@ end
   end
 
   def check_adviser
+    redirect_to advisers_find_adviser_path if params[:firstname].blank? || params[:lastname].blank?
     firstname, lastname = params[:firstname], params[:lastname]
-    @advisers = Adviser.where("name RLIKE ?",'.*(#{firstname}|#{lastname}).*(#{lastnam}|#{firstname}).*') 
+    @advisers = Adviser.where("name RLIKE ? ",".*(#{firstname}|#{lastname}).*(#{lastname}|#{firstname}).*")
    # if adviser && adviser.adviser_user_id.blank? && adviser.update_attribute(:adviser_user_id, current_adviser_user.id)
    #   redirect_to adviser_path(adviser), :notice => 'We already have found your profile'
    # elsif adviser && adviser.adviser_user_id
@@ -44,6 +45,25 @@ end
    #   adviser = current_adviser_user.adviser.create!(:verified => true)
    #   redirect_to edit_adviser_path(adviser), :notice => 'We could not find your profile and create a new'
    # end
+  end
+
+  def set_adviser
+    if params[:id] == '0' && params[:adviser] == 'new'
+      adviser = current_adviser_user.adviser = Adviser.create!(:verified => true)
+      redirect_to edit_adviser_path(adviser)
+    else
+      adviser = Adviser.find(params[:id])
+      if adviser
+        if adviser.adviser_user_id
+          redirect_to advisers_find_adviser_path, :notice => 'This adviser already has an account ...'
+        else
+          current_adviser_user.adviser = adviser
+          redirect_to new_verification_path(:adviser_id => adviser.id)
+        end
+      else
+        redirect_to advisers_find_adviser_path, :notice => 'Adviser not found...'
+      end
+    end
   end
 
 def check_adviser_user

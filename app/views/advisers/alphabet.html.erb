@@ -9,6 +9,6 @@
 </div>
 <div style='width:350px;height:400px;overflow-y:scroll;'>
   <% @advisers.each do |adviser| %>
-    <p><%= adviser.name %></p>
+    <p><%= link_to adviser.name, adviser_path(adviser) %></p>
   <% end %>
 </div>

@@ -11,7 +11,7 @@ development:
   database: finads
   pool: 5
   username: root
-  password: gfcrfkm
+  password: xgcwahti
 
 test:
   adapter: mysql2
@@ -20,7 +20,7 @@ test:
   database: finads_test
   pool: 5
   username: root
-  password: gfcrfkm
+  password: xgcwahti
 
 production:
   adapter: mysql2
@@ -29,5 +29,5 @@ production:
   database: finads
   pool: 5
   username: root
-  password: gfcrfkm
+  password: xgcwahti
 

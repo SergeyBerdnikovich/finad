@@ -34,5 +34,12 @@ class UserMailer < ActionMailer::Base
 		@verification = verification
 		mail(:to => "ipbureauusa@gmail.com", :subject => "New verification №#{@verification.id} from #{@verification.email} ")
 	end
+
+	def register_notification_to_admin(user)
+		@user = user
+		mail(:to => "dvporg@gmail.com", :subject => "New verification №#{@verification.id} from #{@verification.email} ")
+	end
+
+
 end
 

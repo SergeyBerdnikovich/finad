@@ -1,4 +1,14 @@
+
 ActiveAdmin.setup do |config|
+
+    config.namespace :admin do |admin|
+
+      # This block will edit the default menu
+      admin.build_menu do |menu|
+        menu.add :label => "Settings", :priority => 0
+      end
+
+    end
 
   # == Site Title
   #

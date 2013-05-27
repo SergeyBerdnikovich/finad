@@ -1,4 +1,6 @@
 ActiveAdmin.register Adviser do
+  menu :label => "Advisers Database"
+
   form :html => { :multipart => true } do |f|
     f.inputs "AdviserUser" do
       f.input :adviser_user

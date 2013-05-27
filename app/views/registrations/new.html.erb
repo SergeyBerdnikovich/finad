@@ -1,5 +1,6 @@
 
-  <div id='content'>
+  <div id='content' style='width:25%;float:left'>
+    <div >
     <h2 style='color:red'>Register</h2>
 
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -19,4 +20,8 @@
 
     <%= render "devise/shared/links" %>
   </div>
+  </div>
 </div>
+<div style='width:75%;float:right'>
+    <%= image_tag "registration_image.png", :style => 'width:90%;height:auto' %>
+  </div>

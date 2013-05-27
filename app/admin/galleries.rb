@@ -1,4 +1,5 @@
 ActiveAdmin.register Gallery do
+    menu :parent => "Settings"
   index do
     column :id
     column :photo do |gallery|

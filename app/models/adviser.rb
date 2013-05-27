@@ -14,6 +14,7 @@ class Adviser < ActiveRecord::Base
   has_one :gallery, :dependent => :destroy
   belongs_to :adviser_user
   belongs_to :rating
+  has_one :verification
 
   accepts_nested_attributes_for :gallery,
                                 :allow_destroy => :true,

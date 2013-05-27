@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(:version => 20130522135325) do
     t.integer  "zip"
     t.string   "phone"
     t.string   "url"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "adviser_user_id"
     t.string   "plan"
     t.text     "bio"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(:version => 20130522135325) do
     t.string   "email"
     t.string   "slug"
     t.boolean  "featured"
+    t.string   "adviserscol",     :limit => 45
     t.integer  "rating_id"
     t.string   "blog_url"
     t.boolean  "verified"

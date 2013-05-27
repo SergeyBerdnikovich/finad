@@ -14,9 +14,12 @@ Finad::Application.routes.draw do
   get 'users/email_link'
   resources :users
   match "contact" => "advisers#contact"
+
   match "zip" => "users#zip"
   match "advisers/featured" => "advisers#featured"
   match "advisers/featured2" => "advisers#featured2"
+  match "advisers/contact_form" => "advisers#contact_form", :as => :contact_form
+  match "advisers/contact_question" => "advisers#contact_question", :as => :contact_question
 
   match "advisers/register" => "advisers#register"
   match "advisers/find_adviser" => "advisers#find_adviser"

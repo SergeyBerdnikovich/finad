@@ -40,6 +40,32 @@ class UserMailer < ActionMailer::Base
 		mail(:to => "dvporg@gmail.com", :subject => "New verification №#{@verification.id} from #{@verification.email} ")
 	end
 
+	def send_adviser_info_to_admin(adviser)
+		@adviser = adviser
+		@link = "http://search.investmentprotectionbureau.org/admin/advisers/#{adviser.id}"
+		mail(:to => 'ipbureauusa@gmail.com', :subject => "New adviser is registered, email: #{@adviser.adviser_user.email}")
+	end
 
+	def send_adviser_info_to_user(adviser)
+		@adviser = adviser
+		@link = "http://search.investmentprotectionbureau.org/advisers/#{adviser.id}"
+		mail(:to => @adviser.adviser_user.email, :subject => "New adviser is registered, email: #{@adviser.adviser_user.email}")
+	end
+
+	def approve_adviser(verification)
+		@link = "http://search.investmentprotectionbureau.org/#{verification.adviser.id}"
+		mail(:to => verification.email, :subject => "Your account have been verified, thank you!")
+	end
+
+	def dissapprove_adviser(verification)
+		@link = "http://search.investmentprotectionbureau.org/advisers/contact_form"
+		mail(:to => verification.email, :subject => "Your account has not approved", :host => 'qqqq.dddd.ff')
+	end
+
+	def send_contact_question(user, question)
+		@user = user
+		@question = question
+		mail(:to => "ipbureauusa@gmail.com", :subject => "New question from #{user.email}")
+	end
 end
 

@@ -24,7 +24,7 @@
       <p><b>Bio: </b><br><div style='width:600px'><%= @adviser.bio %></div></p>
       <% if @owner %>
       <p><b>Plan: </b><%= @adviser.plan %></p><p>
-      <% if @adviser.verified.blank? %>
+      <% if @adviser.verified.blank? && @adviser.verification.blank? %>
         <%= link_to ' Verify Your IDentity', new_verification_path(:adviser_id => @adviser.id), :class => 'custom_button' %>
       <% end %>
       <% if @adviser.blog_url.presence %>

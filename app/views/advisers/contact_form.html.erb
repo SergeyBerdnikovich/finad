@@ -1,0 +1,7 @@
+<%= form_tag contact_question_path do %>
+  <p>
+    <%= label_tag :question %><br />
+    <%= text_area_tag :question, '', :size => '70x20' %>
+  </p>
+  <p><%= submit_tag 'Send question' %></p>
+<% end %>

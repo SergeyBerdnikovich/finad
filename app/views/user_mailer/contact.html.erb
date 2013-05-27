@@ -1,4 +1,4 @@
-<h3>Request notification:<br></h3
+<h3>Request notification:<br></h3>
 
 You have got a request from  <b><%= @email %></b> regarding <b><%= @adviser.name %></b>, <%= @adviser.city %>, <%= @adviser.state %> , ZIP: <%= @adviser.zip %>
 <p>
@@ -23,7 +23,7 @@ User wasn't registered or authorized. Email <%= @email %> is the only thing that
 
 
 <p>
-<h3>Requested adviser's data ( <%= link_to "open in new window", "http://search.investmentprotectionbureau.org/" + adviser_path(@adviser) , :target => "_blank" %> ):<br></h3>
+<h3>Requested adviser's data ( <%= link_to "open in new window", "http://search.investmentprotectionbureau.org" + adviser_path(@adviser) , :target => "_blank" %> ):<br></h3>
 
 <%= (@adviser.inspect).to_s.gsub(/,/,"<br>").html_safe %>
 <p>

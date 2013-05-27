@@ -1,5 +1,5 @@
 class AdvisersController < ApplicationController
-  before_filter :check_current_adviser_user, :only => [:find_adviser, :check_adviser, :set_adviser]
+  before_filter :check_current_adviser_user, :only => [:find_adviser, :check_adviser, :set_adviser, :contact_question, :contact_form]
 
   def index
     if request.referer.blank? == false
@@ -37,19 +37,14 @@ end
     redirect_to advisers_find_adviser_path if params[:firstname].blank? || params[:lastname].blank?
     firstname, lastname = params[:firstname], params[:lastname]
     @advisers = Adviser.where("name RLIKE ? ",".*(#{firstname}|#{lastname}).*(#{lastname}|#{firstname}).*")
-   # if adviser && adviser.adviser_user_id.blank? && adviser.update_attribute(:adviser_user_id, current_adviser_user.id)
-   #   redirect_to adviser_path(adviser), :notice => 'We already have found your profile'
-   # elsif adviser && adviser.adviser_user_id
-   #   redirect_to advisers_find_adviser_path, :notice => 'Advoser with the same name has been already registered. Please contact us to help solve you this situation.'
-   # else
-   #   adviser = current_adviser_user.adviser.create!(:verified => true)
-   #   redirect_to edit_adviser_path(adviser), :notice => 'We could not find your profile and create a new'
-   # end
   end
 
   def set_adviser
     if params[:id] == '0' && params[:adviser] == 'new'
       adviser = current_adviser_user.adviser = Adviser.create!(:verified => true)
+      UserMailer.send_adviser_info_to_admin(adviser).deliver
+      UserMailer.send_adviser_info_to_user(adviser).deliver
+      #3
       redirect_to edit_adviser_path(adviser)
     else
       adviser = Adviser.find(params[:id])
@@ -58,6 +53,9 @@ end
           redirect_to advisers_find_adviser_path, :notice => 'This adviser already has an account ...'
         else
           current_adviser_user.adviser = adviser
+          #UserMailer.send_adviser_info_to_admin(adviser).deliver
+          UserMailer.send_adviser_info_to_user(adviser).deliver
+          #3
           redirect_to new_verification_path(:adviser_id => adviser.id)
         end
       else
@@ -72,10 +70,8 @@ end
   end
 
 def check_adviser_user
-  if @adviser != nil
-  if @adviser.adviser_user != nil
+  if @adviser && @adviser.adviser_user
     return true if current_adviser_user && current_adviser_user.id == @adviser.adviser_user.id
-  end
   end
   return false
 end
@@ -122,37 +118,38 @@ def edit
   end
 end
 
+  def contact_form
 
-def contact
-
-  @adviser = Adviser.find(params[:id])
-  if @adviser.adviser_user
-    @adviser.email = @adviser.adviser_user.email
   end
 
-  @owner = check_adviser_user
-  @user_hashstr = User.find(session[:user_id]).try(:hashstr) if session[:user_id]
-  @user = User.find_by_id_and_hashstr(params[:id], @user_hashstr) if   @user_hashstr
-
-  respond_to do |format|
-    ok = false
-    if params[:email] != nil
-      if params[:email].length > 5
-        ok = true
+  def contact_question
+    respond_to do |format|
+      if params[:question].present? && params[:question].length > 5
+        UserMailer.send_contact_question(@user, params[:question]).deliver
+        format.html { redirect_to contact_form_path, notice: 'Request was successfully sent!' }
+      else
+        format.html { redirect_to root_path, alert: 'Please specify correct question!' }
       end
     end
-
-    if ok
-      UserMailer.contact(@adviser, @user, params[:email], params[:comment]).deliver
-      format.html { redirect_to adviser_path(@adviser), notice: 'Request was successfully sent!' }
-
-    else
-      format.html { redirect_to adviser_path(@adviser, :email => params[:email], :comment => params[:comment]), alert: 'Please specify correct email!' }
-    end
-
   end
 
-end
+  def contact
+    @adviser = Adviser.find(params[:id])
+
+    @adviser.update_attribute(:email, @adviser.adviser_user.email) if @adviser.adviser_user && @adviser.adviser_user.email.blank?
+    @owner = check_adviser_user
+    @user_hashstr = User.find(session[:user_id]).try(:hashstr) if session[:user_id]
+    @user = User.find_by_id_and_hashstr(params[:id], @user_hashstr) if @user_hashstr
+
+    respond_to do |format|
+      if params[:email].present? && params[:email].length > 5
+        UserMailer.contact(@adviser, @user, params[:email], params[:comment]).deliver
+        format.html { redirect_to adviser_path(@adviser), notice: 'Request was successfully sent!' }
+      else
+        format.html { redirect_to adviser_path(@adviser, :email => params[:email], :comment => params[:comment]), alert: 'Please specify correct email!' }
+      end
+    end
+  end
 
 def update
   params[:adviser][:zip].gsub!(/[^0-9]/,"")
@@ -168,7 +165,7 @@ def update
         format.json { render json: @adviser.errors, status: :unprocessable_entity }
       end
     else
-      redirect_to new_adviser_user_session_path, notice: 'Authorization failed.'
+      redirect_to new_adviser_user_session_path, notice: 'You are not verified, please verify the account!'
     end
   end
 end

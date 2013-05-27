@@ -17,7 +17,9 @@
       <% if @adviser.url1.blank? == false %>
         <p><b>Url: </b><%= link_to @adviser.url1, url_with_protocol(@adviser.url1) %></p>
       <% end %>
+      <% if @adviser.verified == true %>
         <p><b>National Rating: </b><%= @adviser.rating.name if @adviser.rating %></p>
+      <% end %>
       <% if @adviser.email.blank? == false %>
         <p><b>Email: </b><%= @adviser.email %></p>
       <% end %>

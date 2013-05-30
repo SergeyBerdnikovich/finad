@@ -1,3 +1,3 @@
 ActiveAdmin.register AdviserUser do
-menu :label => "Advisers login credentials"
+menu :label => "Advisers Login Credentials"
 end

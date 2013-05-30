@@ -1,5 +1,6 @@
 ActiveAdmin.register Verification do
-  number = Adviser.where("id IN (SELECT adviser_id AS id FROM verifications) AND verified = false  OR  id IN (SELECT adviser_id AS id FROM verifications) AND verified IS NULL").count
+  number = Adviser.where("id IN (SELECT adviser_id AS id FROM verifications) AND verified IS NULL").count
+  
 
   if number == 0
    menu :label => "Verifications"
@@ -72,6 +73,7 @@ ActiveAdmin.register Verification do
       column :email
           column :verified do |verification|
           if verification.adviser.try(:verified)
+
             "Approved"
           elsif verification.adviser.try(:verified) == false
             "Dissapproved"
@@ -83,7 +85,7 @@ ActiveAdmin.register Verification do
       column :updated_at
       column :actions do |verification|
       links = ''.html_safe
-        if verification.adviser.try(:verified) != true
+        if verification.adviser.verified == nil
         links += button_to "Approve", approve_admin_verification_path(verification)
         links += "."
         links += button_to "Disapprove", dissapprove_admin_verification_path(verification)

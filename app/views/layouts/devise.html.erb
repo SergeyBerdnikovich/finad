@@ -671,7 +671,10 @@ div.itemHeader h2.itemTitle, div.catItemHeader h3.catItemTitle, h3.userItemTitle
 
     <!-- Top Row1 -->
     <div id="s5_top_row1_area1">
-      <p class="notice"><%= notice %></p>
+      <p class="notice"><%#= notice %></p>
+      <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+      <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+      <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
       <div><%= yield %></div>
     </div>
       <!-- End Top Row1 -->

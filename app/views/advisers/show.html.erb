@@ -19,6 +19,8 @@
       <% end %>
       <% if @adviser.verified == true %>
         <p><b>National Rating: </b><%= @adviser.rating.name if @adviser.rating %></p>
+      <% else %>
+        <p><b>National Rating: </b> Rating Pending</p>
       <% end %>
       <% if @adviser.email.blank? == false %>
         <p><b>Email: </b><%= @adviser.email %></p>

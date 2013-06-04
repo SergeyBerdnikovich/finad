@@ -1,0 +1,85 @@
+  <div id='content' style='min-height:300px'>
+    <div class='avator' style="float:left;width:28%">
+      <%= image_tag @adviser.avator, :style=> 'width:320px;height:auto;border:3px solid #e8c869;margin-right:10px' %>
+    </div>
+    <div class='info1' style="float:right;width:70%">
+      <p><b>Name: </b><%= @adviser.name %></p>
+      <p><b>Address: </b><%= @adviser.address %></p>
+      <p><b>City: </b><%= @adviser.city %></p>
+      <p><b>State: </b><%= @adviser.state %></p>
+      <p><b>Zip: </b><%= @adviser.zip %></p>
+      <% if @adviser.phone.blank? == false %>
+      <p><b>Phone: </b><%= @adviser.phone %></p>
+      <% end %>
+      <% if @adviser.url.blank? == false %>
+        <p><b>Url: </b><%= link_to @adviser.url, url_with_protocol(@adviser.url) %></p>
+      <% end %>
+      <% if @adviser.url1.blank? == false %>
+        <p><b>Url: </b><%= link_to @adviser.url1, url_with_protocol(@adviser.url1) %></p>
+      <% end %>
+      <% if @adviser.verified == true %>
+        <p><b>National Rating: </b><%= @adviser.rating.name if @adviser.rating %></p>
+      <% else %>
+        <p><b>National Rating: </b> Rating Pending</p>
+      <% end %>
+      <% if @adviser.email.blank? == false %>
+        <p><b>Email: </b><%= @adviser.email %></p>
+      <% end %>
+      <p><b>Bio: </b><br><div style='width:600px'><%= @adviser.bio %></div></p>
+      <% if @owner %>
+      <p><b>Plan: </b><%= @adviser.plan %></p><p>
+      <% if @adviser.verified.blank? && @adviser.verification.blank? %>
+        <%= link_to ' Verify Your IDentity', new_verification_path(:adviser_id => @adviser.id), :class => 'custom_button' %>
+      <% end %>
+      <% if @adviser.blog_url.presence %>
+        <p><%= link_to 'Go to blog' , url_with_protocol(@adviser.blog_url), :target => '_blank' %></p>
+      <% end %>
+      <p>
+        <input type=button value="Edit profile" onclick='document.location="<%= edit_adviser_path(@adviser) %>"'>
+      </p>
+      <% end %>
+
+      <% if @owner == false %>
+      <% if flash[:notice].blank? %>
+      <input type='button' value="Contact" onclick='jQuery("#contact_form").toggle()'>
+      <% if @user %>
+      <input type='button' style='margin-left:30px' value="File A Complaint" onclick='document.location.href="<%=  new_complaint_path(:adviser_name => @adviser.name, :adviser_phone => @adviser.phone, :name => @user.first_name + " " + @user.last_name , :email => @user.email, :phone => @user.phone ) %>"'>
+      <% else %>
+      <input type='button' style='margin-left:30px' value="File A Complaint" onclick='document.location.href="<%=  new_complaint_path(:adviser_name => @adviser.name, :adviser_phone => @adviser.phone ) %>"'>
+      <% end %>
+      <%= link_to ' Verify Your IDentity', new_verification_path(:adviser_id => @adviser.id), :class => 'custom_button' %>
+      <% if flash[:alert].blank? %>
+      <div style='display:none; background-color:white;width:600px;height:300px; padding: 10px 10px 10px 10px; margin-bottom:30px' id=contact_form >
+      <% else %>
+      <div style='background-color:white;width:600px;height:300px; padding: 10px 10px 10px 10px; margin-bottom:30px' id=contact_form >
+      <h4 style='color:red'><%=  flash[:alert] %> </h4>
+      <% end %>
+        <form method=post action='<%= contact_path(:id => @adviser.id) %>'>
+          <% if @user == nil %>
+          Please specify your Email: <input name='email' value='<%= params[:email] %>' type=text placeholder="Email" size= 40><input type=submit value='Send request' style='float:right;right:400px;'><br>
+          Provide details about your inquire: <br>
+          <textarea name='comment' style='width:600px;height:300px'><%= params[:comment] %></textarea>
+          <% else %>
+          <input name='email' type=hidden value='<%= @user.email %>' >
+          Provide details about your inquire: <br>
+          <textarea name='comment' style='width:600px;height:300px'><%= params[:comment] %></textarea>
+          <input type=submit value='Send request' style='float:right;right:400px;'><br>
+          <% end %>
+
+        </form>
+      </div>
+      <% else %>
+
+      <h3><%=  flash[:notice] %> </h3>
+
+      <% end %>
+      <% end %>
+    </div>
+
+  </div>
+  <div class='buttons'>
+
+
+  </div>
+</div>
+</div>

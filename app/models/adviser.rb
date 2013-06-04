@@ -6,7 +6,8 @@ class Adviser < ActiveRecord::Base
 
   attr_accessible :featured, :address, :city, :name, :phone, :rating_id,
                   :state, :url, :zip, :adviser_user_id, :gallery_attributes,
-                  :plan, :blog_url, :verified
+                  :plan, :blog_url, :verified, :years_of_experience, :education,
+                  :short_description
 
   paginates_per 15
 
@@ -15,6 +16,7 @@ class Adviser < ActiveRecord::Base
   belongs_to :adviser_user
   belongs_to :rating
   has_one :verification
+  has_many :services
 
   accepts_nested_attributes_for :gallery,
                                 :allow_destroy => :true,

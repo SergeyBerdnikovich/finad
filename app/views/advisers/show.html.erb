@@ -1,85 +1,830 @@
-  <div id='content' style='min-height:300px'>
-    <div class='avator' style="float:left;width:28%">
-      <%= image_tag @adviser.avator, :style=> 'width:320px;height:auto;border:3px solid #e8c869;margin-right:10px' %>
-    </div>
-    <div class='info1' style="float:right;width:70%">
-      <p><b>Name: </b><%= @adviser.name %></p>
-      <p><b>Address: </b><%= @adviser.address %></p>
-      <p><b>City: </b><%= @adviser.city %></p>
-      <p><b>State: </b><%= @adviser.state %></p>
-      <p><b>Zip: </b><%= @adviser.zip %></p>
-      <% if @adviser.phone.blank? == false %>
-      <p><b>Phone: </b><%= @adviser.phone %></p>
-      <% end %>
-      <% if @adviser.url.blank? == false %>
-        <p><b>Url: </b><%= link_to @adviser.url, url_with_protocol(@adviser.url) %></p>
-      <% end %>
-      <% if @adviser.url1.blank? == false %>
-        <p><b>Url: </b><%= link_to @adviser.url1, url_with_protocol(@adviser.url1) %></p>
-      <% end %>
-      <% if @adviser.verified == true %>
-        <p><b>National Rating: </b><%= @adviser.rating.name if @adviser.rating %></p>
-      <% else %>
-        <p><b>National Rating: </b> Rating Pending</p>
-      <% end %>
-      <% if @adviser.email.blank? == false %>
-        <p><b>Email: </b><%= @adviser.email %></p>
-      <% end %>
-      <p><b>Bio: </b><br><div style='width:600px'><%= @adviser.bio %></div></p>
-      <% if @owner %>
-      <p><b>Plan: </b><%= @adviser.plan %></p><p>
-      <% if @adviser.verified.blank? && @adviser.verification.blank? %>
-        <%= link_to ' Verify Your IDentity', new_verification_path(:adviser_id => @adviser.id), :class => 'custom_button' %>
-      <% end %>
-      <% if @adviser.blog_url.presence %>
-        <p><%= link_to 'Go to blog' , url_with_protocol(@adviser.blog_url), :target => '_blank' %></p>
-      <% end %>
-      <p>
-        <input type=button value="Edit profile" onclick='document.location="<%= edit_adviser_path(@adviser) %>"'>
-      </p>
-      <% end %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>FXP Advisory Services LLC in Edison, New Jersey | Frank Polashock, Financial Advisor in Edison, NJ, 08820 | WiserAdvisor.com</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
-      <% if @owner == false %>
-      <% if flash[:notice].blank? %>
-      <input type='button' value="Contact" onclick='jQuery("#contact_form").toggle()'>
-      <% if @user %>
-      <input type='button' style='margin-left:30px' value="File A Complaint" onclick='document.location.href="<%=  new_complaint_path(:adviser_name => @adviser.name, :adviser_phone => @adviser.phone, :name => @user.first_name + " " + @user.last_name , :email => @user.email, :phone => @user.phone ) %>"'>
-      <% else %>
-      <input type='button' style='margin-left:30px' value="File A Complaint" onclick='document.location.href="<%=  new_complaint_path(:adviser_name => @adviser.name, :adviser_phone => @adviser.phone ) %>"'>
-      <% end %>
-      <%= link_to ' Verify Your IDentity', new_verification_path(:adviser_id => @adviser.id), :class => 'custom_button' %>
-      <% if flash[:alert].blank? %>
-      <div style='display:none; background-color:white;width:600px;height:300px; padding: 10px 10px 10px 10px; margin-bottom:30px' id=contact_form >
-      <% else %>
-      <div style='background-color:white;width:600px;height:300px; padding: 10px 10px 10px 10px; margin-bottom:30px' id=contact_form >
-      <h4 style='color:red'><%=  flash[:alert] %> </h4>
-      <% end %>
-        <form method=post action='<%= contact_path(:id => @adviser.id) %>'>
-          <% if @user == nil %>
-          Please specify your Email: <input name='email' value='<%= params[:email] %>' type=text placeholder="Email" size= 40><input type=submit value='Send request' style='float:right;right:400px;'><br>
-          Provide details about your inquire: <br>
-          <textarea name='comment' style='width:600px;height:300px'><%= params[:comment] %></textarea>
-          <% else %>
-          <input name='email' type=hidden value='<%= @user.email %>' >
-          Provide details about your inquire: <br>
-          <textarea name='comment' style='width:600px;height:300px'><%= params[:comment] %></textarea>
-          <input type=submit value='Send request' style='float:right;right:400px;'><br>
-          <% end %>
+  <link href="/assets/advisers/grid.css" rel="stylesheet" type="text/css" />
+  <link href="/assets/advisers/style.css" rel="stylesheet" type="text/css" />
+  <link type="text/css" href="/assets/advisers/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+  <link rel="stylesheet" type="text/css" href="/assets/advisers/jquery.fancybox-1.3.4.css" media="screen" />
 
-        </form>
+  <script type="text/javascript" src="/assets/advisers/jquery.jscrollpane.min.js"></script>
+
+  <script language="JavaScript">
+<!--
+function openWindowCall(url, name, height, width, scroll, resize)
+{
+  newwin = window.open(url, name, "height="+height+", width="+width+", scrollbars="+scroll+",resizable="+resize+", toolbar=0,location=0,directories=0,status=0,menubar=0");
+  setTimeout('newwin.focus();',250);
+}
+function openWindowRspdAd(url, name)
+{
+  openWindowCall(url, name, 314, 530, 'no', 'no')
+}
+function openWindowRspdsmall(url, name)
+{
+  openWindowCall(url, name, 250, 340, 'yes', 'yes')
+}
+function openWindowRspddemo(url, name)
+{
+  openWindowCall(url, name, 480, 640, 'no', 'no')
+}
+function openWindowRspdlarge(url, name)
+{
+  openWindowCall(url, name, 420, 500, 'yes', 'yes')
+}
+function openWindowRspdXlarge(url, name)
+{
+  openWindowCall(url, name, 450, 660, 'yes', 'yes')
+}
+function openWindowRspdHelp(url, name)
+{
+  openWindowCall(url, name, 450, 570, 'yes', 'no')
+}
+function openWindowGeneric(url, name, attributes)
+{
+  openWindowCall(url, name, 800, 763, 'yes', 'yes')
+}
+function openWindowConduct(url, name)
+{
+  openWindowCall(url, name, 600, 763, 'yes', 'yes')
+}
+// -->
+</script>
+
+
+<script type="text/javascript">
+  jQuery(document).ready(function($){
+    $('.scroll_pan').jScrollPane();
+    $('.tabbed_container .contents').jScrollPane();
+
+    //Tabbing contents
+    $('.tabbed_container .profile_tabnavi li').click(function(){
+          if(!$(this).hasClass('.active')){
+            $('.tabbed_container .profile_tabnavi li.active').removeClass('active');
+            $(this).addClass('active');
+            $('.tabbed_container .tab_contents .contents.active_cont').hide();
+            $('.tabbed_container .tab_contents .contents.active_cont').removeClass('active_cont');
+            $('.tabbed_container .tab_contents .contents:eq('+$(this).index()+')').addClass('active_cont');
+            $('.tabbed_container .tab_contents .contents.active_cont').show();
+            $('.tabbed_container .contents').jScrollPane();
+          }
+        });
+  });
+</script>
+
+<script type="text/javascript">
+$.metadata.setType("attr", "validate");
+$(document).ready(function() {
+$("#form2").validate();
+});
+</script>
+
+</head>
+<body class="profile" onload = "recordClick(1878728,999999999,'PR','','20024016');" >
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+  var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+   setTimeout(function () {
+      $(".profilepop").fancybox( {
+          'width'     : 920,
+          'height'    : 640,
+          'autoScale'   : false,
+          'transitionIn'    : 'none',
+          'transitionOut'   : 'none',
+          'type'      : 'iframe',
+          hideOnOverlayClick    : false,
+          showNavArrows   : false
+        }).trigger('click');
+      }, 30000);
+  });
+</script>
+<a href="http://www.wiseradvisor.com/profile_lead_form.asp?sid=1878728" class="profilepop"></a>
+
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  var pageTracker = _gat._getTracker("UA-2647866-1");
+
+  // CAMPAIGNS
+  pageTracker._setCampNameKey(""); // name
+  pageTracker._setCampMediumKey(""); // medium
+  pageTracker._setCampSourceKey(""); // source
+  pageTracker._setCampTermKey(""); // term/keyword
+  pageTracker._setCampContentKey(""); // content
+  pageTracker._setCampIdKey(""); // id number
+  pageTracker._setCampNOKey(""); // don't override
+
+  pageTracker._initData();
+  pageTracker._trackPageview("/sprofile/");
+  pageTracker._setVar("20024016");
+</script>
+
+<!--WEBSITECEO:BEGIN:{764EEF2E-BC11-45CF-8627-300CE1BA2219}-->
+<!--
+Do NOT modify this script to avoid traffic misrepresentation!
+Web CEO 4 0300/1
+Code initially inserted into: "/Find Local Businesses _ Get Matched to Local Businesses _ Respond.com.htm".
+-->
+<script type="text/javascript"><!--
+  // hitlens v1.2.7
+  function hitlens_embedded() {
+  var id = 249041;
+  var pc = 1;
+  var PAGENAME = escape('/sprofile/');
+  var CONTENTGROUP = escape('20024016');
+  var TRANSACTION = escape('');
+  var TRANSACTION_ID = 0;
+  var ORDER = escape('');
+  return "id="+id+"&pc="+pc+"&p="+PAGENAME+"&gr="+CONTENTGROUP+"&tr="+TRANSACTION+"&trid="+TRANSACTION_ID+"&ord="+ORDER;
+  }
+//--></script>
+
+<!--WEBSITECEO:END:{764EEF2E-BC11-45CF-8627-300CE1BA2219}-->
+
+<div itemscope itemtype="http://schema.org/FinancialService">
+  <div id="wrapper">
+    <div id="header">
+      <div class="container_31">
+        <div class="profile_header">
+          <script type="text/javascript">
+          var detailswinRspdlarge = null;
+          var largeWinUrl = null;
+          function openWindowRspdlarge(url, name)
+          {
+            if (!detailswinRspdlarge || detailswinRspdlarge.closed) {
+                  detailswinRspdlarge = window.open(url, name, 'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=yes,resizable=yes,width=500,height=500,top=100,left=300');
+                  largeWinUrl = url;
+            }
+            else {
+                  if (largeWinUrl != url) {
+                detailswinRspdlarge.location.href = url;
+                    largeWinUrl = url;
+              }
+            }
+            detailswinRspdlarge.focus();
+          }
+          </script>
+          <div class="container_31">
+            <div class="grid_21 prefix_1" itemprop="contactPoint" itemscope='' itemtype="http://schema.org/ContactPoint">
+              <div class="grid_5 thumb">
+                <%= image_tag @adviser.avator, :style=> 'max-width:120px;max-height:150px;margin-right:10px' %>
+              </div>
+              <div class="grid_10 prefix_0" itemprop="name">
+                <h3 class="h3"><%= @adviser.name %>
+                  <br/>
+                  <small><%= @adviser.company_data %></small>
+                </h3>
+                <br />
+                <br />
+              </div>
+              <!-- <h4 classs="h4" style='color:black;'>"Guiding You to Financial Success"</h4> -->
+            </div>
+            <div class="grid_8 suffix_1" itemprop="address" itemscope ='' itemtype="http://schema.org/PostalAddress">
+              <br clear="all" />
+              <div class="grid_1 address"><img src="/assets/advisers/home_icon.png" /></div>
+              <div class="grid_6 address">
+                <strong>Address:</strong><br />
+                <div itemprop="streetAddress">
+                  <%= @adviser.address %>
+                </div>
+                <br />
+                <br />
+                <a href="javascript:openWindowRspdlarge('http://new.wiseradvisor.com/maxpro/profile/location_map.jsp?x=<%= @adviser.address %>')">
+                  <em>Map it</em>
+                </a> |
+                <a href="http://maps.google.com/maps?q=<%= @adviser.address %>" target="_blank" rel="nofollow">
+                  <em>Directions</em>
+                </a>
+              </div>
+              <br clear="all" /><br clear="all" />
+              <div class="grid_1">
+                <img src="/assets/advisers/phone_icon.png" width="25" height="25" />
+              </div>
+              <div class="grid_6 address" itempro="telephone"><%= @adviser.phone %></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <% else %>
-
-      <h3><%=  flash[:notice] %> </h3>
-
-      <% end %>
-      <% end %>
+      <div id="container">
+        <div class="container_31">
+          <div class="grid_20 prefix_1">
+            <div class="grid_8">
+              <div class="exper">
+                <h2><%= @adviser.years_of_experience %> <span>Years of Experience</span></h2>
+                <ul class="bullet_list">
+                  <li>Firm CRD# 135477 </li>
+                  <li>Series  65 </li>
+                  <li>CRD# 4961369 </li>
+                </ul>
+                <br/>
+                <h2>Offers <span>&amp;</span> Pledges</h2>
+                <ul class="bullet_list">
+                  <li>I provide a free initial consultation:</li>
+                </ul>
+              </div>
+            </div>
+            <div class="grid_11 float_r">
+              <div class="scroll_pan" itemprop="description">
+                <p align="justify"><%== @adviser.short_description %></p>
+              </div>
+            </div>
+            <br clear="all" />
+            <div class="tabbed_container">
+              <div class="tabbed_bar">
+                <ul class="clearfix profile_tabnavi">
+                  <li class="active">Services</li>
+                  <li class="">Biography</li>
+                  <li class="">HighLights</li>
+                  <li class="">FAQs</li>
+                </ul>
+              </div>
+              <div class="tab_contents">
+                <div class="contents active_cont">
+                  <h2>My Services </h2>
+                  <br clear="all" />
+                  <div class="grid_17 prefix_1">
+                    <table style="width:100%">
+                      <% @adviser.services.each do |a_service| %>
+                      <tr>
+                        <td>
+                          <h4 style="color:#f89204"><%= a_service.name %></h4>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p align="justify">
+                            <%= a_service.description %>
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <hr size="1" color="#CCCCCC" style="width:590px">
+                        </td>
+                      </tr>
+                      <% end %>
+                    </table>
+                  </div>
+                </div>
+                <div class="contents ">
+                  <h2>BIOGRAPHY</h2>
+                    <div class="grid_18 prefix_1">
+                      <p align="justify"><%== @adviser.bio %></p>
+                    </div>
+                  </div>
+                  <div class="contents ">
+                    <h2>HIGHLIGHTS</h2>
+                    <div class="grid_17 prefix_1">
+                      <table width="98%">
+                        <tr>
+                          <td valign="top"><strong style="color:#f89204">General Information</strong></td>
+                        </tr>
+                        <tr>
+                          <td class="white-bg">
+                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
+                              <tr>
+                                <td width="50%" valign="top">
+                                  <strong style="display:block; color:#000000;">Firm Start Year:</strong>
+                                </td>
+                                <td width="50%" valign="top">2005</td>
+                              </tr>
+                              <tr>
+                                <td width="50%" valign="top">
+                                  <strong style="display:block;color:#000000;">No.of Employees:</strong>
+                                </td>
+                                <td width="50%" valign="top">2-4 </td>
+                              </tr>
+                              <tr>
+                                <td width="50%" valign="top">
+                                  <strong style="display:block;color:#000000;">Name of Broker/Dealer:</strong>
+                                </td>
+                                <td width="50%" valign="top">
+                                  Not affiliated with a specific Broker/Dealer
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="gray-bg">
+                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
+                              <tr>
+                                <td width="50%" valign="top">
+                                  <strong style="display:block;color:#000000;">Name of Custodial Firm:</strong>
+                                </td>
+                                <td width="50%" valign="top">
+                                  Various.  Including National Financial (Fidelity) and Vanguard
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="white-bg">
+                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
+                              <tr>
+                                <td width="50%" valign="top">
+                                  <strong style="display:block;color:#000000;">Number of Years with Current Firm:</strong>
+                                </td>
+                                <td width="50%" valign="top">8</td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="gray-bg">
+                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
+                              <tr>
+                                <td width="50%" valign="top">
+                                  <strong style="display:block;color:#000000;">I work with the following types of clients:</strong>
+                                </td>
+                                <td width="50%" valign="top">
+                                  Individual Investors, Businesses
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <hr size="1" color="#CCCCCC" style="width:590px;"/>
+                        <tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                      </table>
+                      <table width="98%">
+                        <tr>
+                          <td valign="top"><strong style="color:#f89204">Services</strong></td>
+                        </tr>
+                        <tr>
+                          <td class="white-bg">
+                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
+                              <tr>
+                                <td width="50%" valign="top">
+                                  <strong style="display:block;color:#000000;">Investment Types:</strong>
+                                </td>
+                                <td width="50%" valign="top">
+                                  Exchange Traded Funds (ETFs), Stocks, Bonds, Options & Futures, Mutual Funds
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <hr size="1" color="#CCCCCC" style="width:590px;"/>
+                        <tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                      </table>
+                      <table width="98%">
+                        <tr>
+                          <td valign="top">
+                            <strong style="color:#f89204">Qualifications & Memberships</strong>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                      </table>
+                      <table width="98%">
+                        <tr>
+                          <td valign="top">
+                            <strong style="color:#f89204">Firm Information</strong>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="white-bg">
+                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
+                              <tr>
+                                <td width="50%" valign="top">
+                                  <strong style="display:block;color:#000000;">Assets Managed by Advisor:</strong>
+                                </td>
+                                <td width="50%" valign="top">
+                                  $20 million
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <hr size="1" color="#CCCCCC" style="width:590px;"/>
+                        <tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                      </table>
+                      <table width="98%">
+                        <tr>
+                          <td valign="top"><strong style="color:#f89204">Compliance</strong></td>
+                        </tr>
+                        <tr>
+                          <td class="white-bg">
+                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
+                              <tr>
+                                <td width="50%" valign="top">
+                                  <strong style="display:block;color:#000000;">Registered Investment Advisor:</strong>
+                                </td>
+                                <td width="50%" valign="top">
+                                  Yes
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="gray-bg">
+                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
+                              <tr>
+                                <td width="50%" valign="top">
+                                  <strong style="display:block;color:#000000;">Investment Advisor Representative:</strong>
+                                </td>
+                                <td width="50%" valign="top">
+                                  Yes
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="white-bg">
+                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
+                              <tr>
+                                <td width="50%" valign="top">
+                                  <strong style="display:block;color:#000000;">I am an acknowledged fiduciary:</strong>
+                                </td>
+                                <td width="50%" valign="top">
+                                  Yes
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="gray-bg">
+                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
+                              <tr>
+                                <td width="50%" valign="top">
+                                  <strong style="display:block;color:#000000;">Compliance Disclosures in Last 5 years:</strong>
+                                </td>
+                                <td width="50%" valign="top">
+                                  I have a clean record
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="white-bg">
+                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
+                              <tr>
+                                <td width="50%" valign="top">
+                                  <strong style="display:block;color:#000000;">Criminal Disclosures in Last 5 years:</strong>
+                                </td>
+                                <td width="50%" valign="top">
+                                  I have a clean record
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <hr size="1" color="#CCCCCC" style="width:590px;"/>
+                        <tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                      </table>
+                      <table width="98%">
+                        <tr>
+                          <td valign="top">
+                            <strong style="color:#f89204">Compensation & Fees</strong>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="white-bg">
+                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
+                            <tr>
+                              <td width="50%" valign="top">
+                                <strong style="display:block;color:#000000;">Fee Structure:</strong>
+                              </td>
+                              <td width="50%" valign="top">
+                                I am a Fee-Only financial professional
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gray-bg">
+                          <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
+                            <tr>
+                              <td width="50%" valign="top">
+                                <strong style="display:block;color:#000000;">Minimum Portfolio Size for New Managed Accounts:</strong>
+                              </td>
+                              <td width="50%" valign="top">
+                                $500,000
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="white-bg">
+                          <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
+                            <tr>
+                              <td width="50%" valign="top">
+                                <strong style="display:block;color:#000000;">Compensation Methods:</strong>
+                              </td>
+                              <td width="50%" valign="top">
+                                Based on Assets, Flat Fee
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      <hr size="1" color="#CCCCCC" style="width:590px;"/>
+                      <tr>
+                        <td>&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="contents ">
+                  <h2>FAQs</h2>
+                    <div class="grid_18 prefix_1">
+                      <strong style="color:#f89204">General Questions</strong><br/>
+                      <br/>
+                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#1">
+                        <u>Do you have a customer satisfaction or refund policy?</u>
+                      </a>
+                      <br /><br />
+                      <strong style="color:#f89204">Financial Planners</strong><br/>
+                      <br/>
+                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#2">
+                        <u>What are your qualifications? What is your education background?</u>
+                      </a>
+                      <br/>
+                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#3">
+                        <u>What services do you offer?</u>
+                      </a>
+                      <br/>
+                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#4">
+                        <u>How many clients do you currently manage?</u>
+                      </a>
+                      <br/>
+                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#5">
+                        <u>Will you be the only person working with me?</u>
+                      </a>
+                      <br/>
+                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#6">
+                        <u>How are you compensated? How will I pay for your services?</u>
+                      </a>
+                      <br/>
+                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#7">
+                        <u>If you are going to manage my account, will you obtain my permission every time you buy or sell something?</u>
+                      </a>
+                      <br/>
+                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#8">
+                        <u>Do you offer any guaranteed results?</u>
+                      </a>
+                      <br/>
+                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#9">
+                        <u>How much risk should I be willing to take?</u>
+                      </a>
+                      <br/>
+                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#10">
+                        <u>Have you ever been charged with any breaches?</u>
+                      </a>
+                      <br/><br/>
+                      <hr size="1" color="#CCCCCC"><br/>
+                        <ul class="faq">
+                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="1">
+                            Do you have a customer satisfaction or refund policy?<br/>
+                            <span>Yes.  Clients can terminate services with one month notice.  Refunds are given on a pro rata basis.</span>
+                          </li>
+                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="2">
+                            What are your qualifications? What is your education background?<br/>
+                            <span>CFP.  BS in Accounting.</span>
+                          </li>
+                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="3">
+                            What services do you offer?<br/>
+                            <span>Comprehensive Finnacial Planning, Estate Planning, Investment Management and Retirement Planning.</span>
+                          </li>
+                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="4">
+                            How many clients do you currently manage?<br/>
+                            <span>25</span>
+                          </li>
+                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="5">
+                            Will you be the only person working with me?<br/>
+                            <span>In most cases, yes.</span>
+                          </li>
+                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="6">
+                            How are you compensated? How will I pay for your services?<br/>
+                            <span>Either on a set fee for financial planning services agreed ahead of time, or based on a % of assets managed (1% or lower).</span>
+                          </li>
+                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="7">
+                            If you are going to manage my account, will you obtain my permission every time you buy or sell something?<br/>
+                            <span>Not normally.  But I make exceptions.</span>
+                          </li>
+                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="8">
+                            Do you offer any guaranteed results?<br/>
+                            <span>No.  No one can guarantee results.</span>
+                          </li>
+                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="9">
+                            How much risk should I be willing to take?<br/>
+                            <span>We will explore your risk tolerance, time horizon and goals in detail to mutually determine your risk profile.</span>
+                          </li>
+                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="10">
+                            Have you ever been charged with any breaches?<br/>
+                            <span>No. Never.</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="education">
+                  <h2>Education</h2>
+                  <p>
+                    <%= @adviser.education %>
+                    <div class="h_line">&nbsp;</div>
+                  </p>
+                </div>
+              </div>
+              <div class="grid_8 suffix_1 float_r">
+                <div class="sidebar">
+                  <h3>Schedule a Free Initial Consultation</h3>
+                  <ul class="bullet_list">
+                    <li>No obligation to hire</li>
+                    <li>primarily to  evaluate mutual fit. </li>
+                  </ul>
+                  <div class="get_answer">
+                    <form action="match_service.asp" name="formContact" method="get" id="form2" onsubmit="flipFormSubmitSw()">
+                      <input type="hidden" name="sid" value="1878728">
+                      <input type="hidden" name="cat" value="1720000130">
+                      <input type="hidden" name="src" value="200240000">
+                      <input type="hidden" name="bd" value="20024016">
+                      <input type="hidden" name="ss" value="y">
+                      <input type="hidden" value="76775" name="Q1405162363">
+                      <input type="hidden" value="77004"  name="Q1405152631">
+                      <label>Service:</label>
+                      <select class="required" name="Q200503" >
+                        <option value="">--- Select ---</option>
+                        <option value="19400">Portfolio Management</option>
+                        <option value="70675">Retirement Planning</option>
+                        <option value="70676">Estate Planning</option>
+                        <option value="76773">Education Planning</option>
+                        <option value="76774">401K Rollover</option>
+                      </select>
+                      <label for="Q200503" class="error" style="display:none;color:red; width:154px; padding-right:0px; text-align:left;">Service is required</label>
+                      <br clear="all" >
+                      <label>ZIP Code:</label>
+                      <input type="text" class="zip required" name="zip" maxlength="5">
+                      <label for="zip" class="error" style="display:none;color:red; width:154px; padding-right:0px; text-align:left;">ZIP Code is required</label>
+                      <br clear="all">
+                      <label>First Name:</label>
+                      <input type="text" name="firstnm" class="required">
+                      <label for="firstnm" class="error" style="display:none;color:red; width:154px; padding-right:0px; text-align:left;">First Name is required</label>
+                      <br clear="all">
+                      <label>Last Name:</label>
+                      <input type="text" name="lastnm" class="required">
+                      <label for="lastnm" class="error" style="display:none;color:red; width:154px; padding-right:0px; text-align:left;">Last Name is required</label>
+                      <br clear="all">
+                      <label>Email:</label>
+                      <input type="text" name="email" class="required">
+                      <label for="email" class="error" style="display:none;color:red; width:154px; padding-right:0px; text-align:left;">Email is required</label>
+                      <br clear="all">
+                      <label>Phone:</label>
+                      <input type="text" onclick="trackConversion('6')" onkeyup="if(this.value.length==3) {getElementById('h2').focus()} " maxlength="3" size="3" value="" name="harea" class="phone_code required">
+                      <input type="text" onclick="trackConversion('6')" id="h2" onkeyup="if(this.value.length==3) {getElementById('h3').focus()} " maxlength="3" size="3" value="" name="hphone3" class="phone_code required">
+                      <input type="text" onclick="trackConversion('6')" id="h3" maxlength="4" size="4" value="" name="hphone4" class="phone_code required">
+                      <label for="harea" class="error" style="display:none; color:red; width:154px; padding-right:0px; text-align:left;">Area code is required.</label>
+                      <label for="h2" class="error" style="display:none; color:red; width:211px; padding-right:0px; text-align:right; margin-top: -12px;">Phone no. is required.</label>
+                      <label for="h3" class="error" style="display:none; color:red; width:211px; padding-right:0px; text-align:right; margin-top: -12px;">Phone no. is required.</label>
+                      <br clear="all">
+                      <br clear="all">
+                      <div class="grid_3 prefix_1">
+                        <input type="submit" value="" class="get_answer_btn" name="x" style ="cursor:pointer;">
+                      </div>
+                      <br clear="all">
+                    </form>
+                  </div>
+                </div>
+                <br clear="all" />
+                <div class="sidebar">
+                  <h3>Office Hours</h3>
+                  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="office_hrs" itemprop="openingHours">
+                    <tr>
+                      <td width="7%" align="center">
+                        <img src="/assets/advisers/list_bullet_black.gif" width="5" height="5" />
+                      </td>
+                      <td width="38%">Mon.</td>
+                      <td width="55%" align="right">9:00 AM - 5:00 PM</td>
+                    </tr>
+                    <td width="7%" align="center">
+                      <img src="/assets/advisers/list_bullet_black.gif" width="5" height="5" />
+                    </td>
+                    <td width="38%">Tue.</td>
+                    <td width="55%" align="right">9:00 AM - 5:00 PM</td>
+                  </tr>
+                  <td width="7%" align="center">
+                    <img src="/assets/advisers/list_bullet_black.gif" width="5" height="5" />
+                  </td>
+                  <td width="38%">Wed.</td>
+                  <td width="55%" align="right">9:00 AM - 5:00 PM</td>
+                </tr>
+                <td width="7%" align="center">
+                  <img src="/assets/advisers/list_bullet_black.gif" width="5" height="5" />
+                </td>
+                <td width="38%">Thu.</td>
+                <td width="55%" align="right">9:00 AM - 5:00 PM</td>
+              </tr>
+              <td width="7%" align="center">
+                <img src="/assets/advisers/list_bullet_black.gif" width="5" height="5" />
+              </td>
+              <td width="38%">Fri.</td>
+              <td width="55%" align="right">9:00 AM - 5:00 PM</td>
+            </tr>
+          </tr>
+        </table>
+      </div>
+      <br clear="all" />
+    <div class="sidebar">
+      <h3>Communities Served</h3>
+      <div class="grid_4 omega">
+        <ul class="bullet_list">
+          <li>New York</li>
+        </ul>
+      </div>
+      <div class="grid_4 alpha">
+        <ul class="bullet_list">
+          <div class="grid_4 omega">
+        </ul>
+      </div>
     </div>
-
+    <br clear="all" />
+    <div class="sidebar"></div>
+    <div class="sidebar"></div>
+    <div class="sidebar"></div>
+    <div class="sidebar"></div>
+    <div class="sidebar">
+      <h3>Compensation Arrangements</h3>
+      <div class="grid_4 omega">
+        <ul class="bullet_list">
+          <li>Check</li>
+          <li>PayPal</li>
+        </ul>
+      </div>
+      <div class="grid_4 alpha">
+        <ul class="bullet_list"></ul>
+      </div>
+    </div>
   </div>
-  <div class='buttons'>
 
-
+  <SCRIPT language=javascript>
+     <!--
+     function win_pop_terms() {
+      window.open("http://www.wiseradvisor.com/terms.asp","terms","top=20,left=5 ,width=600,height=460,scrollbars=1,addressbar=0,menubar=0,toolbar=0,statusbar=0")
+     }
+     function win_pop_privacy() {
+      window.open("http://www.wiseradvisor.com/privacy.asp","privacy","top=20,left=5 ,width=600,height=460,scrollbars=1,addressbar=0,menubar=0,toolbar=0,statusbar=0")
+     }
+     //-->
+   </script>
   </div>
 </div>
-</div>
+<!-- ClickTale Bottom part -->
+<div id="ClickTaleDiv" style="display: none;"></div>
+  <script type='text/javascript'>
+    document.write(unescape("%3Cscript%20src='"+
+    (document.location.protocol=='https:'?
+      'https://clicktale.pantherssl.com/':
+      'http://s.clicktale.net/')+
+    "WRd.js'%20type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+    var ClickTaleSSL=1;
+    if(typeof ClickTale=='function') ClickTale(8020,1,"www09");
+  </script>
+<!-- ClickTale end of Bottom part -->
+  <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+    var pageTracker = _gat._getTracker("UA-2647866-4");
+    pageTracker._initData();
+    pageTracker._trackPageview();
+  </script>
+<!-- Start of HubSpot Logging Code  -->
+  <script type="text/javascript" language="javascript">
+    var hs_portalid=97300;
+    var hs_salog_version = "2.00";
+    var hs_ppa = "wiseradvisor.app9.hubspot.com";
+    document.write(unescape("%3Cscript src='" + document.location.protocol + "//" + hs_ppa + "/salog.js.aspx' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+<!-- End of HubSpot Logging Code -->
+</body>

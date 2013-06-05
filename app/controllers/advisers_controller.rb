@@ -1,5 +1,5 @@
 class AdvisersController < ApplicationController
-  before_filter :check_current_adviser_user, :only => [:find_adviser, :check_adviser, :set_adviser, :contact_question, :contact_form]
+  before_filter :check_current_adviser_user, :only => [:find_adviser, :check_adviser, :set_adviser, :contact_question, :contact_form, :edit, :update]
   layout :resolve_layout
 
   def index
@@ -117,8 +117,9 @@ end
 
 def edit
   @adviser = Adviser.find(params[:id])
+  @adviser.advisers_questions.build
 
-  if @adviser.verified && current_adviser_user && current_adviser_user.id == @adviser.adviser_user.id
+  if @adviser.verified && current_adviser_user.id == @adviser.adviser_user.id
     @adviser = Adviser.find(params[:id])
     @adviser.build_gallery unless @adviser.gallery
   elsif current_adviser_user && current_adviser_user.id == @adviser.adviser_user.id && @adviser.verified.blank?
@@ -166,7 +167,8 @@ def update
   @adviser = Adviser.find(params[:id])
 
   respond_to do |format|
-    if @adviser.verified && current_adviser_user && current_adviser_user.id == @adviser.adviser_user.id
+    if @adviser.verified && current_adviser_user.id == @adviser.adviser_user.id
+      check_question(@adviser, params[:advisers_questions])
       if @adviser.update_attributes(params[:adviser])
         format.html { redirect_to adviser_path(@adviser), notice: 'Adviser was successfully updated.' }
         format.json { render action: 'show', status: :created, location: @adviser }
@@ -192,6 +194,17 @@ end
       "adviser_layout"
     else
       "application"
+    end
+  end
+
+  def check_question(adviser, advisers_questions)
+    advisers_questions.each do |aq|
+      old_aq = adviser.advisers_questions.where("question_id = ?", aq['question_id'])
+      if old_aq.blank?
+        adviser.advisers_questions.create!(:question_id => aq['question_id'], :answer => aq['answer']) unless aq['answer'].blank?
+      else
+        aq['answer'].blank? ? old_aq.last.destroy : old_aq.last.update_attribute(:answer, aq['answer'])
+      end
     end
   end
 end

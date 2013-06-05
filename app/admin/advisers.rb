@@ -16,11 +16,13 @@ ActiveAdmin.register Adviser do
       f.input :phone
       f.input :url
       f.input :rating
-      f.input :education
       f.input :bio      
       f.input :years_of_experience
       f.input :short_description
-      f.input :company_data
+      f.input :compensation_arrangements, as: :text
+      f.input :offers_and_pledges, as: :text
+      f.input :open_hours
+      f.input :experience, as: :text
 
     end
     f.inputs "Photo",
@@ -55,7 +57,10 @@ ActiveAdmin.register Adviser do
       row :years_of_experience
       row :short_description
       row :company_data
+      row :compensation_arrangements
+      row :offers_and_pledges
       row :services
+      row :open_hours
       row :created_at
       row :updated_at
       row :photo do |adviser|

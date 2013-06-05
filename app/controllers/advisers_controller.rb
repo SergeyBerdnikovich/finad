@@ -2,6 +2,12 @@ class AdvisersController < ApplicationController
   before_filter :check_current_adviser_user, :only => [:find_adviser, :check_adviser, :set_adviser, :contact_question, :contact_form]
   layout :resolve_layout
 
+  def contact_popup
+     @adviser = Adviser.find(params[:adviser_id])
+     
+       render :layout => "empty"
+  end
+
   def index
     if request.referer.blank? == false
       if request.referer.index("investmentprotectionbureau.org") != nil
@@ -145,12 +151,29 @@ end
 
   def contact
     @adviser = Adviser.find(params[:id])
+    if params['src'] == 'popupform'
+      message = ""
+      message += "Name: #{params[:firstnm]}, #{params[:lastnm]}
+      "
+      message += "City, state: #{params[:sendcity]}, #{params[:sendstate]}
+      "
+      message += "Email: #{params[:email]}
+      "
+      message += "Phone: #{params[:harea]} #{params[:hphone3]} #{params[:hphone4]}
+      "
+      message += "Service client interesting in: #{params[:service]}
+      "
+      message += "Portfolio size: #{params[:portfolio]}
+      "
+      params[:comment] = message
+
+    end
 
     @adviser.update_attribute(:email, @adviser.adviser_user.email) if @adviser.adviser_user && @adviser.adviser_user.email.blank?
     @owner = check_adviser_user
     @user_hashstr = User.find(session[:user_id]).try(:hashstr) if session[:user_id]
     @user = User.find_by_id_and_hashstr(params[:id], @user_hashstr) if @user_hashstr
-
+   
     respond_to do |format|
       if params[:email].present? && params[:email].length > 5
         UserMailer.contact(@adviser, @user, params[:email], params[:comment]).deliver

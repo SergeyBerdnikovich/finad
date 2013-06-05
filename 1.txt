@@ -1,0 +1,155 @@
+           verifications_confirm        /verifications/confirm(.:format)               verifications#confirm
+                   verifications POST   /verifications(.:format)                       verifications#create
+                new_verification GET    /verifications/new(.:format)                   verifications#new
+                        counters GET    /counters(.:format)                            counters#index
+                                 POST   /counters(.:format)                            counters#create
+                     new_counter GET    /counters/new(.:format)                        counters#new
+                    edit_counter GET    /counters/:id/edit(.:format)                   counters#edit
+                         counter GET    /counters/:id(.:format)                        counters#show
+                                 PUT    /counters/:id(.:format)                        counters#update
+                                 DELETE /counters/:id(.:format)                        counters#destroy
+                      complaints GET    /complaints(.:format)                          complaints#index
+                                 POST   /complaints(.:format)                          complaints#create
+                   new_complaint GET    /complaints/new(.:format)                      complaints#new
+                  edit_complaint GET    /complaints/:id/edit(.:format)                 complaints#edit
+                       complaint GET    /complaints/:id(.:format)                      complaints#show
+                                 PUT    /complaints/:id(.:format)                      complaints#update
+                                 DELETE /complaints/:id(.:format)                      complaints#destroy
+             pages_confirm_email GET    /pages/confirm_email(.:format)                 pages#confirm_email
+        new_adviser_user_session GET    /adviser_users/sign_in(.:format)               devise/sessions#new
+            adviser_user_session POST   /adviser_users/sign_in(.:format)               devise/sessions#create
+    destroy_adviser_user_session GET    /adviser_users/sign_out(.:format)              devise/sessions#destroy
+           adviser_user_password POST   /adviser_users/password(.:format)              devise/passwords#create
+       new_adviser_user_password GET    /adviser_users/password/new(.:format)          devise/passwords#new
+      edit_adviser_user_password GET    /adviser_users/password/edit(.:format)         devise/passwords#edit
+                                 PUT    /adviser_users/password(.:format)              devise/passwords#update
+cancel_adviser_user_registration GET    /adviser_users/cancel(.:format)                registrations#cancel
+       adviser_user_registration POST   /adviser_users(.:format)                       registrations#create
+   new_adviser_user_registration GET    /adviser_users/sign_up(.:format)               registrations#new
+  edit_adviser_user_registration GET    /adviser_users/edit(.:format)                  registrations#edit
+                                 PUT    /adviser_users(.:format)                       registrations#update
+                                 DELETE /adviser_users(.:format)                       registrations#destroy
+       adviser_user_confirmation POST   /adviser_users/confirmation(.:format)          confirmations#create
+   new_adviser_user_confirmation GET    /adviser_users/confirmation/new(.:format)      confirmations#new
+                                 GET    /adviser_users/confirmation(.:format)          confirmations#show
+                users_email_link GET    /users/email_link(.:format)                    users#email_link
+                           users GET    /users(.:format)                               users#index
+                                 POST   /users(.:format)                               users#create
+                        new_user GET    /users/new(.:format)                           users#new
+                       edit_user GET    /users/:id/edit(.:format)                      users#edit
+                            user GET    /users/:id(.:format)                           users#show
+                                 PUT    /users/:id(.:format)                           users#update
+                                 DELETE /users/:id(.:format)                           users#destroy
+                         contact        /contact(.:format)                             advisers#contact
+                             zip        /zip(.:format)                                 users#zip
+               advisers_featured        /advisers/featured(.:format)                   advisers#featured
+              advisers_featured2        /advisers/featured2(.:format)                  advisers#featured2
+                    contact_form        /advisers/contact_form(.:format)               advisers#contact_form
+                contact_question        /advisers/contact_question(.:format)           advisers#contact_question
+                    consultation        /advisers/consultation(.:format)               advisers#consultation
+               advisers_register        /advisers/register(.:format)                   advisers#register
+           advisers_find_adviser        /advisers/find_adviser(.:format)               advisers#find_adviser
+          advisers_check_adviser        /advisers/check_adviser(.:format)              advisers#check_adviser
+                     set_adviser        /advisers/set_adviser/:id(.:format)            advisers#set_adviser
+               alphabet_advisers        /advisers/alphabet(.:format)                   advisers#alphabet
+                            root        /                                              advisers#index
+          new_admin_user_session GET    /admin/login(.:format)                         active_admin/devise/sessions#new
+              admin_user_session POST   /admin/login(.:format)                         active_admin/devise/sessions#create
+      destroy_admin_user_session GET    /admin/logout(.:format)                        active_admin/devise/sessions#destroy
+             admin_user_password POST   /admin/password(.:format)                      active_admin/devise/passwords#create
+         new_admin_user_password GET    /admin/password/new(.:format)                  active_admin/devise/passwords#new
+        edit_admin_user_password GET    /admin/password/edit(.:format)                 active_admin/devise/passwords#edit
+                                 PUT    /admin/password(.:format)                      active_admin/devise/passwords#update
+                      admin_root        /admin(.:format)                               admin/dashboard#index
+                            root        /                                              dashboard#index
+     batch_action_admin_services POST   /admin/services/batch_action(.:format)         admin/services#batch_action
+                  admin_services GET    /admin/services(.:format)                      admin/services#index
+                                 POST   /admin/services(.:format)                      admin/services#create
+               new_admin_service GET    /admin/services/new(.:format)                  admin/services#new
+              edit_admin_service GET    /admin/services/:id/edit(.:format)             admin/services#edit
+                   admin_service GET    /admin/services/:id(.:format)                  admin/services#show
+                                 PUT    /admin/services/:id(.:format)                  admin/services#update
+                                 DELETE /admin/services/:id(.:format)                  admin/services#destroy
+    batch_action_admin_galleries POST   /admin/galleries/batch_action(.:format)        admin/galleries#batch_action
+                 admin_galleries GET    /admin/galleries(.:format)                     admin/galleries#index
+                                 POST   /admin/galleries(.:format)                     admin/galleries#create
+               new_admin_gallery GET    /admin/galleries/new(.:format)                 admin/galleries#new
+              edit_admin_gallery GET    /admin/galleries/:id/edit(.:format)            admin/galleries#edit
+                   admin_gallery GET    /admin/galleries/:id(.:format)                 admin/galleries#show
+                                 PUT    /admin/galleries/:id(.:format)                 admin/galleries#update
+                                 DELETE /admin/galleries/:id(.:format)                 admin/galleries#destroy
+   batch_action_admin_complaints POST   /admin/complaints/batch_action(.:format)       admin/complaints#batch_action
+                admin_complaints GET    /admin/complaints(.:format)                    admin/complaints#index
+                                 POST   /admin/complaints(.:format)                    admin/complaints#create
+             new_admin_complaint GET    /admin/complaints/new(.:format)                admin/complaints#new
+            edit_admin_complaint GET    /admin/complaints/:id/edit(.:format)           admin/complaints#edit
+                 admin_complaint GET    /admin/complaints/:id(.:format)                admin/complaints#show
+                                 PUT    /admin/complaints/:id(.:format)                admin/complaints#update
+                                 DELETE /admin/complaints/:id(.:format)                admin/complaints#destroy
+     batch_action_admin_advisers POST   /admin/advisers/batch_action(.:format)         admin/advisers#batch_action
+                  admin_advisers GET    /admin/advisers(.:format)                      admin/advisers#index
+                                 POST   /admin/advisers(.:format)                      admin/advisers#create
+               new_admin_adviser GET    /admin/advisers/new(.:format)                  admin/advisers#new
+              edit_admin_adviser GET    /admin/advisers/:id/edit(.:format)             admin/advisers#edit
+                   admin_adviser GET    /admin/advisers/:id(.:format)                  admin/advisers#show
+                                 PUT    /admin/advisers/:id(.:format)                  admin/advisers#update
+                                 DELETE /admin/advisers/:id(.:format)                  admin/advisers#destroy
+batch_action_admin_adviser_users POST   /admin/adviser_users/batch_action(.:format)    admin/adviser_users#batch_action
+             admin_adviser_users GET    /admin/adviser_users(.:format)                 admin/adviser_users#index
+                                 POST   /admin/adviser_users(.:format)                 admin/adviser_users#create
+          new_admin_adviser_user GET    /admin/adviser_users/new(.:format)             admin/adviser_users#new
+         edit_admin_adviser_user GET    /admin/adviser_users/:id/edit(.:format)        admin/adviser_users#edit
+              admin_adviser_user GET    /admin/adviser_users/:id(.:format)             admin/adviser_users#show
+                                 PUT    /admin/adviser_users/:id(.:format)             admin/adviser_users#update
+                                 DELETE /admin/adviser_users/:id(.:format)             admin/adviser_users#destroy
+      approve_admin_verification POST   /admin/verifications/:id/approve(.:format)     admin/verifications#approve
+  dissapprove_admin_verification POST   /admin/verifications/:id/dissapprove(.:format) admin/verifications#dissapprove
+batch_action_admin_verifications POST   /admin/verifications/batch_action(.:format)    admin/verifications#batch_action
+             admin_verifications GET    /admin/verifications(.:format)                 admin/verifications#index
+                                 POST   /admin/verifications(.:format)                 admin/verifications#create
+          new_admin_verification GET    /admin/verifications/new(.:format)             admin/verifications#new
+         edit_admin_verification GET    /admin/verifications/:id/edit(.:format)        admin/verifications#edit
+              admin_verification GET    /admin/verifications/:id(.:format)             admin/verifications#show
+                                 PUT    /admin/verifications/:id(.:format)             admin/verifications#update
+                                 DELETE /admin/verifications/:id(.:format)             admin/verifications#destroy
+        batch_action_admin_users POST   /admin/users/batch_action(.:format)            admin/users#batch_action
+                     admin_users GET    /admin/users(.:format)                         admin/users#index
+                                 POST   /admin/users(.:format)                         admin/users#create
+                  new_admin_user GET    /admin/users/new(.:format)                     admin/users#new
+                 edit_admin_user GET    /admin/users/:id/edit(.:format)                admin/users#edit
+                      admin_user GET    /admin/users/:id(.:format)                     admin/users#show
+                                 PUT    /admin/users/:id(.:format)                     admin/users#update
+                                 DELETE /admin/users/:id(.:format)                     admin/users#destroy
+      batch_action_admin_ratings POST   /admin/ratings/batch_action(.:format)          admin/ratings#batch_action
+                   admin_ratings GET    /admin/ratings(.:format)                       admin/ratings#index
+                                 POST   /admin/ratings(.:format)                       admin/ratings#create
+                new_admin_rating GET    /admin/ratings/new(.:format)                   admin/ratings#new
+               edit_admin_rating GET    /admin/ratings/:id/edit(.:format)              admin/ratings#edit
+                    admin_rating GET    /admin/ratings/:id(.:format)                   admin/ratings#show
+                                 PUT    /admin/ratings/:id(.:format)                   admin/ratings#update
+                                 DELETE /admin/ratings/:id(.:format)                   admin/ratings#destroy
+                 admin_dashboard        /admin/dashboard(.:format)                     admin/dashboard#index
+  batch_action_admin_admin_users POST   /admin/admin_users/batch_action(.:format)      admin/admin_users#batch_action
+               admin_admin_users GET    /admin/admin_users(.:format)                   admin/admin_users#index
+                                 POST   /admin/admin_users(.:format)                   admin/admin_users#create
+            new_admin_admin_user GET    /admin/admin_users/new(.:format)               admin/admin_users#new
+           edit_admin_admin_user GET    /admin/admin_users/:id/edit(.:format)          admin/admin_users#edit
+                admin_admin_user GET    /admin/admin_users/:id(.:format)               admin/admin_users#show
+                                 PUT    /admin/admin_users/:id(.:format)               admin/admin_users#update
+                                 DELETE /admin/admin_users/:id(.:format)               admin/admin_users#destroy
+     batch_action_admin_comments POST   /admin/comments/batch_action(.:format)         admin/comments#batch_action
+                  admin_comments GET    /admin/comments(.:format)                      admin/comments#index
+                                 POST   /admin/comments(.:format)                      admin/comments#create
+                   admin_comment GET    /admin/comments/:id(.:format)                  admin/comments#show
+           batch_action_comments POST   /comments/batch_action(.:format)               comments#batch_action
+                        comments GET    /comments(.:format)                            comments#index
+                                 POST   /comments(.:format)                            comments#create
+                         comment GET    /comments/:id(.:format)                        comments#show
+           adviser_contact_popup GET    /advisers/:adviser_id/contact_popup(.:format)  advisers#contact_popup
+                        advisers GET    /advisers(.:format)                            advisers#index
+                                 POST   /advisers(.:format)                            advisers#create
+                     new_adviser GET    /advisers/new(.:format)                        advisers#new
+                    edit_adviser GET    /advisers/:id/edit(.:format)                   advisers#edit
+                         adviser GET    /advisers/:id(.:format)                        advisers#show
+                                 PUT    /advisers/:id(.:format)                        advisers#update
+                                 DELETE /advisers/:id(.:format)                        advisers#destroy

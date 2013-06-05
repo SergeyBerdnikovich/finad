@@ -8,7 +8,7 @@ class Adviser < ActiveRecord::Base
                   :state, :url, :zip, :adviser_user_id, :gallery_attributes,
                   :plan, :blog_url, :verified, :years_of_experience, :education,
                   :short_description, :education, :years_of_experience, :short_description, :company_data, :bio,
-                  :experience, :offers_and_pledges, :compensation_arrangements
+                  :experience, :offers_and_pledges, :compensation_arrangements, :open_hours
 
   paginates_per 15
 
@@ -66,7 +66,7 @@ class Adviser < ActiveRecord::Base
     html = ''
     rln = self.try(relation)
     unless rln.blank?
-      rln.split(';').each do |line|
+      rln.split(/\n/).each do |line|
         html << '<li>'+ line + '</li>'
       end
     end

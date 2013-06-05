@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>FXP Advisory Services LLC in Edison, New Jersey | Frank Polashock, Financial Advisor in Edison, NJ, 08820 | WiserAdvisor.com</title>
+  <title>Invesment Protection Buereau - <%=  @adviser.name %></title>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
   <link href="/assets/advisers/grid.css" rel="stylesheet" type="text/css" />
@@ -83,74 +83,36 @@ $("#form2").validate();
 
 </head>
 <body class="profile" onload = "recordClick(1878728,999999999,'PR','','20024016');" >
-<!-- ClickTale Top part -->
-<script type="text/javascript">
-  var WRInitTime=(new Date()).getTime();
-</script>
-<!-- ClickTale end of Top part -->
+<!-- FancyBox -->
+<div id="contactpopup" style="display: none;width:100%;height:200%;position:absolute;top:0px;left:0px;background-color:rgba(125,125,125,0.5); z-index:99999;">
+   <div id="container" style='width:900px;margin-left:auto;  margin-right: auto ;margin-top:15%'>
+        
+          <div class="grid_20">
+            <div class="grid_8" >
+              <div class="exper" >
+              <iframe src='<%= adviser_contact_popup_path(@adviser) %>' style='width:900px;height:700px;background-color:white;'></iframe>
+            </div>
+        
+          </div>
+          </div>
+          </div>
+  </div>
 
+<script language="javascript" type="text/javascript">
 
-<script type="text/javascript">
-  $(document).ready(function() {
-   setTimeout(function () {
-      $(".profilepop").fancybox( {
-          'width'     : 920,
-          'height'    : 640,
-          'autoScale'   : false,
-          'transitionIn'    : 'none',
-          'transitionOut'   : 'none',
-          'type'      : 'iframe',
-          hideOnOverlayClick    : false,
-          showNavArrows   : false
-        }).trigger('click');
-      }, 30000);
-  });
-</script>
-<a href="http://www.wiseradvisor.com/profile_lead_form.asp?sid=1878728" class="profilepop"></a>
+jQuery('document').ready(function(){
 
-<script type="text/javascript">
-  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-  var pageTracker = _gat._getTracker("UA-2647866-1");
+setTimeout("jQuery('#contactpopup').show()",30000)
 
-  // CAMPAIGNS
-  pageTracker._setCampNameKey(""); // name
-  pageTracker._setCampMediumKey(""); // medium
-  pageTracker._setCampSourceKey(""); // source
-  pageTracker._setCampTermKey(""); // term/keyword
-  pageTracker._setCampContentKey(""); // content
-  pageTracker._setCampIdKey(""); // id number
-  pageTracker._setCampNOKey(""); // don't override
+jQuery('#contactpopup').click(function(){
+  jQuery('#contactpopup').remove()
+})
 
-  pageTracker._initData();
-  pageTracker._trackPageview("/sprofile/");
-  pageTracker._setVar("20024016");
+})
+
 </script>
 
-<!--WEBSITECEO:BEGIN:{764EEF2E-BC11-45CF-8627-300CE1BA2219}-->
-<!--
-Do NOT modify this script to avoid traffic misrepresentation!
-Web CEO 4 0300/1
-Code initially inserted into: "/Find Local Businesses _ Get Matched to Local Businesses _ Respond.com.htm".
--->
-<script type="text/javascript"><!--
-  // hitlens v1.2.7
-  function hitlens_embedded() {
-  var id = 249041;
-  var pc = 1;
-  var PAGENAME = escape('/sprofile/');
-  var CONTENTGROUP = escape('20024016');
-  var TRANSACTION = escape('');
-  var TRANSACTION_ID = 0;
-  var ORDER = escape('');
-  return "id="+id+"&pc="+pc+"&p="+PAGENAME+"&gr="+CONTENTGROUP+"&tr="+TRANSACTION+"&trid="+TRANSACTION_ID+"&ord="+ORDER;
-  }
-//--></script>
-
-<!--WEBSITECEO:END:{764EEF2E-BC11-45CF-8627-300CE1BA2219}-->
-
+<!-- END SFG HTML -->
 <div itemscope itemtype="http://schema.org/FinancialService">
   <div id="wrapper">
     <div id="header">
@@ -182,7 +144,7 @@ Code initially inserted into: "/Find Local Businesses _ Get Matched to Local Bus
               <div class="grid_10 prefix_0" itemprop="name">
                 <h3 class="h3"><%= @adviser.name %>
                   <br/>
-                  <small><%= @adviser.company_data %></small>
+                  
                 </h3>
                 <br />
                 <br />
@@ -242,8 +204,8 @@ Code initially inserted into: "/Find Local Businesses _ Get Matched to Local Bus
                 <ul class="clearfix profile_tabnavi">
                   <li class="active">Services</li>
                   <li class="">Biography</li>
-                  <li class="">HighLights</li>
-                  <li class="">FAQs</li>
+              <!--    <li class="">HighLights</li>
+                  <li class="">FAQs</li> -->
                 </ul>
               </div>
               <div class="tab_contents">
@@ -311,13 +273,13 @@ Code initially inserted into: "/Find Local Businesses _ Get Matched to Local Bus
                     </div>
                   </div>
                 </div>
-                <div class="education">
+                <!--<div class="education">
                   <h2>Education</h2>
                   <p>
                     <%= @adviser.education %>
                     <div class="h_line">&nbsp;</div>
                   </p>
-                </div>
+                </div> -->
               </div>
               <div class="grid_8 suffix_1 float_r">
                 <div class="sidebar">
@@ -374,21 +336,15 @@ Code initially inserted into: "/Find Local Businesses _ Get Matched to Local Bus
                 <br clear="all" />
                 <div class="sidebar">
                   <h3>Office Hours</h3>
-                  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="office_hrs" itemprop="openingHours">
-                    <% @adviser.office_hours.each do |office_hour| %>
-                      <tr>
-                        <td width="7%" align="center">
-                          <img src="/assets/advisers/list_bullet_black.gif" width="5" height="5" />
-                        </td>
-                        <td width="38%"><%= office_hour.day_of_the_week %>.</td>
-                        <td width="55%" align="right"><%= office_hour.start.strftime("%H:%M") %> - <%= office_hour.end.strftime("%H:%M") %></td>
-                      </tr>
-                    <% end %>
-                  </table>
+                  
+                    <ul class="bullet_list">
+                      <%== @adviser.splitted(:open_hours) %>
+                    </ul>
+                  
                 </div>
                 <br clear="all" />
                 <div class="sidebar">
-                  <h3>Communities Served</h3>
+                  <h3>Licensed in</h3>
                   <div class="grid_4 omega">
                     <ul class="bullet_list">
                       <li><%= @adviser.city %></li>

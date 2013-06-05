@@ -32,6 +32,8 @@ Finad::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :advisers
+  resources :advisers do
+    get 'contact_popup'
+  end
 
 end

@@ -3,6 +3,7 @@ class Adviser < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+<<<<<<< HEAD
 
   attr_accessible :featured, :address, :city, :name, :phone, :rating_id,
                   :state, :url, :zip, :adviser_user_id, :gallery_attributes,
@@ -13,6 +14,8 @@ class Adviser < ActiveRecord::Base
   paginates_per 15
 
 
+=======
+>>>>>>> d0852ba3ead976fd4cf4835823a48be3f388abe3
   has_one :gallery, :dependent => :destroy
   belongs_to :adviser_user
   belongs_to :rating
@@ -21,6 +24,19 @@ class Adviser < ActiveRecord::Base
   has_many :office_hours
   has_many :advisers_questions
   has_many :questions, :through => :advisers_questions
+
+  attr_accessible :featured, :address, :city, :name, :phone, :rating_id,
+                  :state, :url, :zip, :adviser_user_id, :gallery_attributes,
+                  :plan, :blog_url, :verified, :years_of_experience,
+                  :short_description, :education, :years_of_experience, :company_data, :bio,
+                  :experience, :offers_and_pledges, :compensation_arrangements, :email,
+                  :advisers_questions_attributes
+
+  accepts_nested_attributes_for :advisers_questions,
+                                :allow_destroy => :true,
+                                :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
+
+  paginates_per 15
 
   accepts_nested_attributes_for :gallery,
                                 :allow_destroy => :true,

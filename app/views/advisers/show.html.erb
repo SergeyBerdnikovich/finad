@@ -327,8 +327,7 @@ Code initially inserted into: "/Find Local Businesses _ Get Matched to Local Bus
                     <li>primarily to  evaluate mutual fit. </li>
                   </ul>
                   <div class="get_answer">
-                    <!-- <form action="match_service.asp" name="formContact" method="get" id="form2" onsubmit="flipFormSubmitSw()"> -->
-                      <%= form_tag consultation_path(:id => @adviser.id) do %>
+                    <%= form_tag consultation_path(:id => @adviser.id) do %>
                       <label>Service:</label>
                       <select class="required" name="consultation[service]" style='margin-left:20px;'>
                         <option value="">--- Select ---</option>
@@ -369,8 +368,7 @@ Code initially inserted into: "/Find Local Businesses _ Get Matched to Local Bus
                         <input type="submit" value="" class="get_answer_btn" name="x" style ="cursor:pointer;">
                       </div>
                       <br clear="all">
-                      <% end %>
-                    <!-- </form> -->
+                    <% end %>
                   </div>
                 </div>
                 <br clear="all" />

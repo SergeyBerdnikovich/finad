@@ -222,14 +222,12 @@ Code initially inserted into: "/Find Local Businesses _ Get Matched to Local Bus
               <div class="exper">
                 <h2><%= @adviser.years_of_experience %> <span>Years of Experience</span></h2>
                 <ul class="bullet_list">
-                  <li>Firm CRD# 135477 </li>
-                  <li>Series  65 </li>
-                  <li>CRD# 4961369 </li>
+                  <%== @adviser.splitted(:experience) %>
                 </ul>
                 <br/>
                 <h2>Offers <span>&amp;</span> Pledges</h2>
                 <ul class="bullet_list">
-                  <li>I provide a free initial consultation:</li>
+                  <%== @adviser.splitted(:offers_and_pledges) %>
                 </ul>
               </div>
             </div>
@@ -285,362 +283,29 @@ Code initially inserted into: "/Find Local Businesses _ Get Matched to Local Bus
                   <div class="contents ">
                     <h2>HIGHLIGHTS</h2>
                     <div class="grid_17 prefix_1">
+                      <% @adviser.questions.where(:faq => nil).each do |question| %>
                       <table width="98%">
                         <tr>
-                          <td valign="top"><strong style="color:#f89204">General Information</strong></td>
+                          <td valign="top"><strong style="color:#f89204"><%= question.body %></strong></td>
                         </tr>
                         <tr>
-                          <td class="white-bg">
-                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
-                              <tr>
-                                <td width="50%" valign="top">
-                                  <strong style="display:block; color:#000000;">Firm Start Year:</strong>
-                                </td>
-                                <td width="50%" valign="top">2005</td>
-                              </tr>
-                              <tr>
-                                <td width="50%" valign="top">
-                                  <strong style="display:block;color:#000000;">No.of Employees:</strong>
-                                </td>
-                                <td width="50%" valign="top">2-4 </td>
-                              </tr>
-                              <tr>
-                                <td width="50%" valign="top">
-                                  <strong style="display:block;color:#000000;">Name of Broker/Dealer:</strong>
-                                </td>
-                                <td width="50%" valign="top">
-                                  Not affiliated with a specific Broker/Dealer
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="gray-bg">
-                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
-                              <tr>
-                                <td width="50%" valign="top">
-                                  <strong style="display:block;color:#000000;">Name of Custodial Firm:</strong>
-                                </td>
-                                <td width="50%" valign="top">
-                                  Various.  Including National Financial (Fidelity) and Vanguard
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="white-bg">
-                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
-                              <tr>
-                                <td width="50%" valign="top">
-                                  <strong style="display:block;color:#000000;">Number of Years with Current Firm:</strong>
-                                </td>
-                                <td width="50%" valign="top">8</td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="gray-bg">
-                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
-                              <tr>
-                                <td width="50%" valign="top">
-                                  <strong style="display:block;color:#000000;">I work with the following types of clients:</strong>
-                                </td>
-                                <td width="50%" valign="top">
-                                  Individual Investors, Businesses
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                        <hr size="1" color="#CCCCCC" style="width:590px;"/>
-                        <tr>
-                          <td>&nbsp;</td>
+                          <td class="white-bg"><%= question.advisers_questions.where(:adviser_id => @adviser.id).last.answer %></td>
                         </tr>
                       </table>
-                      <table width="98%">
-                        <tr>
-                          <td valign="top"><strong style="color:#f89204">Services</strong></td>
-                        </tr>
-                        <tr>
-                          <td class="white-bg">
-                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
-                              <tr>
-                                <td width="50%" valign="top">
-                                  <strong style="display:block;color:#000000;">Investment Types:</strong>
-                                </td>
-                                <td width="50%" valign="top">
-                                  Exchange Traded Funds (ETFs), Stocks, Bonds, Options & Futures, Mutual Funds
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                        <hr size="1" color="#CCCCCC" style="width:590px;"/>
-                        <tr>
-                          <td>&nbsp;</td>
-                        </tr>
-                      </table>
-                      <table width="98%">
-                        <tr>
-                          <td valign="top">
-                            <strong style="color:#f89204">Qualifications & Memberships</strong>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>&nbsp;</td>
-                        </tr>
-                      </table>
-                      <table width="98%">
-                        <tr>
-                          <td valign="top">
-                            <strong style="color:#f89204">Firm Information</strong>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="white-bg">
-                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
-                              <tr>
-                                <td width="50%" valign="top">
-                                  <strong style="display:block;color:#000000;">Assets Managed by Advisor:</strong>
-                                </td>
-                                <td width="50%" valign="top">
-                                  $20 million
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                        <hr size="1" color="#CCCCCC" style="width:590px;"/>
-                        <tr>
-                          <td>&nbsp;</td>
-                        </tr>
-                      </table>
-                      <table width="98%">
-                        <tr>
-                          <td valign="top"><strong style="color:#f89204">Compliance</strong></td>
-                        </tr>
-                        <tr>
-                          <td class="white-bg">
-                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
-                              <tr>
-                                <td width="50%" valign="top">
-                                  <strong style="display:block;color:#000000;">Registered Investment Advisor:</strong>
-                                </td>
-                                <td width="50%" valign="top">
-                                  Yes
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="gray-bg">
-                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
-                              <tr>
-                                <td width="50%" valign="top">
-                                  <strong style="display:block;color:#000000;">Investment Advisor Representative:</strong>
-                                </td>
-                                <td width="50%" valign="top">
-                                  Yes
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="white-bg">
-                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
-                              <tr>
-                                <td width="50%" valign="top">
-                                  <strong style="display:block;color:#000000;">I am an acknowledged fiduciary:</strong>
-                                </td>
-                                <td width="50%" valign="top">
-                                  Yes
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="gray-bg">
-                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
-                              <tr>
-                                <td width="50%" valign="top">
-                                  <strong style="display:block;color:#000000;">Compliance Disclosures in Last 5 years:</strong>
-                                </td>
-                                <td width="50%" valign="top">
-                                  I have a clean record
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="white-bg">
-                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
-                              <tr>
-                                <td width="50%" valign="top">
-                                  <strong style="display:block;color:#000000;">Criminal Disclosures in Last 5 years:</strong>
-                                </td>
-                                <td width="50%" valign="top">
-                                  I have a clean record
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                        <hr size="1" color="#CCCCCC" style="width:590px;"/>
-                        <tr>
-                          <td>&nbsp;</td>
-                        </tr>
-                      </table>
-                      <table width="98%">
-                        <tr>
-                          <td valign="top">
-                            <strong style="color:#f89204">Compensation & Fees</strong>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="white-bg">
-                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
-                            <tr>
-                              <td width="50%" valign="top">
-                                <strong style="display:block;color:#000000;">Fee Structure:</strong>
-                              </td>
-                              <td width="50%" valign="top">
-                                I am a Fee-Only financial professional
-                              </td>
-                            </tr>
-                          </table>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="gray-bg">
-                          <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
-                            <tr>
-                              <td width="50%" valign="top">
-                                <strong style="display:block;color:#000000;">Minimum Portfolio Size for New Managed Accounts:</strong>
-                              </td>
-                              <td width="50%" valign="top">
-                                $500,000
-                              </td>
-                            </tr>
-                          </table>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="white-bg">
-                          <table width="90%" border="0" cellspacing="0" cellpadding="0" class="lineheight-14">
-                            <tr>
-                              <td width="50%" valign="top">
-                                <strong style="display:block;color:#000000;">Compensation Methods:</strong>
-                              </td>
-                              <td width="50%" valign="top">
-                                Based on Assets, Flat Fee
-                              </td>
-                            </tr>
-                          </table>
-                        </td>
-                      </tr>
                       <hr size="1" color="#CCCCCC" style="width:590px;"/>
-                      <tr>
-                        <td>&nbsp;</td>
-                      </tr>
-                    </table>
+                      <% end %>
+                    </div>
                   </div>
-                </div>
-                <div class="contents ">
-                  <h2>FAQs</h2>
-                    <div class="grid_18 prefix_1">
-                      <strong style="color:#f89204">General Questions</strong><br/>
-                      <br/>
-                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#1">
-                        <u>Do you have a customer satisfaction or refund policy?</u>
-                      </a>
-                      <br /><br />
-                      <strong style="color:#f89204">Financial Planners</strong><br/>
-                      <br/>
-                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#2">
-                        <u>What are your qualifications? What is your education background?</u>
-                      </a>
-                      <br/>
-                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#3">
-                        <u>What services do you offer?</u>
-                      </a>
-                      <br/>
-                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#4">
-                        <u>How many clients do you currently manage?</u>
-                      </a>
-                      <br/>
-                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#5">
-                        <u>Will you be the only person working with me?</u>
-                      </a>
-                      <br/>
-                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#6">
-                        <u>How are you compensated? How will I pay for your services?</u>
-                      </a>
-                      <br/>
-                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#7">
-                        <u>If you are going to manage my account, will you obtain my permission every time you buy or sell something?</u>
-                      </a>
-                      <br/>
-                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#8">
-                        <u>Do you offer any guaranteed results?</u>
-                      </a>
-                      <br/>
-                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#9">
-                        <u>How much risk should I be willing to take?</u>
-                      </a>
-                      <br/>
-                      <a class="may" style="text-decoration:none; color:#000; font-weight:bold; background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 0 22px; list-style-type:none;"  href="http://www.wiseradvisor.com/advisor_profile_state~id~1878728.asp#10">
-                        <u>Have you ever been charged with any breaches?</u>
-                      </a>
-                      <br/><br/>
-                      <hr size="1" color="#CCCCCC"><br/>
+                  <div class="contents ">
+                    <h2>FAQs</h2>
+                      <div class="grid_18 prefix_1">
                         <ul class="faq">
-                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="1">
-                            Do you have a customer satisfaction or refund policy?<br/>
-                            <span>Yes.  Clients can terminate services with one month notice.  Refunds are given on a pro rata basis.</span>
-                          </li>
-                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="2">
-                            What are your qualifications? What is your education background?<br/>
-                            <span>CFP.  BS in Accounting.</span>
-                          </li>
-                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="3">
-                            What services do you offer?<br/>
-                            <span>Comprehensive Finnacial Planning, Estate Planning, Investment Management and Retirement Planning.</span>
-                          </li>
-                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="4">
-                            How many clients do you currently manage?<br/>
-                            <span>25</span>
-                          </li>
-                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="5">
-                            Will you be the only person working with me?<br/>
-                            <span>In most cases, yes.</span>
-                          </li>
-                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="6">
-                            How are you compensated? How will I pay for your services?<br/>
-                            <span>Either on a set fee for financial planning services agreed ahead of time, or based on a % of assets managed (1% or lower).</span>
-                          </li>
-                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="7">
-                            If you are going to manage my account, will you obtain my permission every time you buy or sell something?<br/>
-                            <span>Not normally.  But I make exceptions.</span>
-                          </li>
-                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="8">
-                            Do you offer any guaranteed results?<br/>
-                            <span>No.  No one can guarantee results.</span>
-                          </li>
-                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="9">
-                            How much risk should I be willing to take?<br/>
-                            <span>We will explore your risk tolerance, time horizon and goals in detail to mutually determine your risk profile.</span>
-                          </li>
-                          <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="10">
-                            Have you ever been charged with any breaches?<br/>
-                            <span>No. Never.</span>
-                          </li>
+                          <% @adviser.questions.where(:faq => true).each do |question| %>
+                            <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="1">
+                              <%= question.body %><br/>
+                              <span><%= question.advisers_questions.where(:adviser_id => @adviser.id).last.answer %></span>
+                            </li>
+                          <% end %>
                         </ul>
                       </div>
                     </div>
@@ -662,45 +327,39 @@ Code initially inserted into: "/Find Local Businesses _ Get Matched to Local Bus
                     <li>primarily to  evaluate mutual fit. </li>
                   </ul>
                   <div class="get_answer">
-                    <form action="match_service.asp" name="formContact" method="get" id="form2" onsubmit="flipFormSubmitSw()">
-                      <input type="hidden" name="sid" value="1878728">
-                      <input type="hidden" name="cat" value="1720000130">
-                      <input type="hidden" name="src" value="200240000">
-                      <input type="hidden" name="bd" value="20024016">
-                      <input type="hidden" name="ss" value="y">
-                      <input type="hidden" value="76775" name="Q1405162363">
-                      <input type="hidden" value="77004"  name="Q1405152631">
+                    <!-- <form action="match_service.asp" name="formContact" method="get" id="form2" onsubmit="flipFormSubmitSw()"> -->
+                      <%= form_tag consultation_path(:id => @adviser.id) do %>
                       <label>Service:</label>
-                      <select class="required" name="Q200503" >
+                      <select class="required" name="consultation[service]" style='margin-left:20px;'>
                         <option value="">--- Select ---</option>
-                        <option value="19400">Portfolio Management</option>
-                        <option value="70675">Retirement Planning</option>
-                        <option value="70676">Estate Planning</option>
-                        <option value="76773">Education Planning</option>
-                        <option value="76774">401K Rollover</option>
+                        <option value="Portfolio Management">Portfolio Management</option>
+                        <option value="Retirement Planning">Retirement Planning</option>
+                        <option value="Estate Planning">Estate Planning</option>
+                        <option value="Education Planning">Education Planning</option>
+                        <option value="401K Rollover">401K Rollover</option>
                       </select>
-                      <label for="Q200503" class="error" style="display:none;color:red; width:154px; padding-right:0px; text-align:left;">Service is required</label>
+                      <label for="service" class="error" style="display:none;color:red; width:154px; padding-right:0px; text-align:left;">Service is required</label>
                       <br clear="all" >
                       <label>ZIP Code:</label>
-                      <input type="text" class="zip required" name="zip" maxlength="5">
+                      <input type="text" class="zip required" name="consultation[zip]" maxlength="5">
                       <label for="zip" class="error" style="display:none;color:red; width:154px; padding-right:0px; text-align:left;">ZIP Code is required</label>
                       <br clear="all">
                       <label>First Name:</label>
-                      <input type="text" name="firstnm" class="required">
+                      <input type="text" name="consultation[firstnm]" class="required">
                       <label for="firstnm" class="error" style="display:none;color:red; width:154px; padding-right:0px; text-align:left;">First Name is required</label>
                       <br clear="all">
                       <label>Last Name:</label>
-                      <input type="text" name="lastnm" class="required">
+                      <input type="text" name="consultation[lastnm]" class="required">
                       <label for="lastnm" class="error" style="display:none;color:red; width:154px; padding-right:0px; text-align:left;">Last Name is required</label>
                       <br clear="all">
                       <label>Email:</label>
-                      <input type="text" name="email" class="required">
+                      <input type="text" name="consultation[email]" class="required">
                       <label for="email" class="error" style="display:none;color:red; width:154px; padding-right:0px; text-align:left;">Email is required</label>
                       <br clear="all">
                       <label>Phone:</label>
-                      <input type="text" onclick="trackConversion('6')" onkeyup="if(this.value.length==3) {getElementById('h2').focus()} " maxlength="3" size="3" value="" name="harea" class="phone_code required">
-                      <input type="text" onclick="trackConversion('6')" id="h2" onkeyup="if(this.value.length==3) {getElementById('h3').focus()} " maxlength="3" size="3" value="" name="hphone3" class="phone_code required">
-                      <input type="text" onclick="trackConversion('6')" id="h3" maxlength="4" size="4" value="" name="hphone4" class="phone_code required">
+                      <input type="text" onclick="trackConversion('6')" onkeyup="if(this.value.length==3) {getElementById('h2').focus()} " maxlength="3" size="3" value="" name="consultation[harea]" class="phone_code required">
+                      <input type="text" onclick="trackConversion('6')" id="h2" onkeyup="if(this.value.length==3) {getElementById('h3').focus()} " maxlength="3" size="3" value="" name="consultation[hphone3]" class="phone_code required">
+                      <input type="text" onclick="trackConversion('6')" id="h3" maxlength="4" size="4" value="" name="consultation[hphone4]" class="phone_code required">
                       <label for="harea" class="error" style="display:none; color:red; width:154px; padding-right:0px; text-align:left;">Area code is required.</label>
                       <label for="h2" class="error" style="display:none; color:red; width:211px; padding-right:0px; text-align:right; margin-top: -12px;">Phone no. is required.</label>
                       <label for="h3" class="error" style="display:none; color:red; width:211px; padding-right:0px; text-align:right; margin-top: -12px;">Phone no. is required.</label>
@@ -710,79 +369,56 @@ Code initially inserted into: "/Find Local Businesses _ Get Matched to Local Bus
                         <input type="submit" value="" class="get_answer_btn" name="x" style ="cursor:pointer;">
                       </div>
                       <br clear="all">
-                    </form>
+                      <% end %>
+                    <!-- </form> -->
                   </div>
                 </div>
                 <br clear="all" />
                 <div class="sidebar">
                   <h3>Office Hours</h3>
                   <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="office_hrs" itemprop="openingHours">
-                    <tr>
-                      <td width="7%" align="center">
-                        <img src="/assets/advisers/list_bullet_black.gif" width="5" height="5" />
-                      </td>
-                      <td width="38%">Mon.</td>
-                      <td width="55%" align="right">9:00 AM - 5:00 PM</td>
-                    </tr>
-                    <td width="7%" align="center">
-                      <img src="/assets/advisers/list_bullet_black.gif" width="5" height="5" />
-                    </td>
-                    <td width="38%">Tue.</td>
-                    <td width="55%" align="right">9:00 AM - 5:00 PM</td>
-                  </tr>
-                  <td width="7%" align="center">
-                    <img src="/assets/advisers/list_bullet_black.gif" width="5" height="5" />
-                  </td>
-                  <td width="38%">Wed.</td>
-                  <td width="55%" align="right">9:00 AM - 5:00 PM</td>
-                </tr>
-                <td width="7%" align="center">
-                  <img src="/assets/advisers/list_bullet_black.gif" width="5" height="5" />
-                </td>
-                <td width="38%">Thu.</td>
-                <td width="55%" align="right">9:00 AM - 5:00 PM</td>
-              </tr>
-              <td width="7%" align="center">
-                <img src="/assets/advisers/list_bullet_black.gif" width="5" height="5" />
-              </td>
-              <td width="38%">Fri.</td>
-              <td width="55%" align="right">9:00 AM - 5:00 PM</td>
-            </tr>
-          </tr>
-        </table>
-      </div>
-      <br clear="all" />
-    <div class="sidebar">
-      <h3>Communities Served</h3>
-      <div class="grid_4 omega">
-        <ul class="bullet_list">
-          <li><%= @adviser.city %></li>
-        </ul>
-      </div>
-      <div class="grid_4 alpha">
-        <ul class="bullet_list">
-          <div class="grid_4 omega">
-        </ul>
-      </div>
-    </div>
-    <br clear="all" />
-    <div class="sidebar"></div>
-    <div class="sidebar"></div>
-    <div class="sidebar"></div>
-    <div class="sidebar"></div>
-    <div class="sidebar">
-      <h3>Compensation Arrangements</h3>
-      <div class="grid_4 omega">
-        <ul class="bullet_list">
-          <li>Check</li>
-          <li>PayPal</li>
-        </ul>
-      </div>
-      <div class="grid_4 alpha">
-        <ul class="bullet_list"></ul>
-      </div>
-    </div>
-  </div>
+                    <% @adviser.office_hours.each do |office_hour| %>
+                      <tr>
+                        <td width="7%" align="center">
+                          <img src="/assets/advisers/list_bullet_black.gif" width="5" height="5" />
+                        </td>
+                        <td width="38%"><%= office_hour.day_of_the_week %>.</td>
+                        <td width="55%" align="right"><%= office_hour.start.strftime("%H:%M") %> - <%= office_hour.end.strftime("%H:%M") %></td>
+                      </tr>
+                    <% end %>
+                  </table>
+                </div>
+                <br clear="all" />
+                <div class="sidebar">
+                  <h3>Communities Served</h3>
+                  <div class="grid_4 omega">
+                    <ul class="bullet_list">
+                      <li><%= @adviser.city %></li>
+                    </ul>
+                  </div>
+                  <div class="grid_4 alpha">
+                    <ul class="bullet_list">
+                      <div class="grid_4 omega">
+                    </ul>
+                  </div>
+                </div>
+                <br clear="all" />
+                <div class="sidebar"></div>
+                <div class="sidebar"></div>
+                <div class="sidebar"></div>
+                <div class="sidebar"></div>
+                <div class="sidebar">
+                  <h3>Compensation Arrangements</h3>
+                  <div class="grid_4 omega">
+                    <ul class="bullet_list">
+                      <%== @adviser.splitted(:compensation_arrangements) %>
+                    </ul>
+                  </div>
+                  <div class="grid_4 alpha">
+                    <ul class="bullet_list"></ul>
+                  </div>
+                </div>
+              </div>
 
   <SCRIPT language=javascript>
      <!--

@@ -20,6 +20,7 @@ Finad::Application.routes.draw do
   match "advisers/featured2" => "advisers#featured2"
   match "advisers/contact_form" => "advisers#contact_form", :as => :contact_form
   match "advisers/contact_question" => "advisers#contact_question", :as => :contact_question
+  match "advisers/consultation" => "advisers#consultation", :as => :consultation
 
   match "advisers/register" => "advisers#register"
   match "advisers/find_adviser" => "advisers#find_adviser"

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  day_of_the_week: MyString
+  start: 2013-06-05 14:05:27
+  end: 2013-06-05 14:05:27
+  adviser: 
+
+two:
+  day_of_the_week: MyString
+  start: 2013-06-05 14:05:27
+  end: 2013-06-05 14:05:27
+  adviser: 

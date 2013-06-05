@@ -1,5 +1,6 @@
 class AdvisersController < ApplicationController
   before_filter :check_current_adviser_user, :only => [:find_adviser, :check_adviser, :set_adviser, :contact_question, :contact_form]
+  layout :resolve_layout
 
   def index
     if request.referer.blank? == false
@@ -67,6 +68,15 @@ end
   def alphabet
     params[:char] ||= 'A'
     @advisers = Adviser.where("advisers.name LIKE ?", "#{params[:char]}%")
+  end
+
+  def consultation
+    adviser = Adviser.find(params[:id])
+    consultation = params[:consultation]
+
+    UserMailer.send_consultation_to_admin(adviser, consultation).deliver
+
+    redirect_to adviser_path(adviser), :notice => 'Your request has been sent...'
   end
 
 def check_adviser_user
@@ -174,5 +184,14 @@ end
 
   def check_current_adviser_user
     redirect_to root_path unless current_adviser_user
+  end
+
+  def resolve_layout
+    case action_name
+    when "show", "edit"
+      "adviser_layout"
+    else
+      "application"
+    end
   end
 end

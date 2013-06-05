@@ -67,5 +67,10 @@ class UserMailer < ActionMailer::Base
 		@question = question
 		mail(:to => "ipbureauusa@gmail.com", :subject => "New question from #{user.email}")
 	end
+
+	def send_consultation_to_admin(adviser, consultation)
+		@consultation = consultation
+		mail(:to => 'ipbureauusa@gmail.com', :subject => "New consultation request from #{consultation[:firstnm] + ' ' + consultation[:lastnm]}")
+	end
 end
 

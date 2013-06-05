@@ -7,7 +7,8 @@ class Adviser < ActiveRecord::Base
   attr_accessible :featured, :address, :city, :name, :phone, :rating_id,
                   :state, :url, :zip, :adviser_user_id, :gallery_attributes,
                   :plan, :blog_url, :verified, :years_of_experience, :education,
-                  :short_description, :education, :years_of_experience, :short_description, :company_data, :bio
+                  :short_description, :education, :years_of_experience, :short_description, :company_data, :bio,
+                  :experience, :offers_and_pledges, :compensation_arrangements
 
   paginates_per 15
 
@@ -17,6 +18,9 @@ class Adviser < ActiveRecord::Base
   belongs_to :rating
   has_one :verification
   has_many :services
+  has_many :office_hours
+  has_many :advisers_questions
+  has_many :questions, :through => :advisers_questions
 
   accepts_nested_attributes_for :gallery,
                                 :allow_destroy => :true,
@@ -56,5 +60,16 @@ class Adviser < ActiveRecord::Base
 
   def set_rating
     self.rating = Rating.find_or_create_by_name('C')
+  end
+
+  def splitted(relation)
+    html = ''
+    rln = self.try(relation)
+    unless rln.blank?
+      rln.split(';').each do |line|
+        html << '<li>'+ line + '</li>'
+      end
+    end
+    html
   end
 end

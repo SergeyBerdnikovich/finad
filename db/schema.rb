@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130604142203) do
+ActiveRecord::Schema.define(:version => 20130605123954) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(:version => 20130604142203) do
     t.integer  "zip"
     t.string   "phone"
     t.string   "url"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "adviser_user_id"
     t.string   "plan"
     t.text     "bio"
@@ -93,6 +93,9 @@ ActiveRecord::Schema.define(:version => 20130604142203) do
     t.integer  "years_of_experience"
     t.text     "short_description"
     t.text     "company_data"
+    t.string   "offers_and_pledges"
+    t.string   "compensation_arrangements"
+    t.string   "experience"
   end
 
   add_index "advisers", ["address"], :name => "index_advisers_on_address"
@@ -102,6 +105,14 @@ ActiveRecord::Schema.define(:version => 20130604142203) do
   add_index "advisers", ["rating_id"], :name => "index_advisers_on_rating_id"
   add_index "advisers", ["slug"], :name => "index_advisers_on_slug", :unique => true
   add_index "advisers", ["zip"], :name => "index_advisers_on_zip"
+
+  create_table "advisers_questions", :force => true do |t|
+    t.integer  "adviser_id"
+    t.integer  "question_id"
+    t.text     "answer"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "complaints", :force => true do |t|
     t.string   "name"
@@ -158,6 +169,24 @@ ActiveRecord::Schema.define(:version => 20130604142203) do
   add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], :name => "poly_session_index"
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index", :length => {"impressionable_type"=>nil, "message"=>255, "impressionable_id"=>nil}
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
+
+  create_table "office_hours", :force => true do |t|
+    t.string   "day_of_the_week"
+    t.time     "start"
+    t.time     "end"
+    t.integer  "adviser_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "office_hours", ["adviser_id"], :name => "index_office_hours_on_adviser_id"
+
+  create_table "questions", :force => true do |t|
+    t.text     "body"
+    t.boolean  "faq"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "ratings", :force => true do |t|
     t.string   "name"

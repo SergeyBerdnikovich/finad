@@ -16,8 +16,12 @@ ActiveAdmin.register Adviser do
       f.input :phone
       f.input :url
       f.input :rating
-      f.input :blog_url
-      f.input :verified
+      f.input :education
+      f.input :bio      
+      f.input :years_of_experience
+      f.input :short_description
+      f.input :company_data
+
     end
     f.inputs "Photo",
       :for => [:gallery,
@@ -47,6 +51,11 @@ ActiveAdmin.register Adviser do
       row :rating
       row :blog_url
       row :verified
+      row :education
+      row :years_of_experience
+      row :short_description
+      row :company_data
+      row :services
       row :created_at
       row :updated_at
       row :photo do |adviser|

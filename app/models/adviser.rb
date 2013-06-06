@@ -7,7 +7,8 @@ class Adviser < ActiveRecord::Base
                   :state, :url, :zip, :adviser_user_id, :gallery_attributes,
                   :plan, :blog_url, :verified, :years_of_experience, :education,
                   :short_description, :education, :years_of_experience, :short_description, :company_data, :bio,
-                  :experience, :offers_and_pledges, :compensation_arrangements, :open_hours
+                  :experience, :offers_and_pledges, :compensation_arrangements, :open_hours,
+                  :services_attributes, :office_hours_attributes
 
   paginates_per 15
 
@@ -25,12 +26,16 @@ class Adviser < ActiveRecord::Base
   accepts_nested_attributes_for :advisers_questions,
                                 :allow_destroy => :true,
                                 :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
-
-  paginates_per 15
-
+  accepts_nested_attributes_for :services,
+                                :allow_destroy => :true,
+                                :reject_if => :all_blank
+  accepts_nested_attributes_for :office_hours,
+                                :allow_destroy => :true,
+                                :reject_if => :all_blank
   accepts_nested_attributes_for :gallery,
                                 :allow_destroy => :true,
                                 :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
+  paginates_per 15
 
   before_create :set_rating
 

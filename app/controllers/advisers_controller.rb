@@ -4,7 +4,7 @@ class AdvisersController < ApplicationController
 
   def contact_popup
      @adviser = Adviser.find(params[:adviser_id])
-     
+
        render :layout => "empty"
   end
 
@@ -123,7 +123,7 @@ end
 
 def edit
   @adviser = Adviser.find(params[:id])
-  @adviser.advisers_questions.build
+  #@adviser.advisers_questions.build
 
   if @adviser.verified && current_adviser_user.id == @adviser.adviser_user.id
     @adviser = Adviser.find(params[:id])
@@ -174,7 +174,7 @@ end
     @owner = check_adviser_user
     @user_hashstr = User.find(session[:user_id]).try(:hashstr) if session[:user_id]
     @user = User.find_by_id_and_hashstr(params[:id], @user_hashstr) if @user_hashstr
-   
+
     respond_to do |format|
       if params[:email].present? && params[:email].length > 5
         UserMailer.contact(@adviser, @user, params[:email], params[:comment]).deliver
@@ -186,12 +186,13 @@ end
   end
 
 def update
-  params[:adviser][:zip].gsub!(/[^0-9]/,"")
+  #params[:adviser][:zip].gsub!(/[^0-9]/,"")
   @adviser = Adviser.find(params[:id])
 
   respond_to do |format|
     if @adviser.verified && current_adviser_user.id == @adviser.adviser_user.id
-      check_question(@adviser, params[:advisers_questions])
+      #check_question(@adviser, params[:advisers_questions])
+      check_new_new_office_hours(params['adviser']['office_hours_attributes'])
       if @adviser.update_attributes(params[:adviser])
         format.html { redirect_to adviser_path(@adviser), notice: 'Adviser was successfully updated.' }
         format.json { render action: 'show', status: :created, location: @adviser }
@@ -229,5 +230,9 @@ end
         aq['answer'].blank? ? old_aq.last.destroy : old_aq.last.update_attribute(:answer, aq['answer'])
       end
     end
+  end
+
+  def check_new_new_office_hours(office_hours_attr)
+    office_hours_attr['new_office_hours']['_destroy'] = 1 if office_hours_attr['new_office_hours']['day_of_the_week'].blank?
   end
 end

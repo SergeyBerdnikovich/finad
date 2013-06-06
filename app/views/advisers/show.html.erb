@@ -86,13 +86,13 @@ $("#form2").validate();
 <!-- FancyBox -->
 <div id="contactpopup" style="display: none;width:100%;height:200%;position:absolute;top:0px;left:0px;background-color:rgba(125,125,125,0.5); z-index:99999;">
    <div id="container" style='width:900px;margin-left:auto;  margin-right: auto ;margin-top:15%'>
-        
+
           <div class="grid_20">
             <div class="grid_8" >
               <div class="exper" >
               <iframe src='<%= adviser_contact_popup_path(@adviser) %>' style='width:900px;height:700px;background-color:white;'></iframe>
             </div>
-        
+
           </div>
           </div>
           </div>
@@ -144,7 +144,7 @@ jQuery('#contactpopup').click(function(){
               <div class="grid_10 prefix_0" itemprop="name">
                 <h3 class="h3"><%= @adviser.name %>
                   <br/>
-                  
+
                 </h3>
                 <br />
                 <br />
@@ -242,35 +242,35 @@ jQuery('#contactpopup').click(function(){
                       <p align="justify"><%== @adviser.bio %></p>
                     </div>
                   </div>
-                  <div class="contents ">
+                  <!-- <div class="contents ">
                     <h2>HIGHLIGHTS</h2>
                     <div class="grid_17 prefix_1">
-                      <% @adviser.questions.where(:faq => nil).each do |question| %>
+                      <%# @adviser.questions.where(:faq => nil).each do |question| %>
                       <table width="98%">
                         <tr>
-                          <td valign="top"><strong style="color:#f89204"><%= question.body %></strong></td>
+                          <td valign="top"><strong style="color:#f89204"><%#= question.body %></strong></td>
                         </tr>
                         <tr>
-                          <td class="white-bg"><%= question.advisers_questions.where(:adviser_id => @adviser.id).last.answer %></td>
+                          <td class="white-bg"><%#= question.advisers_questions.where(:adviser_id => @adviser.id).last.answer %></td>
                         </tr>
                       </table>
                       <hr size="1" color="#CCCCCC" style="width:590px;"/>
-                      <% end %>
+                      <%#end %>
                     </div>
-                  </div>
-                  <div class="contents ">
+                  </div> -->
+                  <!-- <div class="contents ">
                     <h2>FAQs</h2>
                       <div class="grid_18 prefix_1">
                         <ul class="faq">
-                          <% @adviser.questions.where(:faq => true).each do |question| %>
+                          <%# @adviser.questions.where(:faq => true).each do |question| %>
                             <li style="background:url(/assets/advisers/bullet_question.gif) 0px 3px no-repeat; padding:0 0 15px 22px; list-style-type:none;" id="1">
-                              <%= question.body %><br/>
-                              <span><%= question.advisers_questions.where(:adviser_id => @adviser.id).last.answer %></span>
+                              <%#= question.body %><br/>
+                              <span><%#= question.advisers_questions.where(:adviser_id => @adviser.id).last.answer %></span>
                             </li>
-                          <% end %>
+                          <%# end %>
                         </ul>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
                 <!--<div class="education">
@@ -336,11 +336,16 @@ jQuery('#contactpopup').click(function(){
                 <br clear="all" />
                 <div class="sidebar">
                   <h3>Office Hours</h3>
-                  
-                    <ul class="bullet_list">
-                      <%== @adviser.splitted(:open_hours) %>
-                    </ul>
-                  
+                  <ul class="bullet_list">
+                    <%#== @adviser.splitted(:open_hours) %>
+                    <% @adviser.office_hours.each do |oh| %>
+                      <li>
+                        <%= oh.day_of_the_week %>
+                        <%= oh.start.strftime("%H:%M") %>-
+                        <%= oh.end.strftime("%H:%M") %>
+                      </li>
+                    <% end %>
+                  </ul>
                 </div>
                 <br clear="all" />
                 <div class="sidebar">

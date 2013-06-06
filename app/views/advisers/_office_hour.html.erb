@@ -1,0 +1,12 @@
+<fieldset class='<%= office_hour_form.object.new_record? ? "new_fields" : "fields" %>' style='width:260px;margin:5px;float:left;'>
+  <div style='float:right;'>
+    <%= remove_child_link('remove', office_hour_form) %>
+  </div>
+
+  <label>Day of the week</label>
+  <%= office_hour_form.text_field :day_of_the_week %>
+
+  <%= office_hour_form.time_select :start %> -
+  <%= office_hour_form.time_select :end %>
+</fieldset>
+

@@ -1,0 +1,12 @@
+<fieldset class='<%= a_service_form.object.new_record? ? "new_fields" : "fields" %>' style='width:260px;margin:5px;float:left;'>
+  <div style='float:right;'>
+    <%= remove_child_link('remove', a_service_form) %>
+  </div>
+
+  <label>Name</label>
+  <%= a_service_form.text_field :name %>
+
+  <label>Description</label>
+  <%= a_service_form.text_area :description, :size => '40x8' %>
+</fieldset>
+

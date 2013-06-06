@@ -1,62 +1,83 @@
+<link href="/assets/advisers/style.css" rel="stylesheet" type="text/css" />
+  <div id='menu'>
+    <h5>Adviser Profile</h5>
+    <a href="#" id='btn_general'><p class='active'>General Info</p></a>
+    <a href="#" id='btn_services'><p>Services</p></a>
+    <a href="#" id='btn_avatar'><p>Avatar</p></a>
+    <a href="#" id='btn_office_hours'><p>Office Hours</p></a>
+  </div>
   <div id='content'>
+    <h3 id='header'>General information</h3>
     <div class='avatar'>
       <%= image_tag @adviser.avator %>
     </div>
     <div class='info'>
       <%= form_for @adviser do |f| %>
         <table>
-          <tr>
+          <tr class='general'>
             <td><%= f.label :name %></td>
             <td><%= f.text_field :name %></td>
           </tr>
-          <tr>
-            <td><%= f.label :email %></td>
-            <td><%= f.email_field :email %></td>
-          </tr>
-          <tr>
+          <!-- <tr>
+            <td><%#= f.label :email %></td>
+            <td><%#= f.email_field :email %></td>
+          </tr> -->
+          <tr class='general'>
             <td><%= f.label :address %></td>
             <td><%= f.text_field :address %></td>
           </tr>
-          <tr>
+          <tr class='general'>
             <td><%= f.label :city %></td>
             <td><%= f.text_field :city %></td>
           </tr>
-          <tr>
+          <tr class='general'>
             <td><%= f.label :years_of_experience %></td>
             <td><%= f.text_field :years_of_experience %></td>
           </tr>
-          <tr>
+          <tr class='general'>
             <td><%= f.label :experience %></td>
             <td><%= f.text_field :experience %></td>
           </tr>
-          <tr>
+          <tr class='general'>
             <td><%= f.label :compensation_arrangements %></td>
             <td><%= f.text_field :compensation_arrangements %></td>
           </tr>
-          <tr>
+          <tr class='general'>
             <td><%= f.label :offers_and_pledges %></td>
             <td><%= f.text_field :offers_and_pledges %></td>
           </tr>
-          <tr>
-            <td><%= f.label :education %></td>
-            <td><%= f.text_area :education %></td>
+          <tr class='general'>
+            <td><%= f.label :phone %></td>
+            <td><%= f.text_field :phone %></td>
           </tr>
-          <tr>
-            <td><%= f.label :company_data %></td>
-            <td><%= f.text_area :company_data %></td>
+          <tr class='avatar'>
+            <%= f.fields_for :gallery do |ff| %>
+              <div>
+                <td> <br><%= ff.label :photo %></td>
+                <td> <br><%= ff.file_field :photo %></td>
+              </div>
+            <% end %>
           </tr>
-          <tr>
+          <!-- <tr>
+            <td><%#= f.label :education %></td>
+            <td><%#= f.text_area :education %></td>
+          </tr> -->
+          <!-- <tr>
+            <td><%#= f.label :company_data %></td>
+            <td><%#= f.text_area :company_data %></td>
+          </tr> -->
+          <tr class='general'>
             <td><%= f.label :bio %></td>
-            <td><%= f.text_area :bio %></td>
+            <td><%= f.text_area :bio, :size => '40x8' %></td>
           </tr>
-          <tr>
+          <tr class='general'>
             <td><%= f.label :short_description %></td>
-            <td><%= f.text_area :short_description %></td>
+            <td><%= f.text_area :short_description, :size => '40x8' %></td>
           </tr>
-          <tr>
-            <td><%= f.label :state %></td>
+          <!-- <tr>
+            <td><%#= f.label :state %></td>
             <td>
-              <% state = [['Alabama', 'AL'],
+              <%# state = [['Alabama', 'AL'],
                           ['Alaska', 'AK'],
                           ['Alberta', 'AB'],
                           ['American Somoa', 'AS'],
@@ -127,86 +148,86 @@
                           ['Wisconsin', 'WI'],
                           ['Wyoming', 'WY'],
                           ['Yukon Territory', 'YT']] %>
-              <%= f.select(:state, options_for_select(state, f.object.state)) %>
+              <%#= f.select(:state, options_for_select(state, f.object.state)) %>
             </td>
-          </tr>
-          <tr>
-            <td><%= f.label :zip %></td>
-            <td><%= f.text_field :zip %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :phone %></td>
-            <td><%= f.text_field :phone %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :url %></td>
-            <td><%= f.text_field :url %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :blog_url %></td>
-            <td><%= f.text_field :blog_url %></td>
-          </tr>
-          <tr>
-            <%= f.fields_for :gallery do |ff| %>
-              <div>
-                <td> <br><%= ff.label :photo %></td>
-                <td> <br><%= ff.file_field :photo %></td>
-              </div>
-            <% end %>
-          </tr>
-          <tr>
+          </tr> -->
+          <!-- <tr>
+            <td><%#= f.label :zip %></td>
+            <td><%#= f.text_field :zip %></td>
+          </tr> -->
+          <!-- <tr>
+            <td><%#= f.label :url %></td>
+            <td><%#= f.text_field :url %></td>
+          </tr> -->
+          <!-- <tr>
+            <td><%#= f.label :blog_url %></td>
+            <td><%#= f.text_field :blog_url %></td>
+          </tr> -->
+          <!-- <tr>
             <td>
-              <%= f.label :plan %>
+              <%#= f.label :plan %>
             </td>
             <td>
               <br>
-              <%= f.radio_button :plan, 'FREE', :checked => true %> FREE
-              <%= f.radio_button :plan, '2 Backlink Spots' %> 2 Backlink spots
+              <%#= f.radio_button :plan, 'FREE', :checked => true %> FREE
+              <%#= f.radio_button :plan, '2 Backlink Spots' %> 2 Backlink spots
               <br>
             </td>
-          </tr>
-          <tr>
+          </tr> -->
+          <!-- <tr>
             <td>Faq</td>
             <td></td>
             <td></td>
           </tr>
-          <% Question.where(:faq => true).each do |question| %>
+          <%# Question.where(:faq => true).each do |question| %>
             <tr>
               <td></td>
               <td>Question</td>
-              <td><%= question.body %></td>
+              <td><%#= question.body %></td>
             </tr>
             <tr>
-              <%= fields_for :advisers_questions do |aq| %>
+              <%#= fields_for :advisers_questions do |aq| %>
                 <td></td>
-                <td><%= aq.label :answer %></td>
-                <%= aq.hidden_field :adviser_id, :value => @adviser.id, :name => "advisers_questions[][adviser_id]" %>
-                <%= aq.hidden_field :question_id, :value => question.id, :name => "advisers_questions[][question_id]" %>
-                <td><%= aq.text_field :answer, :value => question.advisers_questions.where(:adviser_id => @adviser.id).last.try(:answer),:name => "advisers_questions[][answer]" %></td>
-              <% end %>
+                <td><%#= aq.label :answer %></td>
+                <%#= aq.hidden_field :adviser_id, :value => @adviser.id, :name => "advisers_questions[][adviser_id]" %>
+                <%#= aq.hidden_field :question_id, :value => question.id, :name => "advisers_questions[][question_id]" %>
+                <td><%#= aq.text_field :answer, :value => question.advisers_questions.where(:adviser_id => @adviser.id).last.try(:answer),:name => "advisers_questions[][answer]" %></td>
+              <%# end %>
             </tr>
-          <% end %>
+          <%# end %>
           <tr>
             <td>HighLights</td>
             <td></td>
             <td></td>
           </tr>
-          <% Question.where(:faq => nil).each do |question| %>
+          <%# Question.where(:faq => nil).each do |question| %>
             <tr>
               <td></td>
               <td>Question</td>
-              <td><%= question.body %></td>
+              <td><%#= question.body %></td>
             </tr>
             <tr>
-              <%= fields_for :advisers_questions do |aq| %>
+              <%#= fields_for :advisers_questions do |aq| %>
                 <td></td>
-                <td><%= aq.label :answer %></td>
-                <%= aq.hidden_field :adviser_id, :value => @adviser.id, :name => "advisers_questions[][adviser_id]" %>
-                <%= aq.hidden_field :question_id, :value => question.id, :name => "advisers_questions[][question_id]" %>
-                <td><%= aq.text_field :answer, :value => question.advisers_questions.where(:adviser_id => @adviser.id).last.try(:answer),:name => "advisers_questions[][answer]" %></td>
-              <% end %>
-            </tr>
-          <% end %>
+                <td><%#= aq.label :answer %></td>
+                <%#= aq.hidden_field :adviser_id, :value => @adviser.id, :name => "advisers_questions[][adviser_id]" %>
+                <%#= aq.hidden_field :question_id, :value => question.id, :name => "advisers_questions[][question_id]" %>
+                <td><%#= aq.text_field :answer, :value => question.advisers_questions.where(:adviser_id => @adviser.id).last.try(:answer),:name => "advisers_questions[][answer]" %></td>
+              <%# end %>
+            </tr> -->
+          <%# end %>
+          <tr class='services'>
+            <td></td>
+            <td>
+              <%= render :partial => 'services_form', :locals => {:form => f} %>
+            </td>
+          </tr>
+          <tr class='office_hours'>
+            <td></td>
+            <td>
+              <%= render :partial => 'office_hours_form', :locals => {:form => f} %>
+            </td>
+          </tr>
         </table>
         <br>
         <%= f.submit "Save profile"%>
@@ -216,3 +237,63 @@
   <div class='buttons'>
     </div>
 </div>
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    jQuery('form a.add_child').click(function() {
+      var assoc   = jQuery(this).attr('data-association');
+      var content = jQuery('#' + assoc + '_fields_template').html();
+      var regexp  = new RegExp('new_' + assoc, 'g');
+      var new_id  = new Date().getTime();
+
+      jQuery(this).parent().before(content.replace(regexp, new_id));
+      return false;
+    });
+
+    jQuery('form a.remove_child').live('click', function() {
+      var hidden_field = jQuery(this).prev('input[type=hidden]')[0];
+      if(hidden_field) {
+        hidden_field.value = '1';
+      }
+      jQuery(this).parents('.new_fields').remove();
+      jQuery(this).parents('.fields').hide();
+      return false;
+    });
+
+    jQuery("#btn_general").click(function() {
+      jQuery(".general").show();
+      jQuery(".avatar").hide();
+      jQuery(".services").hide();
+      jQuery(".office_hours").hide();
+      jQuery("p.active").removeClass('active');
+      jQuery("#btn_general p").addClass('active');
+      jQuery("h3#header").html('').html('General Information');
+    });
+    jQuery("#btn_avatar").click(function() {
+      jQuery(".general").hide();
+      jQuery(".avatar").show();
+      jQuery(".services").hide();
+      jQuery(".office_hours").hide();
+      jQuery("p.active").removeClass('active');
+      jQuery("#btn_avatar p").addClass('active');
+      jQuery("h3#header").html('').html('Avatar');
+    });
+    jQuery("#btn_services").click(function() {
+      jQuery(".general").hide();
+      jQuery(".avatar").hide();
+      jQuery(".services").show();
+      jQuery(".office_hours").hide();
+      jQuery("p.active").removeClass('active');
+      jQuery("#btn_services p").addClass('active');
+      jQuery("h3#header").html('').html('Services');
+    });
+    jQuery("#btn_office_hours").click(function() {
+      jQuery(".general").hide();
+      jQuery(".avatar").hide();
+      jQuery(".services").hide();
+      jQuery(".office_hours").show();
+      jQuery("p.active").removeClass('active');
+      jQuery("#btn_office_hours p").addClass('active');
+      jQuery("h3#header").html('').html('Office_hours');
+    });
+  });
+</script>

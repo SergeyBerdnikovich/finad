@@ -1,0 +1,16 @@
+<div id="office_hours">
+  <% @adviser.office_hours.each do |office_hour| %>
+    <div id='office_hour_<%= office_hour.id %>'>
+      <%= form.fields_for :office_hours, office_hour do |office_hour_form|%>
+        <%= render :partial => 'office_hour', :locals => {:office_hour_form => office_hour_form } %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<%= new_child_fields_template form, :office_hours, :form_builder_local => :office_hour_form %>
+
+<div id='new_office_hour_button'>
+  <div style='clear:both'></div><br />
+  <%= add_child_button "New office hour", :office_hours %>
+</div>
+

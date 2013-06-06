@@ -1,0 +1,16 @@
+<div id="services">
+  <% @adviser.services.each do |a_service| %>
+    <div id='service_<%= a_service.id %>'>
+      <%= form.fields_for :services, a_service do |a_service_form|%>
+        <%= render :partial => 'service', :locals => {:a_service_form => a_service_form } %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<%= new_child_fields_template form, :services, :form_builder_local => :a_service_form %>
+
+<div id='new_a_service_button'>
+  <div style='clear:both'></div><br />
+  <%= add_child_button "New Service", :services %>
+</div>
+

@@ -1,5 +1,5 @@
 <% if @advisers.blank? %>
-  <h1>Search doesn't show ant results. Would you like to try another name or create a new account?</h1><br />
+  <h1>Search doesn't show any results. Would you like to try another name or create a new account?</h1><br />
   <div>
     <%= link_to 'Create New Adviser', set_adviser_path(0, :adviser => 'new'), :class => 'button', :style => 'margin: 50px' %>
     <%= link_to 'Back', advisers_find_adviser_path, :class => 'button' %>

@@ -43,14 +43,15 @@ end
   def check_adviser
     redirect_to advisers_find_adviser_path if params[:firstname].blank? || params[:lastname].blank?
     firstname, lastname = params[:firstname], params[:lastname]
+    session[:name] = params[:firstname] + " " + params[:lastname]
     @advisers = Adviser.where("name RLIKE ? ",".*(#{firstname}|#{lastname}).*(#{lastname}|#{firstname}).*")
   end
 
   def set_adviser
     if params[:id] == '0' && params[:adviser] == 'new'
-      adviser = current_adviser_user.adviser = Adviser.create!(:verified => true)
+      adviser = current_adviser_user.adviser = Adviser.create!(:verified => true, :name => session[:name])
       UserMailer.send_adviser_info_to_admin(adviser).deliver
-      UserMailer.send_adviser_info_to_user(adviser).deliver
+      #UserMailer.send_adviser_info_to_user(adviser).deliver
       #3
       redirect_to edit_adviser_path(adviser)
     else
@@ -233,6 +234,6 @@ end
   end
 
   def check_new_new_office_hours(office_hours_attr)
-    office_hours_attr['new_office_hours']['_destroy'] = 1 if office_hours_attr['new_office_hours']['day_of_the_week'].blank?
+#    office_hours_attr['new_office_hours']['_destroy'] = 1 if office_hours_attr['new_office_hours']['day_of_the_week'].blank?
   end
 end

@@ -82,8 +82,9 @@ $("#form2").validate();
 </script>
 
 </head>
-<body class="profile" onload = "recordClick(1878728,999999999,'PR','','20024016');" >
+<body class="profile" >
 <!-- FancyBox -->
+<% if @owner == false %>
 <div id="contactpopup" style="display: none;width:100%;height:200%;position:absolute;top:0px;left:0px;background-color:rgba(125,125,125,0.5); z-index:99999;">
    <div id="container" style='width:900px;margin-left:auto;  margin-right: auto ;margin-top:15%'>
 
@@ -111,7 +112,7 @@ jQuery('#contactpopup').click(function(){
 })
 
 </script>
-
+<% end %>
 <!-- END SFG HTML -->
 <div itemscope itemtype="http://schema.org/FinancialService">
   <div id="wrapper">
@@ -142,10 +143,14 @@ jQuery('#contactpopup').click(function(){
                 <%= image_tag @adviser.avator, :style=> 'max-width:120px;max-height:150px;margin-right:10px' %>
               </div>
               <div class="grid_10 prefix_0" itemprop="name">
-                <h3 class="h3"><%= @adviser.name %>
-                  <br/>
+                <nobr><h3 class="h3" style='display: inline-block;'><%= @adviser.name %>
+                  
 
                 </h3>
+                 <% if @owner %> 
+                  <%= button_to "Edit your profile",edit_adviser_path(@adviser), :method => :get, :style => 'display: inline-block;float:right;font-size:18px' %>
+                  <% end %></nobr>
+                  <br/>
                 <br />
                 <br />
               </div>
@@ -157,7 +162,10 @@ jQuery('#contactpopup').click(function(){
               <div class="grid_6 address">
                 <strong>Address:</strong><br />
                 <div itemprop="streetAddress">
-                  <%= @adviser.address %>
+                  <%= @adviser.address %> <br>
+                  <%= @adviser.city %>,<%= @adviser.state %>, <%= @adviser.zip %><br>
+ 
+
                 </div>
                 <br />
                 <br />
@@ -179,7 +187,7 @@ jQuery('#contactpopup').click(function(){
       </div>
       <div id="container">
         <div class="container_31">
-          <div class="grid_20 prefix_1">
+          <div class="grid_22">
             <div class="grid_8">
               <div class="exper">
                 <h2><%= @adviser.years_of_experience %> <span>Years of Experience</span></h2>
@@ -190,13 +198,13 @@ jQuery('#contactpopup').click(function(){
                 <h2>Offers <span>&amp;</span> Pledges</h2>
                 <ul class="bullet_list">
                   <%== @adviser.splitted(:offers_and_pledges) %>
-                </ul>
+                </ul> 
               </div>
             </div>
-            <div class="grid_11 float_r">
-              <div class="scroll_pan" itemprop="description">
-                <p align="justify"><%== @adviser.short_description %></p>
-              </div>
+            <div class="grid_13 float_r">
+              
+                <p align="justify"><iframe width="420" height="320" src="http://www.youtube.com/embed/SMZIClCn2wg" frameborder="0" allowfullscreen></iframe></p>
+             
             </div>
             <br clear="all" />
             <div class="tabbed_container">
@@ -281,7 +289,7 @@ jQuery('#contactpopup').click(function(){
                   </p>
                 </div> -->
               </div>
-              <div class="grid_8 suffix_1 float_r">
+              <div class="grid_8 float_r">
                 <div class="sidebar">
                   <h3>Schedule a Free Initial Consultation</h3>
                   <ul class="bullet_list">
@@ -337,14 +345,8 @@ jQuery('#contactpopup').click(function(){
                 <div class="sidebar">
                   <h3>Office Hours</h3>
                   <ul class="bullet_list">
-                    <%#== @adviser.splitted(:open_hours) %>
-                    <% @adviser.office_hours.each do |oh| %>
-                      <li>
-                        <%= oh.day_of_the_week %>
-                        <%= oh.start.strftime("%H:%M") %>-
-                        <%= oh.end.strftime("%H:%M") %>
-                      </li>
-                    <% end %>
+                    <%== @adviser.splitted(:open_hours) %>
+                    
                   </ul>
                 </div>
                 <br clear="all" />

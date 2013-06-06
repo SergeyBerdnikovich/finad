@@ -1,4 +1,8 @@
 <div id="services">
+
+	<% if @adviser.services.size == 0 %>
+	Please click on "NEW SERVICE" button in order to create information about each service you provide. You may create several services
+	<% end %>
   <% @adviser.services.each do |a_service| %>
     <div id='service_<%= a_service.id %>'>
       <%= form.fields_for :services, a_service do |a_service_form|%>

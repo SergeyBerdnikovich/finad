@@ -466,7 +466,7 @@ height:43px; width:214px; border-radius:3px;  -moz-border-radius:3px;  webkit-bo
   color: #CE351B;
 }
 #menu p:hover {
-  background:#FDFDFD url(/assets/maket/s5_bg.jpg);
+  background:#EDEDED;
 }
 #content {
   float: left;

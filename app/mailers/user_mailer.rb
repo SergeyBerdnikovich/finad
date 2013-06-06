@@ -43,17 +43,17 @@ class UserMailer < ActionMailer::Base
 	def send_adviser_info_to_admin(adviser)
 		@adviser = adviser
 		@link = "http://search.investmentprotectionbureau.org/admin/advisers/#{adviser.id}"
-		mail(:to => 'ipbureauusa@gmail.com', :subject => "New adviser is registered, email: #{@adviser.adviser_user.email}")
+		mail(:to => 'dvporg@gmail.com', :subject => "New adviser is registered, email: #{@adviser.adviser_user.email}")
 	end
 
 	def send_adviser_info_to_user(adviser)
 		@adviser = adviser
 		@link = "http://search.investmentprotectionbureau.org/advisers/#{adviser.id}"
-		mail(:to => @adviser.adviser_user.email, :subject => "New adviser is registered, email: #{@adviser.adviser_user.email}")
+		mail(:to => @adviser.adviser_user.email, :subject => "You have registered at Investment Protection Bureau")
 	end
 
 	def approve_adviser(verification)
-		@link = "http://search.investmentprotectionbureau.org/#{verification.adviser.id}"
+		@link = "http://search.investmentprotectionbureau.org/advisers/#{verification.adviser.id}"
 		mail(:to => verification.email, :subject => "Your account have been verified, thank you!")
 	end
 

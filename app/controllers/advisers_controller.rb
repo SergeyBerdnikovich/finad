@@ -86,55 +86,46 @@ end
     redirect_to adviser_path(adviser), :notice => 'Your request has been sent...'
   end
 
-def check_adviser_user
-  if @adviser && @adviser.adviser_user
-    return true if current_adviser_user && current_adviser_user.id == @adviser.adviser_user.id
+  def check_adviser_user
+    if @adviser && @adviser.adviser_user
+      return true if current_adviser_user && current_adviser_user.id == @adviser.adviser_user.id
+    end
+    return false
   end
-  return false
-end
 
-def featured
-  @advisers = Adviser.where('featured = 1').sort_by(params[:sort], params[:sortable]).page(params[:page])
-end
+  def featured
+    @advisers = Adviser.where('featured = 1').sort_by(params[:sort], params[:sortable]).page(params[:page])
+  end
 
 
-def featured2
-  @advisers = Adviser.where('featured = 1').sort_by(params[:sort], params[:sortable]).limit(8)
-  render :layout => false
-end
+  def featured2
+    @advisers = Adviser.where('featured = 1').sort_by(params[:sort], params[:sortable]).limit(8)
+    render :layout => false
+  end
 
   def show
     @adviser = Adviser.find(params[:id])
 
-  if @adviser.adviser_user
-        @adviser.email = @adviser.adviser_user.email
-      end
+    @adviser.email = @adviser.adviser_user.email if @adviser.adviser_user
     @owner = check_adviser_user
-    if @owner == false
-        @adviser.bio = "To request a backround check on this advisor please use the contact button below or for immediate assistance call 1-888-735-9553" if @adviser.bio == nil
-    end
+    @adviser.bio = "To request a backround check on this advisor please use the contact button below or for immediate assistance call 1-888-735-9553" if @adviser.bio.blank? && @owner == false
     @user_hashstr = User.find(session[:user_id]).try(:hashstr) if session[:user_id]
-    @user = User.find_by_id_and_hashstr(session[:user_id], @user_hashstr) if   @user_hashstr
-
-    #if @adviser.photo == nil
-    #  @adviser.photo == "default.gif"
-    #end
+    @user = User.find_by_id_and_hashstr(session[:user_id], @user_hashstr) if @user_hashstr
   end
 
 
-def edit
-  @adviser = Adviser.find(params[:id])
-  #@adviser.advisers_questions.build
-
-  if @adviser.verified && current_adviser_user.id == @adviser.adviser_user.id
+  def edit
     @adviser = Adviser.find(params[:id])
-    @adviser.build_gallery unless @adviser.gallery
-  elsif current_adviser_user && current_adviser_user.id == @adviser.adviser_user.id && @adviser.verified.blank?
-    redirect_to adviser_path(@adviser), notice: 'Verification failed.'
-  else
-    redirect_to  new_adviser_user_session_path, notice: 'Authorization failed.'
+    #@adviser.advisers_questions.build
+
+    if @adviser.verified && current_adviser_user.id == @adviser.adviser_user.id
+      @adviser.build_gallery unless @adviser.gallery
+    elsif current_adviser_user.id == @adviser.adviser_user.try(:id) && @adviser.verified.blank?
+      redirect_to adviser_path(@adviser), notice: 'Verification failed.'
+    else
+      redirect_to  new_adviser_user_session_path, notice: 'Authorization failed.'
+    end
   end
-end
 
   def contact_form
 

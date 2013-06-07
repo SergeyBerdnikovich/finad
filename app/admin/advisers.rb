@@ -13,6 +13,7 @@ ActiveAdmin.register Adviser do
       f.input :state
       f.input :zip
       f.input :phone
+      f.input :verified
       f.input :url
       f.input :blog_url
       f.input :rating

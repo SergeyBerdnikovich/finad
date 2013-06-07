@@ -961,3 +961,13 @@ body.fb_hidden {
 #adv_head {
   border: 1px solid black;
 }
+
+p.notice {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  background: none repeat scroll 0 0 #FFFFFF;
+  padding: 20px;
+  margin: 10px;
+  color: red;
+  font: 130% sans-serif;
+  text-transform: uppercase;
+}

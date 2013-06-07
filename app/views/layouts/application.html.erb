@@ -671,7 +671,9 @@ div.itemHeader h2.itemTitle, div.catItemHeader h3.catItemTitle, h3.userItemTitle
 
     <!-- Top Row1 -->
     <div id="s5_top_row1_area1">
-      <p class="notice"><%= notice %></p>
+      <% unless notice.blank? %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
       <div><%= yield %></div>
     </div>
       <!-- End Top Row1 -->
@@ -812,7 +814,7 @@ div.itemHeader h2.itemTitle, div.catItemHeader h3.catItemTitle, h3.userItemTitle
                             var completer = new Autocompleter.Request.JSON(document.id('q'), url, {'postVar': 'q'});
                             });
                           </script>
-                          
+
                         </div>
                       </div>
                       <div style="clear:both;height:0px"></div>
@@ -936,7 +938,7 @@ div.itemHeader h2.itemTitle, div.catItemHeader h3.catItemTitle, h3.userItemTitle
         s5mbox.resize();
       });
   </script>
-  <!-- Additional scripts to load just before closing body tag 
+  <!-- Additional scripts to load just before closing body tag
   <script type="text/javascript" src="/assets/maket/wthvideo.js"></script> -->
   <!-- Info Slide script - JS and CSS called in header -->
   <script type='text/javascript'>

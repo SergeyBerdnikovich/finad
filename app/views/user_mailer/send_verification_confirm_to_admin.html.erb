@@ -1,4 +1,4 @@
 <h1>New verification № <%= @verification.id %></h1>
 <p>from <%= @verification.name %> (<%= @verification.email %>)</p>
 <p>phone: <%= @verification.phone %></p>
-<p><%= link_to 'Link', admin_verification(@verification) %></p>
+<p><%= link_to 'Link', admin_verification_path(@verification) %></p>

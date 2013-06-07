@@ -31,7 +31,7 @@
             <td><%= f.label :city %></td>
             <td><%= f.text_field :city %></td>
           </tr>
-       
+
           <tr class='general'>
             <td><%= f.label :state %></td>
             <td>
@@ -108,7 +108,7 @@
                           ['Yukon Territory', 'YT']] %>
               <%= f.select(:state, options_for_select(state, f.object.state)) %>
             </td>
-          </tr> 
+          </tr>
           <tr class='general'>
             <td><%= f.label :zip %></td>
             <td><%= f.text_field :zip %></td>
@@ -121,11 +121,9 @@
             <td><%= f.label :blog_url %></td>
             <td><%= f.text_field :blog_url %></td>
           </tr>
-
-
           <tr class='general'>
             <td><%= f.label :phone %></td>
-            <td><%= f.text_field :phone %></td> 
+            <td><%= f.text_field :phone %></td>
           </tr>
           <tr class='avatar'>
             <%= f.fields_for :gallery do |ff| %>
@@ -148,7 +146,7 @@
             <td><%= f.label :short_description %></td>
             <td><%= f.text_area :short_description, :size => '40x8', :placeholder => "Please enter short description of service you provide" %></td>
           </tr>
-         
+
           <!-- <tr>
             <td>
               <%#= f.label :plan %>
@@ -208,30 +206,30 @@
               <%= render :partial => 'services_form', :locals => {:form => f} %>
             </td>
           </tr>
-     
           <tr class='office_hours'>
-<td><%= f.label :experience, "Experience (years)" %></td>
-<td><%= f.text_field :experience %></td>
-</tr>
-
-<tr class='office_hours'>
-<td><%= f.label :compensation_arrangements %></td>
-<td><%= f.text_area :compensation_arrangements, :size => '40x8', :placeholder => "Checks                                   Paypal  "%></td>
-</tr>
-<tr class='office_hours'>
-<td><%= f.label :bio %></td>
-<td><%= f.text_area :bio, :size => '40x8' %></td>
-</tr>
-<tr class='office_hours'>
-<td><%= f.label :open_hours %></td>
-<td><%= f.text_area :open_hours, :size => '40x8',:placeholder => "Workdays: 10am-5pm                                                    Weekend: closed".html_safe %></td>
-</tr>
-
-
-<tr class='office_hours'>
-<td><%= f.label :offers_and_pledges %></td>
-<td><%= f.text_area :offers_and_pledges, :size => '40x8' %></td>
-</tr>
+            <td><%= f.label :years_of_experience, "Experience (years)" %></td>
+            <td><%= f.text_field :years_of_experience %></td>
+          </tr>
+          <tr class='office_hours'>
+            <td><%= f.label :experience, "Experience" %></td>
+            <td><%= f.text_field :experience %></td>
+          </tr>
+          <tr class='office_hours'>
+            <td><%= f.label :compensation_arrangements %></td>
+            <td><%= f.text_area :compensation_arrangements, :size => '40x8', :placeholder => "Checks                                   Paypal  "%></td>
+          </tr>
+          <tr class='office_hours'>
+            <td><%= f.label :bio %></td>
+            <td><%= f.text_area :bio, :size => '40x8' %></td>
+          </tr>
+          <tr class='office_hours'>
+            <td><%= f.label :open_hours %></td>
+            <td><%= f.text_area :open_hours, :size => '40x8',:placeholder => "Workdays: 10am-5pm                                                    Weekend: closed".html_safe %></td>
+          </tr>
+          <tr class='office_hours'>
+            <td><%= f.label :offers_and_pledges %></td>
+            <td><%= f.text_area :offers_and_pledges, :size => '40x8' %></td>
+          </tr>
         </table>
         <br>
         <%= f.submit "Save profile"%>

@@ -1,9 +1,8 @@
 ActiveAdmin.register Verification do
   number = Adviser.where("id IN (SELECT adviser_id AS id FROM verifications) AND verified IS NULL").count
-  
 
   if number == 0
-   menu :label => "Verifications"
+    menu :label => "Verifications"
   else
     menu :label => "Verifications (unapproved: #{number})"
   end
@@ -44,7 +43,7 @@ ActiveAdmin.register Verification do
   form :html => { :multipart => true } do |f|
 
     f.inputs :for => :advisers do |advisers, i|
-      f.input :adviser,:input_html => { :disabled => true, :style => 'display:none' }, hint: link_to(f.object.adviser.name, admin_adviser_path(f.object.adviser), :target => "_blank"), as: :string
+      f.input :adviser,:input_html => { :disabled => true, :style => 'display:none' }, hint: link_to(f.object.adviser.try(:name), admin_adviser_path(f.object.adviser), :target => "_blank"), as: :string
       f.input :adviser_user, :label => "User email"
       f.input :name
       f.input :phone

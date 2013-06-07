@@ -9,21 +9,20 @@ ActiveAdmin.register Adviser do
       f.input :name
       f.input :featured
       f.input :address
-
       f.input :city
       f.input :state
       f.input :zip
       f.input :phone
       f.input :url
+      f.input :blog_url
       f.input :rating
-      f.input :bio      
+      f.input :bio
       f.input :years_of_experience
+      f.input :experience, as: :text
       f.input :short_description
       f.input :compensation_arrangements, as: :text
       f.input :offers_and_pledges, as: :text
       f.input :open_hours
-      f.input :experience, as: :text
-
     end
     f.inputs "Photo",
       :for => [:gallery,
@@ -34,6 +33,13 @@ ActiveAdmin.register Adviser do
                end
              ] do |fm|
       fm.input :photo, :as => :file, :hint => fm.template.image_tag(fm.object.photo.url(:normal))
+    end
+    f.inputs "Services" do
+      f.has_many :services, :header=>"" do |service|
+        service.input :name
+        service.input :description
+        service.input :_destroy, :as=>:boolean, :required => false, :label=>'Remove'
+      end
     end
     f.actions
   end
@@ -55,18 +61,24 @@ ActiveAdmin.register Adviser do
       row :verified
       row :education
       row :years_of_experience
+      row :experience
       row :short_description
       row :company_data
       row :compensation_arrangements
       row :offers_and_pledges
-      row :services
+      row :services do |adviser|
+        div do
+          adviser.services.each do |service|
+            ul
+             li link_to service.try(:name), admin_service_path(service)
+          end
+        end
+      end
       row :open_hours
       row :created_at
       row :updated_at
       row :photo do |adviser|
-        if adviser.gallery
-        image_tag adviser.gallery.photo.url(:normal)
-        end
+        image_tag adviser.gallery.photo.url(:normal) if adviser.gallery
       end
     end
     active_admin_comments

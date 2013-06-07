@@ -6,7 +6,7 @@ class Adviser < ActiveRecord::Base
   attr_accessible :featured, :address, :city, :name, :phone, :rating_id,
                   :state, :url, :zip, :adviser_user_id, :gallery_attributes,
                   :plan, :blog_url, :verified, :years_of_experience, :education,
-                  :short_description, :education, :years_of_experience, :short_description, :company_data, :bio,
+                  :short_description, :company_data, :bio,
                   :experience, :offers_and_pledges, :compensation_arrangements, :open_hours,
                   :services_attributes, :office_hours_attributes
 

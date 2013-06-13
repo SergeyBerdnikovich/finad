@@ -143,30 +143,14 @@ jQuery('#contactpopup').click(function(){
                 <%= image_tag @adviser.avator, :style=> 'max-width:120px;max-height:150px;margin-right:10px' %>
               </div>
               <div class="grid_10 prefix_0" itemprop="name">
-                <nobr><h3 class="h3" style='display: inline-block;'><%= @adviser.name %>
-                  
-
-                </h3>
-                 <% if @owner %> 
-                  <%= button_to "Edit your profile",edit_adviser_path(@adviser), :method => :get, :style => 'display: inline-block;float:right;font-size:18px' %>
-                  <% end %></nobr>
-                  <br/>
-                <br />
-                <br />
-              </div>
-              <!-- <h4 classs="h4" style='color:black;'>"Guiding You to Financial Success"</h4> -->
-            </div>
-            <div class="grid_8 suffix_1" itemprop="address" itemscope ='' itemtype="http://schema.org/PostalAddress">
-              <br clear="all" />
-              <div class="grid_1 address"><img src="/assets/advisers/home_icon.png" /></div>
-              <div class="grid_6 address">
+                <h3 class="h3" style='display: inline-block;'><%= @adviser.name %>
+                
+                </h3><br>
                 <strong>Address:</strong><br />
                 <div itemprop="streetAddress">
                   <%= @adviser.address %> <br>
                   <%= @adviser.city %>,<%= @adviser.state %>, <%= @adviser.zip %><br>
- 
-
-                </div>
+                 </div>
                 <br />
                 <br />
                 <a href="javascript:openWindowRspdlarge('http://new.wiseradvisor.com/maxpro/profile/location_map.jsp?x=<%= @adviser.address %>')">
@@ -181,6 +165,24 @@ jQuery('#contactpopup').click(function(){
                 <img src="/assets/advisers/phone_icon.png" width="25" height="25" />
               </div>
               <div class="grid_6 address" itempro="telephone"><%= @adviser.phone %></div>
+
+                 <% if @owner %> 
+                  <%= button_to "Edit your profile",edit_adviser_path(@adviser), :method => :get, :style => 'display: inline-block;float:right;font-size:18px' %>
+                  <% end %>
+
+                  <br/>
+
+                <br />
+                <br />
+              </div>
+
+              <!-- <h4 classs="h4" style='color:black;'>"Guiding You to Financial Success"</h4> -->
+            </div>
+            <div class="grid_8 suffix_1" itemprop="address" itemscope ='' itemtype="http://schema.org/PostalAddress">
+              <br clear="all" />
+              <div class="grid_1 address"><img src="/assets/advisers/home_icon.png" /></div>
+              <div class="grid_6 address">
+                
             </div>
           </div>
         </div>
@@ -203,7 +205,12 @@ jQuery('#contactpopup').click(function(){
             </div>
             <div class="grid_13 float_r">
               
-                <p align="justify"><iframe width="420" height="320" src="http://www.youtube.com/embed/SMZIClCn2wg" frameborder="0" allowfullscreen></iframe></p>
+                <p align="justify"><iframe width="420" height="320" src=<% if @adviser.youtube_url.blank? == false %>
+                  "<%= @adviser.youtube_url %>"
+                  <% else %>
+                "http://www.youtube.com/embed/SMZIClCn2wg"
+                <% end %>
+                 frameborder="0" allowfullscreen></iframe></p>
              
             </div>
             <br clear="all" />
@@ -308,7 +315,7 @@ jQuery('#contactpopup').click(function(){
                         <option value="401K Rollover">401K Rollover</option>
                       </select>
                       <label for="service" class="error" style="display:none;color:red; width:154px; padding-right:0px; text-align:left;">Service is required</label>
-                      <br clear="all" >
+                      <br clear="all" ><p></p>
                       <label>ZIP Code:</label>
                       <input type="text" class="zip required" name="consultation[zip]" maxlength="5">
                       <label for="zip" class="error" style="display:none;color:red; width:154px; padding-right:0px; text-align:left;">ZIP Code is required</label>
@@ -381,47 +388,9 @@ jQuery('#contactpopup').click(function(){
                 </div>
               </div>
 
-  <SCRIPT language=javascript>
-     <!--
-     function win_pop_terms() {
-      window.open("http://www.wiseradvisor.com/terms.asp","terms","top=20,left=5 ,width=600,height=460,scrollbars=1,addressbar=0,menubar=0,toolbar=0,statusbar=0")
-     }
-     function win_pop_privacy() {
-      window.open("http://www.wiseradvisor.com/privacy.asp","privacy","top=20,left=5 ,width=600,height=460,scrollbars=1,addressbar=0,menubar=0,toolbar=0,statusbar=0")
-     }
-     //-->
-   </script>
+  
   </div>
 </div>
 <!-- ClickTale Bottom part -->
-<div id="ClickTaleDiv" style="display: none;"></div>
-  <script type='text/javascript'>
-    document.write(unescape("%3Cscript%20src='"+
-    (document.location.protocol=='https:'?
-      'https://clicktale.pantherssl.com/':
-      'http://s.clicktale.net/')+
-    "WRd.js'%20type='text/javascript'%3E%3C/script%3E"));
-  </script>
-  <script type="text/javascript">
-    var ClickTaleSSL=1;
-    if(typeof ClickTale=='function') ClickTale(8020,1,"www09");
-  </script>
-<!-- ClickTale end of Bottom part -->
-  <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-  </script>
-  <script type="text/javascript">
-    var pageTracker = _gat._getTracker("UA-2647866-4");
-    pageTracker._initData();
-    pageTracker._trackPageview();
-  </script>
-<!-- Start of HubSpot Logging Code  -->
-  <script type="text/javascript" language="javascript">
-    var hs_portalid=97300;
-    var hs_salog_version = "2.00";
-    var hs_ppa = "wiseradvisor.app9.hubspot.com";
-    document.write(unescape("%3Cscript src='" + document.location.protocol + "//" + hs_ppa + "/salog.js.aspx' type='text/javascript'%3E%3C/script%3E"));
-  </script>
-<!-- End of HubSpot Logging Code -->
+
 </body>

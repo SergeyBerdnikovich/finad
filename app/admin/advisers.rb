@@ -14,6 +14,7 @@ ActiveAdmin.register Adviser do
       f.input :zip
       f.input :phone
       f.input :verified
+      f.input :youtube_url
       f.input :url
       f.input :blog_url
       f.input :rating
@@ -58,6 +59,7 @@ ActiveAdmin.register Adviser do
       row :phone
       row :url
       row :rating
+      row :youtube_url
       row :blog_url
       row :verified
       row :education
@@ -95,6 +97,7 @@ ActiveAdmin.register Adviser do
     column :state
     column :zip
     column :phone
+    column :youtube_url
     column :url
     column :rating
     column :blog_url

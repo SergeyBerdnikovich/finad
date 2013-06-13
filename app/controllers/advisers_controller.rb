@@ -107,6 +107,14 @@ end
     @adviser = Adviser.find(params[:id])
 
     @adviser.email = @adviser.adviser_user.email if @adviser.adviser_user
+    if @adviser.youtube_url
+      if @adviser.youtube_url.index("/embed/") == nil
+        code = @adviser.youtube_url.match(/(?:v=)([^&]*)/i)
+        if code
+          @adviser.youtube_url = "http://www.youtube.com/embed/" + code[1]
+        end
+      end
+    end
     @owner = check_adviser_user
     @adviser.bio = "To request a backround check on this advisor please use the contact button below or for immediate assistance call 1-888-735-9553" if @adviser.bio.blank? && @owner == false
     @user_hashstr = User.find(session[:user_id]).try(:hashstr) if session[:user_id]
@@ -121,7 +129,7 @@ end
     if @adviser.verified && current_adviser_user.id == @adviser.adviser_user.id
       @adviser.build_gallery unless @adviser.gallery
     elsif current_adviser_user.id == @adviser.adviser_user.try(:id) && @adviser.verified.blank?
-      redirect_to adviser_path(@adviser), notice: 'Verification failed.'
+      redirect_to adviser_path(@adviser), notice: 'Your account isn\'t verifiyed to access this page'
     else
       redirect_to  new_adviser_user_session_path, notice: 'Authorization failed.'
     end

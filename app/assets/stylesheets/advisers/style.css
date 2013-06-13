@@ -139,7 +139,7 @@ height:43px; width:214px; border-radius:3px;  -moz-border-radius:3px;  webkit-bo
 .profile_header .address a{color:#000;}
 .profile_header .address a:hover{ text-decoration:none;}
 
-.profile #container{background:none; padding-top:30px; color:#4b4b4b; font-size:12px;}
+.profile #container{background:none; color:#4b4b4b; font-size:12px;}
 .profile #container p{line-height:140%; padding:10px 0px; font-size:12px;}
 .sidebar{background:white; font-size:12px;}
 .sidebar h3{background-color: #000000; color:#FFFFFF; line-height:30px; text-indent:10px; font-size:13px; font-weight:normal;}

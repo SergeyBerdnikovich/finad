@@ -11,7 +11,7 @@ development:
   database: finads
   pool: 20
   username: root
-  password: xgcwahti
+  password: gfcrfkm
 
 test:
   adapter: mysql2

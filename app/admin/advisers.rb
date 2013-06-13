@@ -22,8 +22,8 @@ ActiveAdmin.register Adviser do
       f.input :years_of_experience
       f.input :experience, as: :text
       f.input :short_description
-      f.input :compensation_arrangements, as: :text
-      f.input :offers_and_pledges, as: :text
+      #f.input :compensation_arrangements, as: :text
+      #f.input :offers_and_pledges, as: :text
       f.input :open_hours
     end
     f.inputs "Photo",
@@ -67,8 +67,8 @@ ActiveAdmin.register Adviser do
       row :experience
       row :short_description
       row :company_data
-      row :compensation_arrangements
-      row :offers_and_pledges
+      #row :compensation_arrangements
+      #row :offers_and_pledges
       row :services do |adviser|
         div do
           adviser.services.each do |service|

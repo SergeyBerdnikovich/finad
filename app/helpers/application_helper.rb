@@ -119,4 +119,17 @@ module ApplicationHelper
       end
     end
   end
+
+  def visitors_counter
+    "<table style='margin-left:45%;margin-top:80px'>
+      <tr>
+        <td>
+          <label for='ccounter'>Visitors counter:</label>
+        </td>
+        <td>
+          <iframe id='ccounter' class='inputbox'  scrolling='no' style='width:148px;height:25px' src='http://search.investmentprotectionbureau.org/counters'></iframe>
+        </td>
+      </tr>
+    </table>"
+  end
 end

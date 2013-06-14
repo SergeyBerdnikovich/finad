@@ -3,7 +3,12 @@
     <h2>Sign up</h2>
 
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
+      <% str = devise_error_messages! %>
+      <%= str.gsub(/Email has already been taken/mi,"Email you have specified is already registered. Please use 'Sign In' link bellow to access your account") %>
+      <% if devise_error_messages %>
+      Already have an account? Please use <%= link_to "Sign in", new_session_path(resource_name) %> link <br />
+      <% end %>
+
 
       <div><%= f.label :email %><br />
       <%= f.email_field :email, :autofocus => true %></div>

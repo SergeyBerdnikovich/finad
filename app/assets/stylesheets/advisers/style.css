@@ -146,7 +146,7 @@ height:43px; width:214px; border-radius:3px;  -moz-border-radius:3px;  webkit-bo
 ul.bullet_list {padding:0px 0 5px 10px;}
 ul.bullet_list li{list-style:none; padding:4px 0 4px 15px; background:url(/assets/advisers/list_bullet_black.gif) 0 9px no-repeat; font-size:11px;}
 
-.sidebar .get_answer{padding:0px 0 0 0; height:280px;}
+.sidebar .get_answer{padding:0px 0 0 0; height:300px;}
 .sidebar .get_answer .top_curve{background:url(/assets/advisers/form_box_curve.gif) 0 0 no-repeat;}
 .sidebar .get_answer .bot_curve{background:url(/assets/advisers/form_box_curve.gif) -375px bottom no-repeat; min-height:240px; padding:30px;}
 .sidebar .get_answer h3{ color:#e96516; font-size:1.9em; text-align:left; padding:0px;}

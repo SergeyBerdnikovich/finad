@@ -477,3 +477,20 @@ height:43px; width:214px; border-radius:3px;  -moz-border-radius:3px;  webkit-bo
 #verified_img {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
+div#rating {
+ /* width: 254px;*/
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  margin-top: 10px;
+  padding: 10px;
+  text-align: center;
+  color: #797979;
+}
+div#rating p#title {
+  font-size: 22px;
+  padding: 0;
+}
+div#rating p#rating {
+  font: bold 1200%/90% arial, Oswald;
+  padding: 0;
+}

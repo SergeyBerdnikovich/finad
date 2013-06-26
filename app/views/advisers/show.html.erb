@@ -191,6 +191,10 @@ jQuery('#contactpopup').click(function(){
                   <%#== @adviser.splitted(:offers_and_pledges) %>
                 </ul> -->
               </div>
+              <div id='rating'>
+                <p id='title'>NATIONAL RATING</p>
+                <p id='rating'><%= @adviser.rating.try(:name) %></p>
+              </div>
               <%= image_tag '/assets/advisers/verified.gif', :style => 'margin:10px 3px;', :id => 'verified_img' if owner? && verified? %>
             </div>
             <div class="grid_13 float_r">

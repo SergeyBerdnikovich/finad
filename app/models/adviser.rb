@@ -8,7 +8,7 @@ class Adviser < ActiveRecord::Base
                   :plan, :blog_url, :verified, :years_of_experience, :education,
                   :short_description, :company_data, :bio,
                   :experience, :offers_and_pledges, :compensation_arrangements, :open_hours,
-                  :services_attributes, :office_hours_attributes, :youtube_url
+                  :services_attributes, :office_hours_attributes, :youtube_url, :licensed_in
 
   paginates_per 15
 

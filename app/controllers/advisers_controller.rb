@@ -197,7 +197,7 @@ def update
         format.html { redirect_to adviser_path(@adviser), notice: 'Adviser was successfully updated.' }
         format.json { render action: 'show', status: :created, location: @adviser }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'edit' }
         format.json { render json: @adviser.errors, status: :unprocessable_entity }
       end
     else

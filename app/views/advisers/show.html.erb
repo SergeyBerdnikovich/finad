@@ -193,9 +193,19 @@ jQuery('#contactpopup').click(function(){
               </div>
               <div id='rating'>
                 <p id='title'>NATIONAL RATING</p>
+                <% if  @adviser.rating.try(:name) %>
+                <% if  @adviser.rating.try(:name).size < 2 %>
+                <br>
                 <p id='rating'><%= @adviser.rating.try(:name) %></p>
+                <br>
+                <% else %>
+                <br>
+                <p id='title'><%= @adviser.rating.try(:name) %></p>
+                <p><br>
+                <% end %>
+                <% end %>
               </div>
-              <%= image_tag '/assets/advisers/verified.gif', :style => 'margin:10px 3px;', :id => 'verified_img' if owner? && verified? %>
+              <%= image_tag '/assets/advisers/verified.gif', :style => 'margin:10px 3px;', :id => 'verified_img' if verified? %>
             </div>
             <div class="grid_13 float_r">
                 <p align="justify"><iframe width="420" height="320" src=<% if @adviser.youtube_url.blank? == false %>
@@ -354,7 +364,11 @@ jQuery('#contactpopup').click(function(){
                   <h3>Licensed in</h3>
                   <div class="grid_4 omega">
                     <ul class="bullet_list">
+                      <% if @adviser.licensed_in.blank? %>
                       <li><%= @adviser.city %></li>
+                      <% else %>
+                      <%== @adviser.splitted(:licensed_in) %>
+                      <% end %>
                     </ul>
                   </div>
                   <div class="grid_4 alpha">

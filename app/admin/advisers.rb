@@ -14,6 +14,7 @@ ActiveAdmin.register Adviser do
       f.input :zip
       f.input :phone
       f.input :verified
+      f.input :licensed_in
       f.input :youtube_url
       f.input :url
       f.input :blog_url
